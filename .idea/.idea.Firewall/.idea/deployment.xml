@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="On explicit save action" serverName="192.168.111.128" createEmptyFolders="true" filePermissions="511" folderPermissions="511" remoteFilesAllowedToDisappearOnAutoupload="false" autoUploadExternalChanges="true">
+    <serverData>
+      <paths name="192.168.111.128">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/tmp/Firewall/dotnet/al8d.globalconfig" local="$PROJECT_DIR$/../../../../../Program Files/dotnet/sdk/8.0.303/Sdks/Microsoft.NET.Sdk/analyzers/build/config/analysislevel_8_default.globalconfig" web="/a" />
+            <mapping deploy="/tmp/Firewall/Firewall.Desktop/app.manifest" local="$PROJECT_DIR$/Firewall/Firewall.Desktop/app.manifest" web="/b" />
+            <mapping deploy="/tmp/Firewall/Firewall/Views/MainView.axaml" local="$PROJECT_DIR$/Firewall/Firewall/Views/MainView.axaml" web="/c" />
+            <mapping deploy="/tmp/Firewall/Firewall.Browser/wwwroot/favicon.ico" local="$PROJECT_DIR$/Firewall/Firewall.Browser/wwwroot/favicon.ico" web="/d" />
+            <mapping deploy="/tmp/Firewall/Firewall/obj/Debug/net8.0/Avalonia/resources" local="$PROJECT_DIR$/Firewall/Firewall/obj/Debug/net8.0/Avalonia/resources" web="/e" />
+            <mapping deploy="/tmp/Firewall/Firewall/App.axaml.cs" local="$PROJECT_DIR$/Firewall/Firewall/App.axaml.cs" web="/f" />
+            <mapping deploy="/tmp/Firewall/Firewall.Browser/obj/Debug/net8.0-browser/Firewall.Browser.GeneratedMSBuildEditorConfig.editorconfig" local="$PROJECT_DIR$/Firewall/Firewall.Browser/obj/Debug/net8.0-browser/Firewall.Browser.GeneratedMSBuildEditorConfig.editorconfig" web="/g" />
+            <mapping deploy="/tmp/Firewall/Firewall/Views/MainWindow.axaml.cs" local="$PROJECT_DIR$/Firewall/Firewall/Views/MainWindow.axaml.cs" web="/h" />
+            <mapping deploy="/tmp/Firewall/Firewall/obj/Debug/net8.0/Firewall.GeneratedMSBuildEditorConfig.editorconfig" local="$PROJECT_DIR$/Firewall/Firewall/obj/Debug/net8.0/Firewall.GeneratedMSBuildEditorConfig.editorconfig" web="/i" />
+            <mapping deploy="/tmp/Firewall/Firewall.sln" local="$PROJECT_DIR$/Firewall.sln" web="/j" />
+            <mapping deploy="/tmp/Firewall/Firewall.Desktop/Firewall.Desktop.csproj" local="$PROJECT_DIR$/Firewall/Firewall.Desktop/Firewall.Desktop.csproj" web="/k" />
+            <mapping deploy="/tmp/Firewall/Firewall/App.axaml" local="$PROJECT_DIR$/Firewall/Firewall/App.axaml" web="/m" />
+            <mapping deploy="/tmp/Firewall/Firewall.Browser/wwwroot/main.js" local="$PROJECT_DIR$/Firewall/Firewall.Browser/wwwroot/main.js" web="/n" />
+            <mapping deploy="/tmp/Firewall/Firewall.Desktop/Program.cs" local="$PROJECT_DIR$/Firewall/Firewall.Desktop/Program.cs" web="/l" />
+            <mapping deploy="/tmp/Firewall/Firewall/Views/MainWindow.axaml" local="$PROJECT_DIR$/Firewall/Firewall/Views/MainWindow.axaml" web="/o" />
+            <mapping deploy="/tmp/Firewall/Directory.Build.props" local="$PROJECT_DIR$/Firewall/Directory.Build.props" web="/p" />
+            <mapping deploy="/tmp/Firewall/Firewall.Browser/Firewall.Browser.csproj" local="$PROJECT_DIR$/Firewall/Firewall.Browser/Firewall.Browser.csproj" web="/q" />
+            <mapping deploy="/tmp/Firewall/Firewall.Browser/Program.cs" local="$PROJECT_DIR$/Firewall/Firewall.Browser/Program.cs" web="/r" />
+            <mapping deploy="/tmp/Firewall/Firewall.Browser/Properties/launchSettings.json" local="$PROJECT_DIR$/Firewall/Firewall.Browser/Properties/launchSettings.json" web="/s" />
+            <mapping deploy="/tmp/Firewall/Firewall.Browser/runtimeconfig.template.json" local="$PROJECT_DIR$/Firewall/Firewall.Browser/runtimeconfig.template.json" web="/t" />
+            <mapping deploy="/tmp/Firewall/Firewall/Firewall.csproj" local="$PROJECT_DIR$/Firewall/Firewall/Firewall.csproj" web="/u" />
+            <mapping deploy="/tmp/Firewall/Firewall.Desktop/obj/Debug/net8.0/Firewall.Desktop.GeneratedMSBuildEditorConfig.editorconfig" local="$PROJECT_DIR$/Firewall/Firewall.Desktop/obj/Debug/net8.0/Firewall.Desktop.GeneratedMSBuildEditorConfig.editorconfig" web="/v" />
+            <mapping deploy="/tmp/Firewall/Firewall/Assets/avalonia-logo.ico" local="$PROJECT_DIR$/Firewall/Firewall/Assets/avalonia-logo.ico" web="/w" />
+            <mapping deploy="/tmp/Firewall/Firewall/ViewLocator.cs" local="$PROJECT_DIR$/Firewall/Firewall/ViewLocator.cs" web="/q" />
+            <mapping deploy="/tmp/Firewall/Firewall.Browser/wwwroot/index.html" local="$PROJECT_DIR$/Firewall/Firewall.Browser/wwwroot/index.html" web="/w" />
+            <mapping deploy="/tmp/Firewall/Firewall/ViewModels/ViewModelBase.cs" local="$PROJECT_DIR$/Firewall/Firewall/ViewModels/ViewModelBase.cs" web="/y" />
+            <mapping deploy="/tmp/Firewall/Firewall/ViewModels/MainViewModel.cs" local="$PROJECT_DIR$/Firewall/Firewall/ViewModels/MainViewModel.cs" web="/z" />
+            <mapping deploy="/tmp/Firewall/Firewall.Browser/wwwroot/app.css" local="$PROJECT_DIR$/Firewall/Firewall.Browser/wwwroot/app.css" web="/aa" />
+            <mapping deploy="/tmp/Firewall/Firewall/Views/MainView.axaml.cs" local="$PROJECT_DIR$/Firewall/Firewall/Views/MainView.axaml.cs" web="/ab" />
+            <mapping deploy="/tmp/Firewall/Firewall/obj/Debug/net8.0/Firewall.AssemblyInfo.cs" local="$PROJECT_DIR$/Firewall/Firewall/obj/Debug/net8.0/Firewall.AssemblyInfo.cs" web="/ac" />
+            <mapping deploy="/tmp/Firewall/Firewall.Browser/obj/Debug/net8.0-browser/Firewall.Browser.AssemblyInfo.cs" local="$PROJECT_DIR$/Firewall/Firewall.Browser/obj/Debug/net8.0-browser/Firewall.Browser.AssemblyInfo.cs" web="/ad" />
+            <mapping deploy="/tmp/Firewall/Firewall.Desktop/obj/Debug/net8.0/Firewall.Desktop.AssemblyInfo.cs" local="$PROJECT_DIR$/Firewall/Firewall.Desktop/obj/Debug/net8.0/Firewall.Desktop.AssemblyInfo.cs" web="/ae" />
+            <mapping deploy="/tmp/Firewall/Firewall.Browser/Properties/AssemblyInfo.cs" local="$PROJECT_DIR$/Firewall/Firewall.Browser/Properties/AssemblyInfo.cs" web="/af" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ON_EXPLICIT_SAVE" />
+  </component>
+</project>

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Firewall", "Firewall\Firewall\Firewall.csproj", "{8A3F18CF-BC98-4DE7-84EC-11AC900E131B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Firewall.Desktop", "Firewall\Firewall.Desktop\Firewall.Desktop.csproj", "{F8ADD045-7C2E-432E-9F11-62594ACFA263}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Firewall.Browser", "Firewall\Firewall.Browser\Firewall.Browser.csproj", "{1AE4CDD9-52B9-4854-B999-B5973DA16267}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8A3F18CF-BC98-4DE7-84EC-11AC900E131B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A3F18CF-BC98-4DE7-84EC-11AC900E131B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A3F18CF-BC98-4DE7-84EC-11AC900E131B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A3F18CF-BC98-4DE7-84EC-11AC900E131B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A3F18CF-BC98-4DE7-84EC-11AC900E131B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F8ADD045-7C2E-432E-9F11-62594ACFA263}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8ADD045-7C2E-432E-9F11-62594ACFA263}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8ADD045-7C2E-432E-9F11-62594ACFA263}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8ADD045-7C2E-432E-9F11-62594ACFA263}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8ADD045-7C2E-432E-9F11-62594ACFA263}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{1AE4CDD9-52B9-4854-B999-B5973DA16267}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AE4CDD9-52B9-4854-B999-B5973DA16267}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AE4CDD9-52B9-4854-B999-B5973DA16267}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AE4CDD9-52B9-4854-B999-B5973DA16267}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AE4CDD9-52B9-4854-B999-B5973DA16267}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+	EndGlobalSection
+EndGlobal
