@@ -6,12 +6,59 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="Firewall.Views.MainView"
              x:DataType="vm:MainViewModel">
-  <Design.DataContext>
-    <!-- This only sets the DataContext for the previewer in an IDE,
-         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-    <vm:MainViewModel />
-  </Design.DataContext>
-    <StackPanel>
-        <Grid Background="orange" Height="40" ColumnDefinitions="Auto, Auto, *, Auto, Auto"></Grid>
-    </StackPanel>
+    <UserControl.Styles>
+        <StyleInclude Source="./Styles.axaml" />
+    </UserControl.Styles>
+    <Design.DataContext>
+        <vm:MainViewModel />
+    </Design.DataContext>
+    
+    <Grid>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>  
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+      
+        <Grid Classes="TopSelectorPanel" Grid.Row="0" Height="40">
+          
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Width="5"/>
+            <Button Grid.Column="1" Classes="TopPanelButton" Content = "Firewall Config"/>
+            <Button Grid.Column="2" Content = "Protocols Config" Classes="TopPanelButton"/>
+            <Button Grid.Column="3" Content ="Connections Config" Classes="TopPanelButton"/>
+            <Grid Grid.Column="4" />
+            <Button Grid.Column="5" Content=" ↩ " Classes="TopPanelButton"/>
+            <Button Grid.Column="6" Content =" ↪ " Classes="TopPanelButton"/>
+            <Grid Grid.Column="7" Width="5"/>
+        </Grid>
+      
+        
+        <Grid Classes="MainView" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            
+        </Grid>
+        
+        <Grid Classes="BottomPanel" Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0"/>
+            <Button Grid.Column="1" Classes="CancelButton" Content=" ✗ "/>
+            <Button Grid.Column="2" Classes="ApplyButton" Content=" ✓ "/>
+            <Grid Grid.Column="3" Width="5"/>
+        </Grid>
+    </Grid>
 </UserControl>

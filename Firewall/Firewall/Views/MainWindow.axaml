@@ -10,4 +10,5 @@
         Height="450"
         Title="Firewall">
         <views:MainView />
+        
 </Window>
