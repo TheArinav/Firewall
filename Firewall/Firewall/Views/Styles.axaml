@@ -8,11 +8,11 @@
     
     <Style Selector="Button.TopPanelButton">
         <Setter Property="Background" Value="#444444"/> 
-        <Setter Property="Foreground" Value="#FFFFFF"/> 
+        <Setter Property="Foreground" Value="Lightgray"/> 
         <Setter Property="FontSize" Value="12" />
         <Setter Property="BorderThickness" Value="0.5"/> 
         <Setter Property="BorderBrush" Value="Black"/> 
-        <Setter Property="CornerRadius" Value="3"/>
+        <Setter Property="CornerRadius" Value="5"/>
         <Setter Property="Margin" Value="1"/>
         <Setter Property="Padding" Value="5"/>
         

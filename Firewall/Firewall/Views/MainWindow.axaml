@@ -8,7 +8,39 @@
         x:Class="Firewall.Views.MainWindow"
         Width="600"
         Height="450"
-        Title="Firewall">
-        <views:MainView />
-        
+        Title="Firewall"
+        SystemDecorations="None"
+        Background="Transparent">
+    <Border x:Name="MainBorder" BorderBrush="Black" BorderThickness="1.5" CornerRadius="5">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>  
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <!-- Custom Title Bar -->
+                <Border Background="#333333" Height="30" HorizontalAlignment="Stretch" VerticalAlignment="Top"
+                        PointerPressed="TitleBar_PointerPressed">
+                    <Grid ColumnDefinitions="*,*, Auto, Auto, Auto" VerticalAlignment="Center">
+                        <!-- Window Title -->
+                        <Grid Width=""/>
+                        <TextBlock Grid.Column="1" Foreground= "gray" FontSize="11" Text="Firewall GUI" VerticalAlignment="Center" Margin="10,0"/>
+                        
+                        <!-- Minimize Button -->
+                        <Button Grid.Column="2" Foreground= "gray" Content="—" Width="40" Height="30" Background="#333333" Click="Minimize_Click"/>
+
+                        <!-- Maximize/Restore Button -->
+                        <Button Grid.Column="3" Foreground= "gray" Content=" □" Width="40" Height="30" Background="#333333" Click="MaximizeRestore_Click"/>
+
+                        <!-- Close Button -->
+                        <Button Grid.Column="4" Foreground= "gray" Content=" X" Width="40" Height="30" Background="#333333" Click="Close_Click"/>
+                    </Grid>
+                </Border>
+                
+                <Grid Margin="0,30,0,0">
+                </Grid>
+            </Grid>
+            <views:MainView Grid.Row="1" />
+        </Grid>     
+    </Border>
 </Window>
