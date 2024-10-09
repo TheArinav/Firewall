@@ -10,8 +10,8 @@
         <Setter Property="Background" Value="#444444"/> 
         <Setter Property="Foreground" Value="Lightgray"/> 
         <Setter Property="FontSize" Value="12" />
-        <Setter Property="BorderThickness" Value="0.5"/> 
-        <Setter Property="BorderBrush" Value="Black"/> 
+        <Setter Property="BorderThickness" Value="1"/> 
+        <Setter Property="BorderBrush" Value="#EE111111"/> 
         <Setter Property="CornerRadius" Value="5"/>
         <Setter Property="Margin" Value="1"/>
         <Setter Property="Padding" Value="5"/>
@@ -41,7 +41,7 @@
     </Style>
     
     <Style Selector="Button.TopPanelButton:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="BorderThickness" Value="0.5"/> 
+        <Setter Property="BorderThickness" Value="1"/> 
         <Setter Property="BorderBrush" Value="skyblue"/> 
         <Setter Property="Background" Value="#555555"/> 
         <Setter Property="Foreground" Value="#F0F0F0"/> 
@@ -59,8 +59,8 @@
     <Style Selector="Button.MainViewButton">
         <Setter Property="Background" Value="#3A3A3A"/> 
         <Setter Property="Foreground" Value="#FFFFFF"/> 
-        <Setter Property="BorderThickness" Value="0.5"/> 
-        <Setter Property="BorderBrush" Value="Black"/> 
+        <Setter Property="BorderThickness" Value="1"/> 
+        <Setter Property="BorderBrush" Value="#EE111111"/> 
         <Setter Property="CornerRadius" Value="5"/>
         <Setter Property="Transitions">
             <Transitions>
@@ -87,7 +87,7 @@
     </Style>
     
     <Style Selector="Button.MainViewButton:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="BorderThickness" Value="0.5"/> 
+        <Setter Property="BorderThickness" Value="1"/> 
         <Setter Property="BorderBrush" Value="skyblue"/> 
         <Setter Property="Background" Value="#3F3F3F"/> 
         <Setter Property="Foreground" Value="#F0F0F0"/> 
@@ -103,8 +103,8 @@
     <Style Selector="Button.ApplyButton">
         <Setter Property="Background" Value="#4CAF50"/>
         <Setter Property="Foreground" Value="#FFFFFF"/> 
-        <Setter Property="BorderThickness" Value="0.5"/> 
-        <Setter Property="BorderBrush" Value="Black"/> 
+        <Setter Property="BorderThickness" Value="1"/> 
+        <Setter Property="BorderBrush" Value="#EE111111"/> 
         <Setter Property="FontWeight" Value="600"/>
         <Setter Property="CornerRadius" Value="15"/>
         <Setter Property="FontSize" Value="12" />
@@ -133,7 +133,7 @@
     </Style>
     
     <Style Selector="Button.ApplyButton:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="BorderThickness" Value="0.5"/> 
+        <Setter Property="BorderThickness" Value="1"/> 
         <Setter Property="BorderBrush" Value="skyblue"/> 
         <Setter Property="Background" Value="#4DB051"/> 
         <Setter Property="Foreground" Value="#F0F0F0"/> 
@@ -143,8 +143,8 @@
     <Style Selector="Button.CancelButton">
         <Setter Property="Background" Value="#F44336"/>
         <Setter Property="Foreground" Value="#FFFFFF"/> 
-        <Setter Property="BorderThickness" Value="0.5"/> 
-        <Setter Property="BorderBrush" Value="Black"/> 
+        <Setter Property="BorderThickness" Value="1"/> 
+        <Setter Property="BorderBrush" Value="#EE111111"/> 
         <Setter Property="CornerRadius" Value="15"/>
         <Setter Property="FontSize" Value="12" />
         <Setter Property="FontWeight" Value="600"/>
@@ -174,7 +174,7 @@
     </Style>
     
     <Style Selector="Button.CancelButton:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="BorderThickness" Value="0.5"/> 
+        <Setter Property="BorderThickness" Value="1"/> 
         <Setter Property="BorderBrush" Value="skyblue"/> 
         <Setter Property="Background" Value="#F54637"/> 
         <Setter Property="Foreground" Value="#F0F0F0"/> 
@@ -185,7 +185,7 @@
         <Setter Property="Background" Value="#2C2C2C"/> 
         <Setter Property="Foreground" Value="#DDDDDD"/> 
         <Setter Property="BorderThickness" Value="1"/> 
-        <Setter Property="BorderBrush" Value="Black"/> 
+        <Setter Property="BorderBrush" Value="#EE111111"/> 
         <Setter Property="CornerRadius" Value="5"/>
     </Style>
     
@@ -193,7 +193,7 @@
         <Setter Property="Background" Value="#555555"/> 
         <Setter Property="Foreground" Value="#F0F0F0"/> 
         <Setter Property="BorderThickness" Value="1"/> 
-        <Setter Property="BorderBrush" Value="Black"/> 
+        <Setter Property="BorderBrush" Value="#EE111111"/> 
         <Setter Property="CornerRadius" Value="5"/>
     </Style>
 </Styles>
