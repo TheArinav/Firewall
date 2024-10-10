@@ -34,19 +34,21 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0" Width="5"/>
-            <Button Grid.Column="1" Classes="TopPanelButton" Content = "Firewall Config"/>
+            <Button Grid.Column="1" Classes="TopPanelButton" Content = "Firewall Config" Click="OnFirewallConfigButtonClick"/>
             <Button Grid.Column="2" Content = "Protocols Config" Classes="TopPanelButton"/>
             <Button Grid.Column="3" Content ="Connections Config" Classes="TopPanelButton"/>
             <Grid Grid.Column="4" />
-            <Button Grid.Column="5" Content=" ↩ " Classes="TopPanelButton"/>
-            <Button Grid.Column="6" Content =" ↪ " Classes="TopPanelButton"/>
+            <Button Grid.Column="5" Content=" ↩ " Classes="TopPanelButton" x:Name="UndoBttn" Click="OnUndoBttnClick"/>
+            <Button Grid.Column="6" Content =" ↪ " Classes="TopPanelButton" x:Name="RedoBttn" Click="OnRedoBttnClick"/>
             <Grid Grid.Column="7" Width="5"/>
         </Grid>
         
       
         <Border Grid.Row="1" BorderBrush="#ff111111" BorderThickness="0,1,0,1">
             <Grid Classes="MainView"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            
+                <Grid.RowDefinitions>*</Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>*</Grid.ColumnDefinitions>
+                <ContentControl x:Name="View" Grid.Column="0" Grid.Row="0"/>
             </Grid>
         </Border>
         
