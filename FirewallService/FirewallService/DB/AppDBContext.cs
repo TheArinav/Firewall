@@ -1,4 +1,5 @@
-﻿using FirewallService.DB.Entities;
+﻿using FirewallService.auth;
+using FirewallService.DB.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace FirewallService.DB;
@@ -15,7 +16,7 @@ public class AppDBContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlite("Data Source=Firewall.db");
+        optionsBuilder.UseSqlite($"Data Source={FileManager.DBFile}");
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
