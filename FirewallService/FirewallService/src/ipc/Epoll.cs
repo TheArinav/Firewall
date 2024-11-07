@@ -28,7 +28,7 @@ public static class Epoll
     public static extern int epoll_ctl(int epfd, int op, int fd, ref EpollEvent _event);
 
     [DllImport("libc", SetLastError = true)]
-    public static extern int epoll_wait(int epfd, EpollEvent[] events, int maxevents, int timeout);
+    public static extern int epoll_wait(int epfd, EpollEvent[]? events, int maxevents, int timeout);
 
     [DllImport("libc", SetLastError = true)]
     public static extern int close(int fd);

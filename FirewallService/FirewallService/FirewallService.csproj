@@ -6,11 +6,13 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <UserSecretsId>dotnet-FirewallService-8D301014-525D-4D9B-945A-34FEAC173E7C</UserSecretsId>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
+		<RuntimeIdentifiers>linux-x64;win-x64</RuntimeIdentifiers>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.0-rc.2.24474.1" />
         <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+        <PackageReference Include="System.Runtime.InteropServices" Version="4.3.0" />
     </ItemGroup>
 </Project>

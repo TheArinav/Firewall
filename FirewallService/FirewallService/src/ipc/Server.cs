@@ -2,102 +2,115 @@
 using System.Collections.Concurrent;
 using System.Net.Sockets;
 using System.Text;
-using System.IO;
-using System.Threading.Tasks;
+using FirewallService.auth;
+using FirewallService.DB;
+using FirewallService.ipc.structs;
 using static FirewallService.ipc.Epoll;
 
 namespace FirewallService.ipc
 {
     public class Server
     {
-        private const int MaxEvents = 10;
-        private const string SocketPath = "/tmp/firewall_uds_epoll_server.sock";
+        private readonly AuthManager _authManager;
+        private readonly DBManager _dbManager;
+        private const int MAX_EVENTS = 10;
+        private const string SOCKET_PATH = "/tmp/firewall_uds_epoll_server.sock";
 
         /// <summary>
         /// Thread-safe queue to store incoming packets
         /// </summary>
-        private readonly ConcurrentQueue<string> PacketQueue;
+        private readonly ConcurrentQueue<string> _packetQueue;
 
         /// <summary>
         /// Event that is triggered when a packet is enqueued
         /// </summary>
         public event Action<string> PacketReceived;
 
+        private int _epollFd;
+        private EpollEvent[]? _events;
+        private Socket? _listenerSocket;
+
         public Server()
         {
-            this.PacketQueue = new ConcurrentQueue<string>();
+            _epollFd = default;
+            this._events = default;
+            this._listenerSocket = default;
+            this._packetQueue = new ConcurrentQueue<string>();
+            this._dbManager = new DBManager();
+            this._authManager = new AuthManager();
             this.PacketReceived += ProcessPacket;
         }
 
-        public void Start()
+        public void Setup()
         {
-            var epollFd = epoll_create1(0);
-            if (epollFd == -1)
+            this._epollFd = epoll_create1(0);
+            if (this._epollFd == -1)
             {
                 Console.WriteLine("Failed to create epoll file descriptor");
                 return;
             }
             
-            var listenerSocket = new Socket(AddressFamily.Unix, SocketType.Stream, ProtocolType.Unspecified);
-            if (File.Exists(SocketPath))
-                File.Delete(SocketPath);
+            this._listenerSocket = new Socket(AddressFamily.Unix, SocketType.Stream, ProtocolType.Unspecified);
+            if (File.Exists(SOCKET_PATH))
+                File.Delete(SOCKET_PATH);
             
-            listenerSocket.Bind(new UnixDomainSocketEndPoint(SocketPath));
-            listenerSocket.Listen(5);
+            this._listenerSocket.Bind(new UnixDomainSocketEndPoint(SOCKET_PATH));
+            this._listenerSocket.Listen(5);
             
             var listenEvent = new EpollEvent
             {
                 events = EPOLLIN | EPOLLET, 
-                fd = listenerSocket.Handle.ToInt32()
+                fd = this._listenerSocket.Handle.ToInt32()
             };
             
-            if (epoll_ctl(epollFd, EPOLL_CTL_ADD, listenEvent.fd, ref listenEvent) == -1)
+            if (epoll_ctl(this._epollFd, EPOLL_CTL_ADD, listenEvent.fd, ref listenEvent) == -1)
             {
                 Console.WriteLine("Failed to add listener socket to epoll");
-                return;
+                return ;
             }
 
             Console.WriteLine("Server is listening for connections...");
             
-            var events = new EpollEvent[MaxEvents];
+             this._events = new EpollEvent[MAX_EVENTS];
+            
+        }
 
-            while (true)
+        public void Loop()
+        {
+            var eventCount = epoll_wait(_epollFd, _events, MAX_EVENTS, -1);
+            if (eventCount == -1)
             {
-                var eventCount = epoll_wait(epollFd, events, MaxEvents, -1);
-                if (eventCount == -1)
+                Console.WriteLine("epoll_wait failed");
+                return;
+            }
+
+            for (var i = 0; i < eventCount; i++)
+            {
+                if (_events?[i].fd == _listenerSocket?.Handle.ToInt32())
                 {
-                    Console.WriteLine("epoll_wait failed");
-                    break;
+                    var clientSocket = _listenerSocket?.Accept();
+                    Console.WriteLine("New client connected.");
+
+                    if (clientSocket == null) continue;
+                    clientSocket.Blocking = false;
+
+                    var clientEvent = new EpollEvent
+                    {
+                        events = EPOLLIN | EPOLLET,
+                        fd = clientSocket.Handle.ToInt32()
+                    };
+
+                    if (epoll_ctl(_epollFd, EPOLL_CTL_ADD, clientEvent.fd, ref clientEvent) == -1)
+                        Console.WriteLine("Failed to add client socket to epoll");
                 }
-
-                for (var i = 0; i < eventCount; i++)
+                else
                 {
-                    if (events[i].fd == listenerSocket.Handle.ToInt32())
-                    {
-                        var clientSocket = listenerSocket.Accept();
-                        Console.WriteLine("New client connected.");
-                        
-                        clientSocket.Blocking = false;
-                        
-                        var clientEvent = new EpollEvent
-                        {
-                            events = EPOLLIN | EPOLLET,
-                            fd = clientSocket.Handle.ToInt32()
-                        };
-
-                        if (epoll_ctl(epollFd, EPOLL_CTL_ADD, clientEvent.fd, ref clientEvent) == -1)
-                            Console.WriteLine("Failed to add client socket to epoll");
-                    }
-                    else
-                    {
-                        var clientFd = events[i].fd;
-                        var clientSocket = new Socket(new SafeSocketHandle(new IntPtr(clientFd), ownsHandle: true));
-                        HandleClientData(clientSocket);
-                    }
+                    if (_events == null) continue;
+                    var clientFd = _events[i].fd;
+                    var clientSocket = new Socket(new SafeSocketHandle(new IntPtr(clientFd), ownsHandle: true));
+                    HandleClientData(clientSocket);
                 }
             }
-            close(epollFd);
-            listenerSocket.Close();
         }
 
         private void HandleClientData(Socket clientSocket)
@@ -110,7 +123,7 @@ namespace FirewallService.ipc
                 {
                     var message = Encoding.UTF8.GetString(buffer, 0, bytesRead);
 
-                    PacketQueue.Enqueue(message);
+                    _packetQueue.Enqueue(message);
                     
                     PacketReceived?.Invoke(message);
 
@@ -131,7 +144,21 @@ namespace FirewallService.ipc
 
         private void ProcessPacket(string packet)
         {
-            
+            var req = Request.Parse(packet);
+            var resp = new Response();
+            if (!this._authManager.Validate(req.Requester, req.SQLQuery, out var authResp))
+            {
+                resp.OperationSuccessful = false;
+                resp.Message = authResp;
+            }
+            else
+                resp = this._dbManager.HandleRequest(req);
+        }
+        ~Server()
+        {
+            close(_epollFd);
+            _listenerSocket?.Close();
         }
     }
 }
+

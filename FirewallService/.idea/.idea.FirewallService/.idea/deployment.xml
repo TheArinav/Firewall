@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="ser" remoteFilesAllowedToDisappearOnAutoupload="false">
+    <serverData>
+      <paths name="ser">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$/../../../../../../Program Files/dotnet/sdk/8.0.303/Sdks/Microsoft.NET.Sdk/analyzers/build/config/analysislevel_8_default.globalconfig" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService.sln" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/DB/AppDBContext.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/DB/Entities/Connection.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/DB/Entities/ConnectionClass.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/DB/Entities/Enforcer.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/DB/Entities/FirewallRule.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/DB/Entities/Packet.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/DB/Entities/PayloadLengthEnforcer.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/DB/Entities/Protocol.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/DB/Entities/Record.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/FirewallService.csproj" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/Program.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/Properties/launchSettings.json" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/Worker.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/app.manifest" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/appsettings.Development.json" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/appsettings.json" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/build-linux.bat" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/obj/Debug/net8.0/FirewallService.AssemblyInfo.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/obj/Debug/net8.0/FirewallService.GeneratedMSBuildEditorConfig.editorconfig" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/obj/Debug/net8.0/FirewallService.GlobalUsings.g.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/FirewallService" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/FirewallService.deps.json" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/FirewallService.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/FirewallService.pdb" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/FirewallService.runtimeconfig.json" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/Microsoft.Data.Sqlite.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/Microsoft.EntityFrameworkCore.Abstractions.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/Microsoft.EntityFrameworkCore.Relational.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/Microsoft.EntityFrameworkCore.Sqlite.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/Microsoft.EntityFrameworkCore.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/Microsoft.Extensions.Caching.Abstractions.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/Microsoft.Extensions.Caching.Memory.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/Microsoft.Extensions.Configuration.Abstractions.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/Microsoft.Extensions.Configuration.Binder.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/Microsoft.Extensions.Configuration.CommandLine.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/Microsoft.Extensions.Configuration.EnvironmentVariables.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/Microsoft.Extensions.Configuration.FileExtensions.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/Microsoft.Extensions.Configuration.Json.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/Microsoft.Extensions.Configuration.UserSecrets.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/Microsoft.Extensions.Configuration.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/Microsoft.Extensions.DependencyInjection.Abstractions.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/Microsoft.Extensions.DependencyInjection.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/Microsoft.Extensions.DependencyModel.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/Microsoft.Extensions.Diagnostics.Abstractions.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/Microsoft.Extensions.Diagnostics.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/Microsoft.Extensions.FileProviders.Abstractions.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/Microsoft.Extensions.FileProviders.Physical.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/Microsoft.Extensions.FileSystemGlobbing.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/Microsoft.Extensions.Hosting.Abstractions.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/Microsoft.Extensions.Hosting.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/Microsoft.Extensions.Logging.Abstractions.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/Microsoft.Extensions.Logging.Configuration.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/Microsoft.Extensions.Logging.Console.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/Microsoft.Extensions.Logging.Debug.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/Microsoft.Extensions.Logging.EventLog.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/Microsoft.Extensions.Logging.EventSource.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/Microsoft.Extensions.Logging.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/Microsoft.Extensions.Options.ConfigurationExtensions.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/Microsoft.Extensions.Options.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/Microsoft.Extensions.Primitives.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/Newtonsoft.Json.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/SQLitePCLRaw.batteries_v2.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/SQLitePCLRaw.core.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/SQLitePCLRaw.provider.e_sqlite3.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/System.Diagnostics.DiagnosticSource.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/System.Diagnostics.EventLog.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/System.IO.Pipelines.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/System.Text.Encodings.Web.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/System.Text.Json.dll" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/appsettings.Development.json" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/appsettings.json" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/libe_sqlite3.so" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/publish/FirewallService.deps.json" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/publish/FirewallService.runtimeconfig.json" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/publish/appsettings.Development.json" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/publish/publish/appsettings.json" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/src/auth/AuthManager.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/src/auth/FileManager.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/src/auth/structs/AuthMainObject.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/src/auth/structs/AuthorizedUser.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/src/ipc/Epoll.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/src/ipc/Server.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/src/ipc/structs/IMessageComponent.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/src/ipc/structs/Message.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/src/ipc/structs/MessageType.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/src/ipc/structs/Request.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/FirewallService/src/ipc/structs/Response.cs" web="/" />
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>
