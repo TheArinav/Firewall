@@ -4,7 +4,7 @@ using FirewallService.util;
 
 namespace FirewallService.ipc.structs;
 
-public struct Request : IMessageComponent, IStreamableObject<Request>
+public struct Request : IMessageComponent<Request>
 {
     public AuthorizedUser Requester { get; set; }
     public string SQLQuery { get; set; }

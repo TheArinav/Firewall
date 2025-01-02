@@ -1,15 +1,13 @@
 ﻿namespace FirewallService.ipc.structs;
 
-public struct Response : IMessageComponent
+public struct Response() : IMessageComponent<Response>
 {
-    public bool OperationSuccessful { get; set; }
-    public string Message { get; set; }
-    public object DBObject { get; set; }
+    public bool OperationSuccessful { get; set; } = false;
+    public string Message { get; set; } = "Null";
+    public object? DBObject { get; set; } = null;
 
-    public Response()
+    public string ToStringStream()
     {
-        this.OperationSuccessful = false;
-        this.DBObject = null;
-        this.Message = "Null";
+        throw new NotImplementedException();
     }
 }

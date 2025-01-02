@@ -6,17 +6,18 @@ public interface IStreamableObject<out T>
 {
     public string ToStringStream();
 
-    public byte[] ToByteStream()
+    public virtual byte[] ToByteStream()
     {
         return (byte[])(ToStringStream().Select(c => (byte)c).ToArray<byte>());
     }
 
-    public static T Parse(string sStream)
+    public virtual T Parse(string sStream, Type? t = null)
     {
+        t ??= typeof(T);
         throw new NotImplementedException();
     }
 
-    public static T Parse(byte[] bStream)
+    public virtual T Parse(byte[] bStream)
     {
         return Parse(Encoding.UTF8.GetString(bStream));
     }

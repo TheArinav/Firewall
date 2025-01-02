@@ -3,6 +3,7 @@
 public enum MessageType
 {
     Unset,
+    Init,
     Response,
     Request
 }

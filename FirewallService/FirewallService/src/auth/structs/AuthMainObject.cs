@@ -2,10 +2,10 @@
 
 public struct AuthMainObject
 {
-    public AuthorizedUser[] Users { get; set; }
+    public UserConnection[] Users { get; set; }
 
     public AuthMainObject()
     {
-        Users = new AuthorizedUser[] { };
+        Users = new UserConnection[] { };
     }
 }

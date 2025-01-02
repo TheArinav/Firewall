@@ -11,9 +11,9 @@ namespace FirewallService.auth
     {
         public const string DBFile = "/etc/firewall/firewall.db";
         public const string AuthFile = "/etc/firewall/authorized_users.json";
-        public const string EncryptionKey = "/etc/firewall/secret.key";
-        private const int KeySize = 256;
-        public static byte[] AESKey{ get; private set; }
+        public const string RSAEncryptionKey = "/etc/firewall/public.key";
+        private const int KeySize = 4096;
+        public static byte[] RSAKey{ get; private set; }
         public static AuthManager AuthManager { get; private set; }
 
         public static void Init()
@@ -27,20 +27,20 @@ namespace FirewallService.auth
 
                 var emptyAuthObject = new AuthMainObject
                 {
-                    Users = Array.Empty<AuthorizedUser>() 
+                    Users = Array.Empty<UserConnection>() 
                 };
 
                 var jsonString = JsonConvert.SerializeObject(emptyAuthObject, Formatting.Indented);
                 File.WriteAllText(AuthFile, jsonString); 
             }
 
-            if (!File.Exists(EncryptionKey))
+            if (!File.Exists(RSAEncryptionKey))
             {
-                using (File.CreateText(EncryptionKey)) {}
+                using (File.CreateText(RSAEncryptionKey)) {}
 
                 var keyBytes = GenerateSecureKey(KeySize);
                 
-                using (StreamWriter writer = new StreamWriter(EncryptionKey))
+                using (StreamWriter writer = new StreamWriter(RSAEncryptionKey))
                 {
                     writer.WriteLine(Convert.ToBase64String(keyBytes));
                 }
@@ -48,10 +48,10 @@ namespace FirewallService.auth
             
             SetFilePermissions(DBFile);
             SetFilePermissions(AuthFile);
-            SetFilePermissions(EncryptionKey);
+            SetFilePermissions(RSAEncryptionKey);
 
             AuthManager = new AuthManager();
-            AESKey = LoadEncryptionKey(EncryptionKey);
+            RSAKey = LoadEncryptionKey(RSAEncryptionKey);
         }
         
         private static void SetFilePermissions(string filePath)

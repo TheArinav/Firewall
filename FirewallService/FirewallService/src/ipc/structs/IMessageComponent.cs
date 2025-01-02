@@ -1,6 +1,8 @@
-﻿namespace FirewallService.ipc.structs;
+﻿using FirewallService.util;
 
-public interface IMessageComponent
+namespace FirewallService.ipc.structs;
+
+public interface IMessageComponent<out T> : IStreamableObject<T>
 {
     
 }
