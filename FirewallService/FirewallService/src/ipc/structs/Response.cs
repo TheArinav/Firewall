@@ -10,4 +10,9 @@ public struct Response() : IMessageComponent<Response>
     {
         throw new NotImplementedException();
     }
+
+    public Response Get()
+    {
+        return this;
+    }
 }

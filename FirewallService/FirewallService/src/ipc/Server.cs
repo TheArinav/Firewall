@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Net.Sockets;
+using System.Runtime.InteropServices;
 using System.Text;
 using FirewallService.auth;
 using FirewallService.DB;
@@ -75,84 +76,130 @@ namespace FirewallService.ipc
             
         }
 
-        public void Loop()
+        public void Loop(CancellationToken stoppingToken)
         {
-            var eventCount = epoll_wait(_epollFd, _events, MAX_EVENTS, -1);
-            if (eventCount == -1)
+            while (!stoppingToken.IsCancellationRequested)
             {
-                Console.WriteLine("epoll_wait failed");
-                return;
-            }
-
-            for (var i = 0; i < eventCount; i++)
-            {
-                if (_events?[i].fd == _listenerSocket?.Handle.ToInt32())
+                var eventCount = epoll_wait(_epollFd, _events, MAX_EVENTS, -1);
+                if (eventCount == -1)
                 {
-                    var clientSocket = _listenerSocket?.Accept();
-                    Console.WriteLine("New client connected.");
-
-                    if (clientSocket == null) continue;
-                    clientSocket.Blocking = false;
-
-                    var clientEvent = new EpollEvent
+                    if (Marshal.GetLastWin32Error() == 4) // EINTR (Interrupted system call)
                     {
-                        events = EPOLLIN | EPOLLET,
-                        fd = clientSocket.Handle.ToInt32()
-                    };
+                        Console.WriteLine("epoll_wait interrupted by signal, stopping...");
+                        break;
+                    }
 
-                    if (epoll_ctl(_epollFd, EPOLL_CTL_ADD, clientEvent.fd, ref clientEvent) == -1)
-                        Console.WriteLine("Failed to add client socket to epoll");
+                    Console.WriteLine("epoll_wait failed");
+                    return;
                 }
-                else
+
+                for (var i = 0; i < eventCount; i++)
                 {
-                    if (_events == null) continue;
-                    var clientFd = _events[i].fd;
-                    var clientSocket = new Socket(new SafeSocketHandle(new IntPtr(clientFd), ownsHandle: true));
-                    HandleClientData(clientSocket);
+                    if (stoppingToken.IsCancellationRequested)
+                        break;
+
+                    if (_events?[i].fd == _listenerSocket?.Handle.ToInt32())
+                    {
+                        var clientSocket = _listenerSocket?.Accept();
+                        Console.WriteLine("New client connected.");
+
+                        if (clientSocket == null) continue;
+                        clientSocket.Blocking = false;
+
+                        var clientEvent = new EpollEvent
+                        {
+                            events = EPOLLIN | EPOLLET,
+                            fd = clientSocket.Handle.ToInt32()
+                        };
+
+                        if (epoll_ctl(_epollFd, EPOLL_CTL_ADD, clientEvent.fd, ref clientEvent) == -1)
+                        {
+                            Console.WriteLine("Failed to add client socket to epoll");
+                            clientSocket.Close();
+                        }
+                    }
+                    else
+                    {
+                        if (_events == null) continue;
+                        var clientFd = _events[i].fd;
+                        var clientSocket = new Socket(new SafeSocketHandle(new IntPtr(clientFd), ownsHandle: true));
+                        HandleClientData(clientSocket);
+                    }
                 }
             }
-        }
 
+            Console.WriteLine("Server loop stopped.");
+        }
+        
         private void HandleClientData(Socket clientSocket)
         {
             var buffer = new byte[1024];
+            var stringBuilder = new StringBuilder();
+
             try
             {
-                var bytesRead = clientSocket.Receive(buffer);
-                if (bytesRead > 0)
+                int bytesRead;
+                do
                 {
-                    var message = Encoding.UTF8.GetString(buffer, 0, bytesRead);
+                    bytesRead = clientSocket.Receive(buffer, SocketFlags.None);
+                    if (bytesRead > 0)
+                    {
+                        stringBuilder.Append(Encoding.UTF8.GetString(buffer, 0, bytesRead));
+                    }
+                } while (bytesRead > 0);
 
+                var message = stringBuilder.ToString();
+
+                if (!string.IsNullOrEmpty(message))
+                {
                     _packetQueue.Enqueue(message);
-                    
                     PacketReceived?.Invoke(message);
 
                     var response = Encoding.UTF8.GetBytes("Message received!");
                     clientSocket.Send(response);
                 }
-                else
-                {
-                    Console.WriteLine("Client disconnected");
-                    clientSocket.Close();
-                }
+            }
+            catch (SocketException ex) when (ex.SocketErrorCode == SocketError.WouldBlock)
+            {
+                // Non-blocking socket has no more data to read
             }
             catch (SocketException ex)
             {
                 Console.WriteLine($"Socket error: {ex.Message}");
+                clientSocket.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error handling client data: {ex.Message}");
+                clientSocket.Close();
             }
         }
 
         private void ProcessPacket(string packet)
         {
-            var req = Request.Parse(packet);
-            var resp = new Response();
-            if (!this._authManager.Validate(req.Requester, req.SQLQuery, out var authResp))
+            try
             {
-                resp.OperationSuccessful = false;
-                resp.Message = authResp;
+                var message = Message.Parse(packet);
+
+                var req = (Request?)((message.Type == MessageType.Request) ? message.Component.Get() : null);
+                var resp = new Response();
+                var authResp = "";
+                switch (req)
+                {
+                    case { } request when !this._authManager.Validate(request.Requester, request.SQLQuery,
+                        out authResp):
+                        resp.OperationSuccessful = false;
+                        resp.Message = authResp;
+                        break;
+                    case { } req1:
+                        resp = this._dbManager.HandleRequest(req1);
+                        break;
+                }
             }
-            else
-                resp = this._dbManager.HandleRequest(req);
+            catch
+            {
+                Logger.Error("Error processing packet", packet);
+            }
         }
         ~Server()
         {

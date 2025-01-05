@@ -42,5 +42,9 @@ public struct Request : IMessageComponent<Request>
             throw new FormatException($"Can't parse '{sStream}' to Request");
         }
     }
-    
+
+    public Request Get()
+    {
+        return this;
+    }
 }

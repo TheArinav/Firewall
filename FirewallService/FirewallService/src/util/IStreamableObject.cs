@@ -11,9 +11,8 @@ public interface IStreamableObject<out T>
         return (byte[])(ToStringStream().Select(c => (byte)c).ToArray<byte>());
     }
 
-    public virtual T Parse(string sStream, Type? t = null)
+    public virtual T Parse(string sStream)
     {
-        t ??= typeof(T);
         throw new NotImplementedException();
     }
 
