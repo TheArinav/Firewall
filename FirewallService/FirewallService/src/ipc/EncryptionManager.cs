@@ -26,6 +26,7 @@ public class EncryptionManager
                     return Encoding.UTF8.GetString(decryptedBytes);
                 }
 
+                break;
             case MessageType.Request:
             case MessageType.Response:
                 // Find AES key in SessionKeys using the senderPID and decrypt with AES
@@ -54,9 +55,10 @@ public class EncryptionManager
                     }
                 }
 
-            case MessageType.Unset:
-            default:
-                throw new ArgumentOutOfRangeException(nameof(type), type, null);
+                break;
+                case MessageType.Unset:
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(type), type, null);
         }
     }
     private static byte[] SecureStringToByteArray(SecureString secureString)

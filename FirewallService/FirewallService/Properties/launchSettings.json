@@ -3,10 +3,11 @@
   "profiles": {
     "FirewallService": {
       "commandName": "Project",
-      "dotnetRunMessages": true,
+      "workingDirectory": "/home/ariel/Documents/github/Firewall/FirewallService",
       "environmentVariables": {
         "DOTNET_ENVIRONMENT": "Development"
-      }
+      },
+      "preLaunchTask": "build"
     }
   }
 }

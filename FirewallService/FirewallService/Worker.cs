@@ -39,6 +39,4 @@ public class Worker : BackgroundService
             Console.WriteLine("Server shutting down...");
         }
     }
-
-
 }

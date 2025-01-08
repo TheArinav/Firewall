@@ -1,0 +1,37 @@
+[Buildset]
+BuildItems=@Variant(\x00\x00\x00\t\x00\x00\x00\x00\x01\x00\x00\x00\x0b\x00\x00\x00\x00\x01\x00\x00\x00\x1e\x00F\x00i\x00r\x00e\x00w\x00a\x00l\x00l\x00S\x00e\x00r\x00v\x00i\x00c\x00e)
+
+[Launch]
+Launch Configurations=Launch Configuration 0
+
+[Launch][Launch Configuration 0]
+Configured Launch Modes=execute,debug
+Configured Launchers=nativeAppLauncher,lldb
+Name=New Compiled Binary Launcher
+Type=Native Application
+
+[Launch][Launch Configuration 0][Data]
+Arguments=
+Break on Start=false
+Dependencies=@Variant(\x00\x00\x00\t\x00\x00\x00\x00\x00)
+Dependency Action=Install
+EnvironmentGroup=
+Executable=file:///home/ariel/Documents/github/Firewall/FirewallService/FirewallService/bin/Debug/net8.0/FirewallService
+External Terminal=konsole --noclose --workdir %workdir -e %exe
+Kill Before Executing Again=4194304
+LLDB Arguments=
+LLDB Config Script=
+LLDB Environment=
+LLDB Executable=
+LLDB Inherit System Env=true
+LLDB Remote Debugging=false
+LLDB Remote Path=
+LLDB Remote Server=
+Project Target=
+Start With=ApplicationOutput
+Use External Terminal=false
+Working Directory=
+isExecutable=true
+
+[Project]
+VersionControlSupport=kdevgit

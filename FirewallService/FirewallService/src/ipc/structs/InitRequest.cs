@@ -5,7 +5,7 @@ namespace FirewallService.ipc.structs;
 
 public class InitRequest : IMessageComponent<InitRequest>
 {
-    public const int AES_KEY_SIZE = 256;
+    public const int AES_KEY_SIZE = 32;
     public byte[] AESKey { get; set; }
     public AuthorizedUser Requester { get; set; }
 
@@ -30,7 +30,7 @@ public class InitRequest : IMessageComponent<InitRequest>
         try
         {
             var key = Encoding.ASCII.GetBytes(sStream.Substring(1, AES_KEY_SIZE));
-            var req = AuthorizedUser.Parse(sStream[258..^1]);
+            var req = AuthorizedUser.Parse(sStream[34..^1]);
             return new(key, req);
         }
         catch

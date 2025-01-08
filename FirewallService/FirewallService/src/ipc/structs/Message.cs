@@ -81,7 +81,7 @@ public struct Message : IStreamableObject<Message>
         {
             if (e is FormatException)
                 throw;
-            throw new FormatException("Invalid Message");
+            throw new FormatException($"Invalid Message. Error thrown = {e.GetType()}:{e.Message}");
         }
     }
 }
