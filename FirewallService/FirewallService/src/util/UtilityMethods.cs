@@ -20,6 +20,9 @@ public static class UtilityMethods
 
         var len = hexString.Length;
         hexString = hexString.TrimStart('0');
+
+        if (hexString == "") 
+            return 0;
         
         return (len switch
         {

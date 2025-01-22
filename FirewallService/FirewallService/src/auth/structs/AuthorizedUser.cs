@@ -38,15 +38,22 @@ public struct AuthorizedUser : IStreamableObject<AuthorizedUser>
         {
             switch (index)
             {
+                case 0 when c == '(':
+                case 17 when c== ',':
+                    break;
                 case 0 when c != '(':
                 case 17 when c!= ',':
                     goto Fail;
                 default:
                 {
-                    if ((index == 18 || index == sStream.Length-2 ) && c!='\'')
-                        goto Fail;
-                    else if (index == sStream.Length-1 && c!=')')
-                        goto Fail;
+                    if ((index == 18 || index == sStream.Length-2 ) )
+                        if (c != '\'') 
+                            goto Fail;
+                        else break;
+                    else if (index == sStream.Length-1)
+                        if (c != ')') 
+                            goto Fail;
+                        else break;
                     else if (index is >= 1 and <= 16 && !HEX_DIGITS.Contains(c))
                         goto Fail;
                     else if(!(LETTERS.Contains((c+"").ToLower()) || DEC_DIGITS.Contains(c) || SPECIAL.Contains(c)))
@@ -66,7 +73,7 @@ public struct AuthorizedUser : IStreamableObject<AuthorizedUser>
             }
             index++;
         }
-        return new AuthorizedUser((long)UtilityMethods.DeserializeNumber(idChars), keyChars);
+        return new AuthorizedUser(UtilityMethods.DeserializeNumber(idChars).ToInt64(null), keyChars);
         Fail:
         {
             throw new FormatException($"String '{sStream}' can't be parsed to AuthorizedUser");

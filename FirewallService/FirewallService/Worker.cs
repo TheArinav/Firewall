@@ -28,15 +28,15 @@ public class Worker : BackgroundService
         }
         catch (TaskCanceledException)
         {
-            Console.WriteLine("Task was canceled.");
+            Logger.Warn("Task was canceled.");
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Unhandled exception: {ex.Message}");
+            Logger.Critical($"Unhandled exception: {ex.Message}");
         }
         finally
         {
-            Console.WriteLine("Server shutting down...");
+            Logger.RegWrite("Server shutting down...");
         }
     }
 }

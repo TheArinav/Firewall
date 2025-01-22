@@ -18,10 +18,10 @@ public class EncryptionManager
                 using (var rsa = RSA.Create())
                 {
                     var privateKeyBytes = FileManager.GetKeyBytes(FileManager.RSAKey);
-                    rsa.ImportRSAPrivateKey(privateKeyBytes, out _);
-
-                    var encryptedBytes = Convert.FromBase64String(raw);
-                    var decryptedBytes = rsa.Decrypt(encryptedBytes, RSAEncryptionPadding.OaepSHA256);
+                    int bRead = 0;
+                    rsa.ImportPkcs8PrivateKey(privateKeyBytes, out bRead);
+                    
+                    var decryptedBytes = rsa.Decrypt( Convert.FromBase64String(raw), RSAEncryptionPadding.OaepSHA256);
 
                     return Encoding.UTF8.GetString(decryptedBytes);
                 }
@@ -31,9 +31,7 @@ public class EncryptionManager
             case MessageType.Response:
                 // Find AES key in SessionKeys using the senderPID and decrypt with AES
                 if (!SessionKeys.TryGetValue(senderPID, out var secureAesKey))
-                {
                     throw new InvalidOperationException($"No AES key found for sender PID {senderPID}");
-                }
 
                 var aesKeyBytes = SecureStringToByteArray(secureAesKey);
 

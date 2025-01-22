@@ -8,6 +8,16 @@
         "DOTNET_ENVIRONMENT": "Development"
       },
       "preLaunchTask": "build"
+    },
+    "FirewallService (root)": {
+      "commandName": "Execute",
+      "executablePath": "/usr/bin/sudo",
+      "commandLineArgs": "/home/ariel/Documents/github/Firewall/FirewallService/FirewallService/bin/Debug/net8.0/FirewallService",
+      "workingDirectory": "/home/ariel/Documents/github/Firewall/FirewallService",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      },
+      "preLaunchTask": "build"
     }
   }
 }

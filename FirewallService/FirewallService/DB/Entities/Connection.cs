@@ -1,6 +1,10 @@
-﻿namespace FirewallService.DB.Entities;
+﻿using System.Text.Json;
+using Microsoft.EntityFrameworkCore.Storage;
 
-public class Connection
+
+namespace FirewallService.DB.Entities;
+
+public class Connection : IDataBaseEntity<Connection>
 {
     public string ConnectionID { get; set; }
     public string IPv4Address { get; set; }
@@ -12,4 +16,13 @@ public class Connection
     public ConnectionClass ConnectionClass { get; set; }
     public ICollection<Packet> SourcePackets { get; set; }
     public ICollection<Packet> DestinationPackets { get; set; }
+    public string ToStringStream()
+    {
+        return JsonSerializer.Serialize(this);
+    }
+
+    public Connection Get()
+    {
+        return this;
+    }
 }

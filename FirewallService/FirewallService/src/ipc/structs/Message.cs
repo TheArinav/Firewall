@@ -17,11 +17,12 @@ public struct Message : IStreamableObject<Message>
         this.RecepientPID = -1;
     }
 
-    public Message(long sPID, long rPID, IMessageComponent<object>? comp)
+    public Message(long sPID, long rPID, IMessageComponent<object>? comp, MessageType type)
     {
         this.SenderPID = sPID;
         this.RecepientPID = rPID;
         this.Component = comp;
+        this.Type = type;
     }
 
     public string ToStringStream()
@@ -75,7 +76,7 @@ public struct Message : IStreamableObject<Message>
                     System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public)?
                 .Invoke(null, [EncryptionManager.DecryptMessageComponent(sPID,mType,sStream[17..^1])])!;
             
-            return new Message(sPID, rPID, comp);
+            return new Message(sPID, rPID, comp, mType);
         }
         catch (Exception e)
         {

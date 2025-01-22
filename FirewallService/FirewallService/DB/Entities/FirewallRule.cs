@@ -1,6 +1,8 @@
-﻿namespace FirewallService.DB.Entities;
+﻿using System.Text.Json;
 
-public class FirewallRule
+namespace FirewallService.DB.Entities;
+
+public class FirewallRule : IDataBaseEntity<FirewallRule>
 {
     public string RuleID { get; set; }
     public bool ActiveStatus { get; set; }
@@ -11,4 +13,14 @@ public class FirewallRule
     public ConnectionClass ConnectionClass { get; set; }
     public Protocol Protocol { get; set; }
     public ICollection<Record> Records { get; set; }
+    
+    public string ToStringStream()
+    {
+        return JsonSerializer.Serialize(this);
+    }
+
+    public FirewallRule Get()
+    {
+        return this;
+    }
 }

@@ -13,10 +13,11 @@ fi
 
 # Start the .NET application with sudo privileges via gdbserver
 echo "Starting FirewallService with sudo privileges via gdbserver..."
-sudo gdbserver :1234 /home/ariel/.dotnet/dotnet "$APP_PATH" &
+sudo -E  gdbserver :1234 /home/ariel/.dotnet/dotnet "$APP_PATH" &
+GDB_PID=$!
 
-# Wait for the process to start
-sleep 5
+# Wait for gdbserver to fully start
+sleep 2
 
 # Find the gdbserver PID
 echo "Finding PID of the gdbserver process..."
@@ -27,5 +28,9 @@ if [ -z "$PID" ]; then
     exit 1
 fi
 
+# Attach Rider to the process
 echo "Attaching Rider to gdbserver process with PID: $PID"
 /bin/bash "$RIDER_PATH" attach-to-process "$PID" /home/ariel/Documents/github/Firewall/FirewallService/FirewallService.sln
+
+# Wait for gdbserver to exit to prevent the script from terminating prematurely
+wait $GDB_PID

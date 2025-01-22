@@ -1,6 +1,8 @@
-﻿namespace FirewallService.DB.Entities;
+﻿using System.Text.Json;
 
-public class PayloadLengthEnforcer
+namespace FirewallService.DB.Entities;
+
+public class PayloadLengthEnforcer : IDataBaseEntity<PayloadLengthEnforcer>
 {
     public int Maximum { get; set; }
     public int Minimum { get; set; }
@@ -8,4 +10,14 @@ public class PayloadLengthEnforcer
 
     // Navigation property
     public Enforcer Enforcer { get; set; }
+    
+    public string ToStringStream()
+    {
+        return JsonSerializer.Serialize(this);
+    }
+
+    public PayloadLengthEnforcer Get()
+    {
+        return this;
+    }
 }

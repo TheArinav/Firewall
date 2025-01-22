@@ -5,7 +5,7 @@ namespace FirewallService.ipc.structs;
 
 public class InitRequest : IMessageComponent<InitRequest>
 {
-    public const int AES_KEY_SIZE = 32;
+    public const int AES_KEY_SIZE = 32; // Size in bytes
     public byte[] AESKey { get; set; }
     public AuthorizedUser Requester { get; set; }
 
@@ -29,13 +29,16 @@ public class InitRequest : IMessageComponent<InitRequest>
     {
         try
         {
-            var key = Encoding.ASCII.GetBytes(sStream.Substring(1, AES_KEY_SIZE));
-            var req = AuthorizedUser.Parse(sStream[34..^1]);
+            var keySection = sStream[1..(AES_KEY_SIZE * 2)];
+            var key = Enumerable.Range(0, AES_KEY_SIZE)
+                .Select(i => Convert.ToByte(keySection[(i*2)..(i*2+1)], 16)).ToArray();
+            var usr = sStream[66..^1];
+            var req = AuthorizedUser.Parse(usr);
             return new(key, req);
         }
-        catch
+        catch (Exception e)
         {
-            throw new FormatException("Invalid init request");
+            throw new FormatException($"Invalid init request: {e.Message}");
         }
     }
 

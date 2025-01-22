@@ -16,7 +16,9 @@ namespace FirewallService.ipc
         private const int MAX_EVENTS = 10;
         private const string SOCKET_PATH = "/tmp/firewall_uds_epoll_server.sock";
         private readonly ConcurrentQueue<string> _packetQueue;
-        public event Action<string> PacketReceived;
+
+        public delegate void OnPacketReceived<T1>(T1 a, out T1 b);
+        public event OnPacketReceived<string> PacketReceived;
 
         private int _epollFd;
         private Epoll.EpollEvent[]? _events;
@@ -39,11 +41,11 @@ namespace FirewallService.ipc
             _epollFd = Epoll.epoll_create1(0);
             if (_epollFd == -1)
             {
-                Console.WriteLine($"Failed to create epoll file descriptor: {Marshal.GetLastWin32Error()}");
+                Logger.Error($"Failed to create epoll file descriptor: {Marshal.GetLastWin32Error()}");
                 return;
             }
 
-            Console.WriteLine($"epoll_create1 returned FD: {_epollFd}");
+            Logger.Info($"epoll_create1 returned FD: {_epollFd}");
 
             if (File.Exists(SOCKET_PATH))
             {
@@ -54,7 +56,7 @@ namespace FirewallService.ipc
             _listenerSocket.Bind(new UnixDomainSocketEndPoint(SOCKET_PATH));
             _listenerSocket.Listen(5);
             _listenerSocket.Blocking = false;
-            Console.WriteLine($"Listener socket setup complete. FD: {_listenerSocket.Handle}");
+            Logger.Info($"Listener socket setup complete. FD: {_listenerSocket.Handle}");
 
             var listenEvent = new Epoll.EpollEvent
             {
@@ -64,12 +66,12 @@ namespace FirewallService.ipc
 
             if (Epoll.epoll_ctl(_epollFd, Epoll.EPOLL_CTL_ADD, _listenerSocket.Handle.ToInt32(), ref listenEvent) == -1)
             {
-                Console.WriteLine($"Failed to add listener to epoll: {Marshal.GetLastWin32Error()}");
+                Logger.Error($"Failed to add listener to epoll: {Marshal.GetLastWin32Error()}");
                 return;
             }
 
             _events = new Epoll.EpollEvent[MAX_EVENTS];
-            Console.WriteLine("Server is listening for connections...");
+            Logger.Info("Server is listening for connections...");
         }
 
         public void Loop(CancellationToken stoppingToken)
@@ -81,10 +83,10 @@ namespace FirewallService.ipc
                 {
                     if (Marshal.GetLastWin32Error() == 4) // EINTR
                     {
-                        Console.WriteLine("epoll_wait interrupted by signal, stopping...");
+                        Logger.Info("epoll_wait interrupted by signal, stopping...");
                         break;
                     }
-                    Console.WriteLine("epoll_wait failed");
+                    Logger.Error("epoll_wait failed");
                     return;
                 }
 
@@ -122,12 +124,11 @@ namespace FirewallService.ipc
                         data = new Epoll.epoll_data { fd = fd }
                     };
 
-                    if (Epoll.epoll_ctl(_epollFd, Epoll.EPOLL_CTL_ADD, fd, ref clientEvent) == -1)
-                    {
-                        Console.WriteLine($"Failed to add client to epoll: {Marshal.GetLastWin32Error()}");
-                        clientSocket.Close();
-                        _clientSockets.Remove(fd);
-                    }
+                    if (Epoll.epoll_ctl(_epollFd, Epoll.EPOLL_CTL_ADD, fd, ref clientEvent) != -1) continue;
+                    
+                    Logger.Error($"Failed to add client to epoll: {Marshal.GetLastWin32Error()}");
+                    clientSocket.Close();
+                    _clientSockets.Remove(fd);
                 }
                 catch (SocketException ex) when (ex.SocketErrorCode == SocketError.WouldBlock)
                 {
@@ -143,18 +144,17 @@ namespace FirewallService.ipc
 
             try
             {
-                int bytesRead = clientSocket.Receive(buffer, SocketFlags.None);
+                var bytesRead = clientSocket.Receive(buffer, SocketFlags.None);
                 if (bytesRead > 0)
                 {
                     var message = Encoding.UTF8.GetString(buffer, 0, bytesRead);
                     _packetQueue.Enqueue(message);
-                    PacketReceived?.Invoke(message);
-                    clientSocket.Send("Message received!"u8.ToArray());
+                    string? resp  = null;
+                    PacketReceived?.Invoke(message, out resp);
+                    clientSocket.Send(Encoding.UTF8.GetBytes(resp?? "Error processing packet"));
                 }
                 else
-                {
                     RemoveClient(fd);
-                }
             }
             catch (SocketException ex) when (ex.SocketErrorCode == SocketError.WouldBlock)
             {
@@ -169,27 +169,52 @@ namespace FirewallService.ipc
 
         private void RemoveClient(int fd)
         {
-            if (_clientSockets.TryGetValue(fd, out var socket))
-            {
-                var ev = new Epoll.EpollEvent();
-                Epoll.epoll_ctl(_epollFd, Epoll.EPOLL_CTL_DEL, fd, ref ev);
-                socket.Close();
-                _clientSockets.Remove(fd);
-            }
+            if (!_clientSockets.TryGetValue(fd, out var socket)) return;
+            var ev = new Epoll.EpollEvent();
+            Epoll.epoll_ctl(_epollFd, Epoll.EPOLL_CTL_DEL, fd, ref ev);
+            socket.Close();
+            _clientSockets.Remove(fd);
         }
 
-        private void ProcessPacket(string packet)
+        private void ProcessPacket(string packet, out string mes)
         {
+            mes = null;
             Logger.Debug($"Processing packet: {packet}");
             try
             {
                 var message = Message.Parse(packet);
-                Logger.Debug($"Parsed message: {message}");
+                switch (message.Type)
+                {
+                    case MessageType.Unset:
+                        Logger.Critical("Attempted to process packet of unset type.");
+                        break;
+                    case MessageType.Init:
+                        var usr = ((message.Component as InitRequest)!).Requester;
+                        var k = ((message.Component as InitRequest)!).AESKey;
+                        var conn = _authManager.Validate(usr, "login", out var mess, args: [k]);
+                        var resp = new Response(conn, mess, null, k);
+                        var oMes = new Message(
+                            Environment.ProcessId,
+                            message.SenderPID,
+                            resp.Get(),
+                            MessageType.Response
+                        );
+                        mes = oMes.ToStringStream();
+                        break;
+                    case MessageType.Response:
+                        break;
+                    case MessageType.Request:
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
             }
             catch (Exception ex)
             {
                 Logger.Error($"Error processing packet: {ex.Message}");
             }
+
+            
         }
 
         public void Dispose()

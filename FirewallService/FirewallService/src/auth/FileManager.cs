@@ -22,15 +22,20 @@ namespace FirewallService.auth
         public static void Init()
         {
             if (!File.Exists(DBFile))
-                using (File.Create(DBFile)) { }
+                using (File.Create(DBFile))
+                {
+                }
 
             if (!File.Exists(AuthFile))
             {
-                using (File.CreateText(AuthFile)) { }
+                Logger.Warn("Detected empty authentication file; No login allowed.");
+                using (File.CreateText(AuthFile))
+                {
+                }
 
                 var emptyAuthObject = new AuthMainObject
                 {
-                    Users = Array.Empty<UserConnection>()
+                    Users = []
                 };
 
                 var jsonString = JsonConvert.SerializeObject(emptyAuthObject, Formatting.Indented);
@@ -38,19 +43,19 @@ namespace FirewallService.auth
             }
 
             if (!File.Exists(RSAEncryptionKey))
-                File.Delete(RSAEncryptionKey);
+                File.WriteAllText(RSAEncryptionKey,"");
             GenerateSecureKey(KeySize);
 
-            SetFilePermissions(DBFile);
-            SetFilePermissions(AuthFile);
-            SetFilePermissions(RSAEncryptionKey);
+            SetFilePermissions(DBFile, "600");
+            SetFilePermissions(AuthFile, "600");
+            SetFilePermissions(RSAEncryptionKey, "604");
 
             AuthManager = new AuthManager();
         }
 
-        private static void SetFilePermissions(string filePath)
+        private static void SetFilePermissions(string filePath, string premissions)
         {
-            string cmd = $"chmod 604 {filePath}";
+            string cmd = $"chmod {premissions} {filePath}";
 
             var escapedArgs = cmd.Replace("\"", "\\\"");
             using var process = new Process
@@ -88,18 +93,63 @@ namespace FirewallService.auth
             process2.Start();
             process2.WaitForExit();
         }
-
+        
         private static void GenerateSecureKey(int keySize)
         {
             using var rsa = RSA.Create(keySize);
-            var privateKey = Convert.ToBase64String(rsa.ExportRSAPrivateKey());
+            rsa.KeySize = keySize;
+    
+            // Export the private key in PKCS#8 format
+            var privateKeyBytes = rsa.ExportPkcs8PrivateKey();
+            string base64Key = Convert.ToBase64String(privateKeyBytes);
+
+            // Store in SecureString
             RSAKey = new SecureString();
-            foreach (var c in privateKey)
+            foreach (char c in base64Key)
+            {
                 RSAKey.AppendChar(c);
+            }
             RSAKey.MakeReadOnly();
-            
-            var publicKey = Convert.ToBase64String(rsa.ExportRSAPublicKey());
-            File.WriteAllText(RSAEncryptionKey, publicKey);
+
+            // Clear sensitive data from memory
+            Array.Clear(privateKeyBytes, 0, privateKeyBytes.Length);
+
+            // Test the key immediately to verify it works
+            try 
+            {
+                using var testRsa = RSA.Create();
+                var retrievedBytes = GetKeyBytes(RSAKey);
+        
+                // Try to import using both common formats
+                try 
+                {
+                    testRsa.ImportPkcs8PrivateKey(retrievedBytes, out var bytesRead);
+                    Logger.Info($"RSA Key: PKCS#8 import successful, bytes read = {bytesRead}");
+                }
+                catch (CryptographicException pkcs8Ex)
+                {
+                    // If PKCS#8 fails, try PKCS#1
+                    try 
+                    {
+                        testRsa.ImportRSAPrivateKey(retrievedBytes, out var bytesRead);
+                        Logger.Info($"RSA Key: PKCS#1 import successful, bytes read = {bytesRead}");
+                    }
+                    catch (CryptographicException pkcs1Ex)
+                    {
+                        throw new CryptographicException("Failed to import key in both PKCS#8 and PKCS#1 formats", pkcs8Ex);
+                    }
+                }
+
+                // Export and save public key
+                var publicKeyBytes = testRsa.ExportRSAPublicKey();
+                var publicKeyBase64 = Convert.ToBase64String(publicKeyBytes);
+                File.WriteAllText(RSAEncryptionKey, publicKeyBase64);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error($"RSA Key Generation/Testing failed: {ex.Message}");
+                throw;
+            }
         }
 
         public static byte[] GetKeyBytes(SecureString secureKey)
@@ -110,7 +160,19 @@ namespace FirewallService.auth
             try
             {
                 bstr = System.Runtime.InteropServices.Marshal.SecureStringToBSTR(secureKey);
-                return Encoding.UTF8.GetBytes(System.Runtime.InteropServices.Marshal.PtrToStringBSTR(bstr));
+                var base64String = System.Runtime.InteropServices.Marshal.PtrToStringBSTR(bstr);
+                
+                if (string.IsNullOrEmpty(base64String))
+                    return [];
+                
+
+                var result = Convert.FromBase64String(base64String);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error($"Error in GetKeyBytes: {ex.Message}");
+                throw;
             }
             finally
             {

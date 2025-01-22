@@ -1,5 +1,7 @@
-﻿namespace FirewallService.DB.Entities;
-public class Packet
+﻿using System.Text.Json;
+
+namespace FirewallService.DB.Entities;
+public class Packet : IDataBaseEntity<Packet>
 {
     public string PacketID { get; set; }
     public bool IPversion { get; set; }
@@ -12,4 +14,14 @@ public class Packet
     // Navigation properties
     public Connection SourceConnection { get; set; }
     public Connection DestinationConnection { get; set; }
+    
+    public string ToStringStream()
+    {
+        return JsonSerializer.Serialize(this);
+    }
+
+    public Packet Get()
+    {
+        return this;
+    }
 }
