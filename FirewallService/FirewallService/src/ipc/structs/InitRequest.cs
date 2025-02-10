@@ -30,6 +30,7 @@ public class InitRequest : IMessageComponent<InitRequest>
         try
         {
             var keySection = sStream[1..(AES_KEY_SIZE * 2)];
+            
             var key = Enumerable.Range(0, AES_KEY_SIZE)
                 .Select(i => Convert.ToByte(keySection[(i*2)..(i*2+1)], 16)).ToArray();
             var usr = sStream[66..^1];

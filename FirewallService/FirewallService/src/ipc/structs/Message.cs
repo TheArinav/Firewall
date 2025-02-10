@@ -1,4 +1,5 @@
 ﻿using FirewallService.util;
+using System.Security.Cryptography;
 
 namespace FirewallService.ipc.structs;
 
@@ -8,6 +9,9 @@ public struct Message : IStreamableObject<Message>
     public IMessageComponent<object>? Component { get; set; }
     public long SenderPID { get; set; }
     public long RecepientPID { get; set; }
+
+    public string Nonce { get; private set; }
+    public long Timestamp { get; private set; }
 
     public Message()
     {
@@ -41,7 +45,7 @@ public struct Message : IStreamableObject<Message>
             _                    => "F"
         };
     }
-
+    
     private static MessageType DeserializeType(char t)
     {
         return t switch
@@ -58,9 +62,13 @@ public struct Message : IStreamableObject<Message>
     {
         try
         {
-            var sPID = long.Parse(sStream.Substring(1, 6));
-            var rPID = long.Parse(sStream.Substring(8, 6));
+            var sPID = Convert.ToInt64(sStream.Substring(1, 6), 16);
+            var rPID = Convert.ToInt64(sStream.Substring(8, 6), 16);
             var mType = DeserializeType(sStream.Substring(15, 1)[0]);
+            var encryptedComponent = sStream.Substring(17);
+
+            // Decrypt message and extract Nonce & Timestamp
+            var (nonce, timestamp, decryptedContent) = EncryptionManager.DecryptMessageComponent(sPID, mType, encryptedComponent);
 
             var componentType = mType switch
             {
@@ -72,17 +80,19 @@ public struct Message : IStreamableObject<Message>
             };
 
             var comp = (IMessageComponent<object>)componentType?
-                .GetMethod( "Parse",
+                .GetMethod("Parse",
                     System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public)?
-                .Invoke(null, [EncryptionManager.DecryptMessageComponent(sPID,mType,sStream[17..^1])])!;
-            
-            return new Message(sPID, rPID, comp, mType);
+                .Invoke(null, [decryptedContent])!;
+    
+            var mes = new Message(sPID, rPID, comp, mType);
+            mes.Nonce = nonce;
+            mes.Timestamp = timestamp;
+            return mes;
         }
         catch (Exception e)
         {
-            if (e is FormatException)
-                throw;
-            throw new FormatException($"Invalid Message. Error thrown = {e.GetType()}:{e.Message}");
+            throw new FormatException($"Invalid Message. Error: {e.GetType()}:{e.Message}");
         }
     }
+
 }

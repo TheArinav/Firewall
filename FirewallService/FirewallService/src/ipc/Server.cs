@@ -6,6 +6,7 @@ using System.Text;
 using FirewallService.auth;
 using FirewallService.DB;
 using FirewallService.ipc.structs;
+using static FirewallService.NativeInterop.UnixNative;
 
 namespace FirewallService.ipc
 {
@@ -14,8 +15,9 @@ namespace FirewallService.ipc
         private readonly AuthManager _authManager;
         private readonly DBManager _dbManager;
         private const int MAX_EVENTS = 10;
-        private const string SOCKET_PATH = "/tmp/firewall_uds_epoll_server.sock";
+        private const string SOCKET_PATH = "/run/firewall_uds_epoll_server.sock";
         private readonly ConcurrentQueue<string> _packetQueue;
+        
 
         public delegate void OnPacketReceived<T1>(T1 a, out T1 b);
         public event OnPacketReceived<string> PacketReceived;
@@ -57,6 +59,21 @@ namespace FirewallService.ipc
             _listenerSocket.Listen(5);
             _listenerSocket.Blocking = false;
             Logger.Info($"Listener socket setup complete. FD: {_listenerSocket.Handle}");
+
+            try
+            {
+                // Allow read/write access to all users
+                File.SetAttributes(SOCKET_PATH, FileAttributes.Normal);
+                _ = chmod(SOCKET_PATH,
+                    (int)(FilePermissions.S_IRUSR | FilePermissions.S_IWUSR | 
+                               FilePermissions.S_IRGRP | FilePermissions.S_IWGRP |
+                               FilePermissions.S_IROTH | FilePermissions.S_IWOTH));
+                Logger.Info("Socket file permissions updated to allow all users access.");
+            }
+            catch (Exception ex)
+            {
+                Logger.Error($"Failed to update socket file permissions: {ex.Message}");
+            }
 
             var listenEvent = new Epoll.EpollEvent
             {
@@ -176,18 +193,34 @@ namespace FirewallService.ipc
             _clientSockets.Remove(fd);
         }
 
+       private readonly ConcurrentDictionary<string, long> _usedNonces = new(); // Nonce → Timestamp
+        private const int TIMESTAMP_TOLERANCE = 30; // Allow timestamps up to 30 seconds old
+
         private void ProcessPacket(string packet, out string mes)
         {
             mes = null;
-            Logger.Debug($"Processing packet: {packet}");
+            Logger.Info($"Processing packet: {packet}");
             try
             {
                 var message = Message.Parse(packet);
+                
+                var currentTimestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+                if (message.Timestamp < currentTimestamp - TIMESTAMP_TOLERANCE)
+                {
+                    Logger.Warn("Received a packet with an expired timestamp.");
+                    return;
+                }
+                
+                if (_usedNonces.ContainsKey(message.Nonce))
+                {
+                    Logger.Warn("Received a duplicate packet (replay detected).");
+                    return;
+                }
+                
+                _usedNonces.TryAdd(message.Nonce, message.Timestamp);
+                
                 switch (message.Type)
                 {
-                    case MessageType.Unset:
-                        Logger.Critical("Attempted to process packet of unset type.");
-                        break;
                     case MessageType.Init:
                         var usr = ((message.Component as InitRequest)!).Requester;
                         var k = ((message.Component as InitRequest)!).AESKey;
@@ -213,10 +246,9 @@ namespace FirewallService.ipc
             {
                 Logger.Error($"Error processing packet: {ex.Message}");
             }
-
-            
         }
 
+        
         public void Dispose()
         {
             foreach (var socket in _clientSockets.Values)
