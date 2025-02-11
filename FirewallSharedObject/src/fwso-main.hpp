@@ -5,6 +5,7 @@
 #include <queue>
 #include <vector>
 #include <keyutils.h>
+#include <cstring>
 
 #define AES_KEY_SIZE 32
 
@@ -46,9 +47,25 @@ namespace fwso::api {
 }
 
 extern "C" {
-    fwso::api::fwso_api* create_fwso_instance();
-    void destroy_fwso_instance(fwso::api::fwso_api* instance);
-    int fw_connect(fwso::api::fwso_api* instance, long int id, const char* key, char* out_resp, size_t out_size);
+
+    fwso::api::fwso_api* create_fwso_instance() {
+        return new fwso::api::fwso_api();
+    }
+
+    void destroy_fwso_instance(fwso::api::fwso_api* instance) {
+        delete instance;
+    }
+
+    int fw_connect(fwso::api::fwso_api* instance, long int id, const char* key, char* out_resp, size_t out_size) {
+        std::string resp;
+        int result = instance->fw_connect(id, std::string(key), resp);
+        // Copy response to the output buffer
+        strncpy(out_resp, resp.c_str(), out_size);
+        // Ensure null termination
+        out_resp[out_size - 1] = '\0';
+        return result;
+    }
 }
+
 
 #endif // Fixed: Removed extra label

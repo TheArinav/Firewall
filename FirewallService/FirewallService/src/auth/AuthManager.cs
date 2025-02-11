@@ -28,14 +28,9 @@ public class AuthManager
             var idS = Logger.Read("(long ID):",405);
             var pwS = Logger.Read("(string key):",405);
             var id = long.Parse(idS);
-            var pw = pwS;
-            this.MainObject = this.MainObject with
-            {
-                Users =
-                [
-                    new AuthorizedUser(id, pw)
-                ]
-            };
+            this.MainObject = this.MainObject;
+            this.MainObject.Users = [new AuthorizedUser(id, pwS)];
+
             File.WriteAllText(FileManager.AuthFile, JsonConvert.SerializeObject(this.MainObject));
             Logger.Info("User added successfully!", 405);
         }

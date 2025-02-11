@@ -33,7 +33,7 @@ public class InitRequest : IMessageComponent<InitRequest>
             
             var key = Enumerable.Range(0, AES_KEY_SIZE)
                 .Select(i => Convert.ToByte(keySection[(i*2)..(i*2+1)], 16)).ToArray();
-            var usr = sStream[66..^1];
+            var usr = sStream[65..];
             var req = AuthorizedUser.Parse(usr);
             return new(key, req);
         }

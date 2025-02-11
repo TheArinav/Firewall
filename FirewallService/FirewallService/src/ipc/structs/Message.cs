@@ -65,7 +65,7 @@ public struct Message : IStreamableObject<Message>
             var sPID = Convert.ToInt64(sStream.Substring(1, 6), 16);
             var rPID = Convert.ToInt64(sStream.Substring(8, 6), 16);
             var mType = DeserializeType(sStream.Substring(15, 1)[0]);
-            var encryptedComponent = sStream.Substring(17);
+            var encryptedComponent = sStream[17..^2];
 
             // Decrypt message and extract Nonce & Timestamp
             var (nonce, timestamp, decryptedContent) = EncryptionManager.DecryptMessageComponent(sPID, mType, encryptedComponent);

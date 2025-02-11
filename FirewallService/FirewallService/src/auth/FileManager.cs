@@ -43,8 +43,12 @@ namespace FirewallService.auth
                 File.WriteAllText(AuthFile, jsonString);
             }
 
-            if (!File.Exists(RSAEncryptionKey) || !File.Exists(RSAPrivateKey))
-                GenerateSecureKey(KeySize);
+            if (File.Exists(RSAEncryptionKey))
+                File.Delete(RSAEncryptionKey);
+            if (File.Exists(RSAPrivateKey))
+                File.Delete(RSAPrivateKey);
+           
+            GenerateSecureKey(KeySize);
 
             SetFilePermissions(DBFile, "600");
             SetFilePermissions(AuthFile, "600");
@@ -83,15 +87,14 @@ namespace FirewallService.auth
 
             // Export and store the private key securely
             var privateKeyBytes = rsa.ExportPkcs8PrivateKey();
-            string privateKeyPEM = ConvertToPem(privateKeyBytes, "PRIVATE KEY");
+            var privateKeyPEM = ConvertToPem(privateKeyBytes, "PRIVATE KEY");
             File.WriteAllText(RSAPrivateKey, privateKeyPEM);
 
             // Store in SecureString for additional security
             RSAKey = new SecureString();
-            foreach (char c in privateKeyPEM)
-            {
+            foreach (var c in privateKeyPEM)
                 RSAKey.AppendChar(c);
-            }
+            
             RSAKey.MakeReadOnly();
 
             // Clear sensitive data from memory
@@ -128,12 +131,14 @@ namespace FirewallService.auth
             try
             {
                 bstr = System.Runtime.InteropServices.Marshal.SecureStringToBSTR(secureKey);
-                var base64String = System.Runtime.InteropServices.Marshal.PtrToStringBSTR(bstr);
-                
-                if (string.IsNullOrEmpty(base64String))
-                    return [];
+                var pemString = System.Runtime.InteropServices.Marshal.PtrToStringBSTR(bstr);
 
-                return Convert.FromBase64String(base64String);
+                if (string.IsNullOrEmpty(pemString))
+                    return [];
+                
+                
+                var base64Key = ExtractBase64Key(pemString);
+                return Convert.FromBase64String(base64Key);
             }
             catch (Exception ex)
             {
@@ -146,5 +151,27 @@ namespace FirewallService.auth
                     System.Runtime.InteropServices.Marshal.ZeroFreeBSTR(bstr);
             }
         }
+        /// <summary>
+        /// Extracts the Base64-encoded key from a PEM file.
+        /// </summary>
+        private static string ExtractBase64Key(string pemKey)
+        {
+            var lines = pemKey.Split('\n');
+            var base64Lines = new List<string>();
+
+            foreach (var line in lines)
+            {
+                string trimmed = line.Trim();
+
+                // Ignore PEM headers and footers
+                if (!trimmed.StartsWith("-----") && !string.IsNullOrWhiteSpace(trimmed))
+                {
+                    base64Lines.Add(trimmed);
+                }
+            }
+
+            return string.Join("", base64Lines);
+        }
+
     }
 }

@@ -21,7 +21,8 @@ public class EncryptionManager
                 var privateKeyBytes = FileManager.GetKeyBytes(FileManager.RSAKey);
                 int bRead = 0;
                 rsa.ImportPkcs8PrivateKey(privateKeyBytes, out bRead);
-                
+
+                raw = raw.Trim().Replace("\n", "").Replace("\r", "");
                 var decryptedBytes = rsa.Decrypt(Convert.FromBase64String(raw), RSAEncryptionPadding.OaepSHA256);
                 decryptedMessage = Encoding.UTF8.GetString(decryptedBytes);
             }

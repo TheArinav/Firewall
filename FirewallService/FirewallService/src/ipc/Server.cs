@@ -19,8 +19,8 @@ namespace FirewallService.ipc
         private readonly ConcurrentQueue<string> _packetQueue;
         
 
-        public delegate void OnPacketReceived<T1>(T1 a, out T1 b);
-        public event OnPacketReceived<string> PacketReceived;
+        public delegate void OnPacketReceived<T1,T2>(T1 a, out T1 b, out T2 c);
+        public event OnPacketReceived<string,bool> PacketReceived;
 
         private int _epollFd;
         private Epoll.EpollEvent[]? _events;
@@ -167,11 +167,14 @@ namespace FirewallService.ipc
                     var message = Encoding.UTF8.GetString(buffer, 0, bytesRead);
                     _packetQueue.Enqueue(message);
                     string? resp  = null;
-                    PacketReceived?.Invoke(message, out resp);
+                    var fin = false;
+                    PacketReceived?.Invoke(message, out resp, out fin);
                     clientSocket.Send(Encoding.UTF8.GetBytes(resp?? "Error processing packet"));
+                    if (!fin) return;
+                    clientSocket.Shutdown(SocketShutdown.Both);
+                    clientSocket.Close();
                 }
-                else
-                    RemoveClient(fd);
+                RemoveClient(fd);
             }
             catch (SocketException ex) when (ex.SocketErrorCode == SocketError.WouldBlock)
             {
@@ -193,12 +196,13 @@ namespace FirewallService.ipc
             _clientSockets.Remove(fd);
         }
 
-       private readonly ConcurrentDictionary<string, long> _usedNonces = new(); // Nonce → Timestamp
+        private readonly ConcurrentDictionary<string, long> _usedNonces = new(); // Nonce → Timestamp
         private const int TIMESTAMP_TOLERANCE = 30; // Allow timestamps up to 30 seconds old
 
-        private void ProcessPacket(string packet, out string mes)
+        private void ProcessPacket(string packet, out string mes, out bool fin)
         {
             mes = null;
+            fin = true;
             Logger.Info($"Processing packet: {packet}");
             try
             {
@@ -233,6 +237,7 @@ namespace FirewallService.ipc
                             MessageType.Response
                         );
                         mes = oMes.ToStringStream();
+                        fin = !conn;
                         break;
                     case MessageType.Response:
                         break;
