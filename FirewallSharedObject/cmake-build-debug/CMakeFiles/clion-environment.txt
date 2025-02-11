@@ -1,0 +1,4 @@
+ToolSet: 1.0 (local)Ninja: 1.12.1@/home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/ninja/linux/aarch64/ninja
+Options: 
+
+Options:

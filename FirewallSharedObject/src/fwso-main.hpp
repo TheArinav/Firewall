@@ -28,8 +28,8 @@ namespace fwso::api {
 
         string encrypt_RSA(string raw);
 
-        string decrypt_AES(string ct); // Fixed typo "decrpyt" -> "decrypt"
-        string encrypt_AES(string raw);
+        string decrypt_AES(const string &ct);
+        string encrypt_AES(const string &raw);
 
         void send_message(const string &message, string &resp);
 

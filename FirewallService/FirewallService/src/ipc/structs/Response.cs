@@ -1,6 +1,7 @@
 using System.Security.Cryptography;
 using System.Text;
 using FirewallService.DB.Entities;
+using FirewallService.ipc;
 
 namespace FirewallService.ipc.structs;
 
@@ -20,7 +21,7 @@ public struct Response : IMessageComponent<Response>, IMessageComponent<object>
         Message = message;
         DBObject = dbObject;
         Key = key;
-        Nonce = GenerateNonce();
+        Nonce = EncryptionManager.GenerateNonce();  // Use EncryptionManager for nonce
         Timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
     }
 
@@ -28,35 +29,8 @@ public struct Response : IMessageComponent<Response>, IMessageComponent<object>
     {
         var raw = $"{{{OperationSuccessful},'{Message}',{DBObject?.ToStringStream() ?? "null"},{Nonce},{Timestamp}}}";
 
-        if (Key == null || Key.Length == 0) return raw;
-
-        return Encrypt(raw, Key);
-    }
-
-    private static string GenerateNonce()
-    {
-        byte[] nonceBytes = new byte[16];
-        using var rng = RandomNumberGenerator.Create();
-        rng.GetBytes(nonceBytes);
-        return Convert.ToBase64String(nonceBytes);
-    }
-
-    private static string Encrypt(string plainText, byte[] key)
-    {
-            // Ensure the AES key length is valid (128, 192, or 256 bits)
-            if (key.Length != 16 && key.Length != 24 && key.Length != 32)    
-                throw new ArgumentException("Invalid AES key length."); 
-            using var aes = Aes.Create();    aes.Key = key;  
-            // Generate a new IV for each encryption
-            aes.GenerateIV();    // Encrypt the data
-            using var encryptor = aes.CreateEncryptor(aes.Key, aes.IV);  
-            var plainBytes = Encoding.UTF8.GetBytes(plainText); 
-            var cipherBytes = encryptor.TransformFinalBlock(plainBytes, 0, plainBytes.Length);    // Combine IV and ciphertext for later decryption
-            var combinedBytes = new byte[aes.IV.Length + cipherBytes.Length]; 
-            Array.Copy(aes.IV, 0, combinedBytes, 0, aes.IV.Length); // Copy IV to the beginning
-            Array.Copy(cipherBytes, 0, combinedBytes, aes.IV.Length, cipherBytes.Length); // Append ciphertext
-            // Return as a base64 string
-            return Convert.ToBase64String(combinedBytes);
+        // Delegate encryption to EncryptionManager
+        return Key == null || Key.Length == 0 ? raw : EncryptionManager.EncryptMessageComponent(raw, Key);
     }
 
     public Response Get()
