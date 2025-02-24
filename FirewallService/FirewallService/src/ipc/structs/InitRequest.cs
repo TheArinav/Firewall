@@ -29,10 +29,10 @@ public class InitRequest : IMessageComponent<InitRequest>
     {
         try
         {
-            var keySection = sStream[1..(AES_KEY_SIZE * 2)];
+            var keySection = sStream[..(AES_KEY_SIZE * 2)];
             
             var key = Enumerable.Range(0, AES_KEY_SIZE)
-                .Select(i => Convert.ToByte(keySection[(i*2)..(i*2+1)], 16)).ToArray();
+                .Select(i => Convert.ToByte(keySection[(i*2)..(i*2+2)], 16)).ToArray(); 
             var usr = sStream[65..];
             var req = AuthorizedUser.Parse(usr);
             return new(key, req);
