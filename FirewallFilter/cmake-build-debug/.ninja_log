@@ -1,0 +1,21 @@
+# ninja log v6
+14348	14423	1740316171364841152	CMakeFiles/FirewallFilter.dir/src/filtering/utils/helpers.cpp.o	57b79c01a3eeaa3
+12	14278	1740316157024949347	CMakeFiles/FirewallFilter.dir/src/filtering/filtering.cpp.o	236a51bc496a3916
+24985	41133	1740316106417331252	CMakeFiles/FirewallFilter.dir/src/filtering/enforcers/regex-enforcer.cpp.o	c4d71aed0e8fe31f
+14279	14348	1740316171296841665	CMakeFiles/FirewallFilter.dir/src/filtering/rules/rule-parser.cpp.o	4c37e0526894a95f
+24793	28415	1740316106225332701	CMakeFiles/FirewallFilter.dir/src/filtering/enforcers/ip-port-enforcer.cpp.o	830817e4b8287bd0
+29517	34486	1740316110949297048	CMakeFiles/FirewallFilter.dir/src/filtering/engine/cpu-monitor.cpp.o	28d01b3b9bea0178
+12803	20039	1740316169820852801	CMakeFiles/FirewallFilter.dir/src/filtering/rules/firewall-rule.cpp.o	57b472b49c30a5a9
+9	16068	1740316157020949377	CMakeFiles/FirewallFilter.dir/src/filtering/engine/firewall-engine.cpp.o	613fc7c5c9553d1b
+16069	16204	1740316173084828175	CMakeFiles/FirewallFilter.dir/src/ipc/server-connect.cpp.o	aafe8e9fb7240871
+10	24833	1740316081441519770	CMakeFiles/FirewallFilter.dir/main.cpp.o	7f50a97aa7563ffa
+16	24793	1740316081449519710	CMakeFiles/FirewallFilter.dir/src/filtering/automata/compressed-ac.cpp.o	1de2367b6c671c01
+11	24985	1740316081445519740	CMakeFiles/FirewallFilter.dir/src/filtering/automata/aho-corasick.cpp.o	4a57f8e1d9e19e84
+11	12803	1740316157024949347	CMakeFiles/FirewallFilter.dir/src/filtering/engine/packet-processor.cpp.o	52fd1552b42dcae9
+14423	18229	1740316171440840578	CMakeFiles/FirewallFilter.dir/src/filtering/utils/logger.cpp.o	66ff7cb9cd3cb0c0
+136	513	1740312602998887409	CMakeFiles/FirewallFilter.dir/src/filtering/enforcers/payload-length-enforcer.cpp.o	901705a535d0b8e1
+24833	29517	1740316106265332399	CMakeFiles/FirewallFilter.dir/src/filtering/enforcers/rate-limit-enforcer.cpp.o	2ee89c6636f89628
+28415	31536	1740316109845305380	CMakeFiles/FirewallFilter.dir/src/filtering/enforcers/tls-fingerprint-enforcer.cpp.o	5f84ec6fcbc09db2
+7	2685	1740316219212480195	CMakeFiles/FirewallFilter.dir/src/filtering/utils/perf-monitor.cpp.o	6fffa2b5fb8c8a37
+5	8286	1740316349903494675	CMakeFiles/FirewallFilter.dir/src/filtering/automata/aho-corasick.cpp.o	4a57f8e1d9e19e84
+8288	9146	1740316358187432224	FirewallFilter	63e5dd92ce955046
