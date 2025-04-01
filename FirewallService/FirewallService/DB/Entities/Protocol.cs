@@ -5,6 +5,7 @@ public class Protocol : IDataBaseEntity<Protocol>
 {
     public string ProtocolID { get; set; }
     public string ProtocolName { get; set; }
+    public bool ActiveStatus { get; set; }
     public string EnforcerID { get; set; }
 
     // Navigation properties

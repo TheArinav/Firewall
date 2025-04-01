@@ -4,25 +4,25 @@ using FirewallService.util;
 
 namespace FirewallService.ipc.structs;
 
-public struct Request : IMessageComponent<Request>
+public struct GeneralActionRequest : IMessageComponent<GeneralActionRequest>
 {
     public AuthorizedUser Requester { get; set; }
-    public string SQLQuery { get; set; }
+    public string RequestBody { get; set; }
 
-    public Request()
+    public GeneralActionRequest()
     {
         this.Requester = default;
-        this.SQLQuery = "";
+        this.RequestBody = "";
     }
 
     public string ToStringStream()
     {
-        return $"[{this.Requester.ToStringStream()}:{this.SQLQuery}]";
+        return $"[{this.Requester.ToStringStream()}:{this.RequestBody}]";
     }
 
-    public static Request Parse(string sStream)
+    public static GeneralActionRequest Parse(string sStream)
     {
-        var res = new Request();
+        var res = new GeneralActionRequest();
         if (sStream[0] != '[' || sStream[^1] != ']' || !sStream.Contains(':'))
             goto Fail;
         sStream = sStream.Replace("[", "").Replace("]", "");
@@ -43,7 +43,7 @@ public struct Request : IMessageComponent<Request>
         }
     }
 
-    public Request Get()
+    public GeneralActionRequest Get()
     {
         return this;
     }

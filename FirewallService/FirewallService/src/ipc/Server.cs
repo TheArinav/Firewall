@@ -225,9 +225,9 @@ namespace FirewallService.ipc
                 
                 switch (message.Type)
                 {
-                    case MessageType.Init:
-                        var usr = ((message.Component as InitRequest)!).Requester;
-                        var k = ((message.Component as InitRequest)!).AESKey;
+                    case MessageType.InitSessionRequest:
+                        var usr = ((message.Component as InitSessionRequest)!).Requester;
+                        var k = ((message.Component as InitSessionRequest)!).AESKey;
                         var conn = _authManager.Validate(usr, "login", out var mess, args: [k]);
                         var resp = new Response(conn, mess, null, k);
                         var oMes = new Message(
@@ -241,7 +241,7 @@ namespace FirewallService.ipc
                         break;
                     case MessageType.Response:
                         break;
-                    case MessageType.Request:
+                    case MessageType.GeneralActionRequest:
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();

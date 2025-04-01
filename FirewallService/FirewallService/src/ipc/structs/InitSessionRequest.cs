@@ -3,17 +3,17 @@ using System.Text;
 
 namespace FirewallService.ipc.structs;
 
-public class InitRequest : IMessageComponent<InitRequest>
+public class InitSessionRequest : IMessageComponent<InitSessionRequest>
 {
     public const int AES_KEY_SIZE = 32; // Size in bytes
     public byte[] AESKey { get; set; }
     public AuthorizedUser Requester { get; set; }
 
-    public InitRequest()
+    public InitSessionRequest()
     {
     }
 
-    public InitRequest(byte[] key, AuthorizedUser req)
+    public InitSessionRequest(byte[] key, AuthorizedUser req)
     {
         this.AESKey = key;
         this.Requester = req;
@@ -25,7 +25,7 @@ public class InitRequest : IMessageComponent<InitRequest>
         return $"[{hex}:{Requester.ToStringStream()}]";
     }
 
-    public static InitRequest Parse(string sStream)
+    public static InitSessionRequest Parse(string sStream)
     {
         try
         {
@@ -43,7 +43,7 @@ public class InitRequest : IMessageComponent<InitRequest>
         }
     }
 
-    public InitRequest Get()
+    public InitSessionRequest Get()
     {
         return this;
     }

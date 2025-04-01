@@ -3,7 +3,8 @@
 public enum MessageType
 {
     Unset,
-    Init,
+    InitSessionRequest,
+    CreateUserRequest,
     Response,
-    Request
+    GeneralActionRequest
 }

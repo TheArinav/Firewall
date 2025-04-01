@@ -13,7 +13,10 @@ namespace FirewallService.auth
     {
         public const string DBFile = "/etc/firewall/firewall.db";
         public const string AuthFile = "/etc/firewall/authorized_users.json";
+        public const string PremissionsFile = "/etc/firewall/premissions.json";
         public const string RSAEncryptionKey = "/etc/firewall/public.key";
+        public const string GeneralLog = "/etc/firewall/general.log";
+        public const string ActionLog = "/etc/firewall/action.log";
         public const string RSAPrivateKey = "/etc/firewall/private.key";  // Store private key securely
         public const int KeySize = 4096;
 

@@ -37,7 +37,7 @@ public class EncryptionManager
         
         switch (type)
         {
-            case MessageType.Init:
+            case MessageType.InitSessionRequest:
                 using (var rsa = RSA.Create())
                 {
                     var privateKeyBytes = FileManager.GetKeyBytes(FileManager.RSAKey);
@@ -50,7 +50,7 @@ public class EncryptionManager
                 }
                 break;
 
-            case MessageType.Request:
+            case MessageType.GeneralActionRequest:
             case MessageType.Response:
                 if (!SessionKeys.TryGetValue(senderPID, out var secureAesKey))
                     throw new InvalidOperationException($"No AES key found for sender PID {senderPID}");

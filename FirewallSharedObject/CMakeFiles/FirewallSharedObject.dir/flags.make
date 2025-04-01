@@ -6,5 +6,5 @@ CXX_DEFINES = -DFirewallSharedObject_EXPORTS
 
 CXX_INCLUDES = 
 
-CXX_FLAGS = -std=gnu++20 -fPIC
+CXX_FLAGS = -g -std=gnu++20 -fPIC -fdiagnostics-color=always
 

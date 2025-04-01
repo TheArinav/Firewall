@@ -39,8 +39,8 @@ public struct Message : IStreamableObject<Message>
         return this.Type switch
         {
             MessageType.Unset    => "0",
-            MessageType.Init     => "1",
-            MessageType.Request  => "2",
+            MessageType.InitSessionRequest     => "1",
+            MessageType.GeneralActionRequest  => "2",
             MessageType.Response => "3",
             _                    => "F"
         };
@@ -51,8 +51,8 @@ public struct Message : IStreamableObject<Message>
         return t switch
         {
             '0' => MessageType.Unset,
-            '1' => MessageType.Init,
-            '2' => MessageType.Request,
+            '1' => MessageType.InitSessionRequest,
+            '2' => MessageType.GeneralActionRequest,
             '3' => MessageType.Response,
             _   => throw new ArgumentException("Invalid Input")
         };
@@ -73,8 +73,8 @@ public struct Message : IStreamableObject<Message>
             var componentType = mType switch
             {
                 MessageType.Unset    => null,
-                MessageType.Init     => typeof(InitRequest),
-                MessageType.Request  => typeof(Request),
+                MessageType.InitSessionRequest     => typeof(InitSessionRequest),
+                MessageType.GeneralActionRequest  => typeof(GeneralActionRequest),
                 MessageType.Response => typeof(Response),
                 _                    => null
             };

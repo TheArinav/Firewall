@@ -4,7 +4,7 @@ namespace FirewallService.DB;
 
 public class DBManager
 {
-    public Response HandleRequest(Request request)
+    public Response HandleRequest(GeneralActionRequest generalActionRequest)
     {
         throw new NotImplementedException();
     }

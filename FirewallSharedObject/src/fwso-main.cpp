@@ -187,13 +187,6 @@ namespace fwso::api {
             encrypted_data.pop_back();
         }
 
-
-	cerr << "Encrypted Message Size: " << encrypted_data.size() << endl;
-
-
-        cerr << "Extracted Encrypted Payload: " << encrypted_data << endl;
-	
-
         // Decrypt only the extracted part
         string decrypted_response = decrypt_AES(encrypted_data);
 
