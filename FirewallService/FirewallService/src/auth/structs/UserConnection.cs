@@ -4,20 +4,32 @@ namespace FirewallService.auth.structs;
 public class UserConnection
 {
     public const int AESKeySize = 32;  // Size in bytes
-    public AuthorizedUser User;
-    public byte[] Key;
+    public AuthorizedUserSession User;
+    public SecureKey Key;
 
-    public UserConnection(AuthorizedUser User, byte[] Key)
+    public UserConnection(AuthorizedUserSession User, byte[] Key)
     {
         if (Key.Length != AESKeySize)
             throw new ArgumentException($"Invalid AES key size. Expected {AESKeySize}; Got {Key.Length}");
         this.User = User;
-        this.Key = Key;
+        this.Key = new SecureKey(true);
+        try
+        {
+            var i = 0;
+            foreach (var cur in Key)
+                this.Key[i++] = cur;
+        }
+        finally
+        {
+            this.Key.Close();
+        }
+
+
     }
 
     public UserConnection(UserConnection conn)
     {
-        this.User = new AuthorizedUser(conn.User.ID, (string)conn.User.Key.Clone());
-        this.Key = (byte[])conn.Key.Clone();
+        this.User = new AuthorizedUserSession(conn.User.ID, (SecureKey)conn.User.Token.Clone());
+        this.Key = (SecureKey)conn.Key.Clone();
     }
 }

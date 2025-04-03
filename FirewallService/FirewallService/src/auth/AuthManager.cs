@@ -43,12 +43,14 @@ public class AuthManager
         }
     }
 
-    public bool Validate(AuthorizedUser requester, string action, out string message, params object[] args)
+    public bool Validate(AuthorizedUser requester, string action, out string message,out UserConnection? connection, params object[] args)
     {
+        connection = null;
         if (action.StartsWith("login"))
         {
             var conn = MainObject.InitUserConnection(requester,args[0] as byte[] ?? throw new NullReferenceException("Key not provided"));
             message = conn==null ? "Invalid Credentials, Login denied." : "Login provided.";
+            connection = conn;
             return conn != null;
         }
         message = "Action authorized!";

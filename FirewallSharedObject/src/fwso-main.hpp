@@ -14,7 +14,8 @@ using namespace std;
 namespace fwso::api {
     class fwso_api {
     private:
-        key_serial_t key_id;
+        key_serial_t aes_key_id;
+        key_serial_t st_key_id;
         int sockfd;
 
         void init();
@@ -26,6 +27,9 @@ namespace fwso::api {
         void remove_secure_AES_key(key_serial_t key_id);
         static vector<unsigned char> get_secure_AES_key(key_serial_t key_id);
 
+        key_serial_t store_secure_session_token(vector<unsigned char>& bytes);
+        void remove_secure_session_token(key_serial_t key_id);
+        static vector<unsigned char> get_secure_session_token(key_serial_t  key_id);
         string encrypt_RSA(string raw);
 
         string decrypt_AES(const string &ct);
@@ -36,8 +40,8 @@ namespace fwso::api {
     public:
         const string SOCKET_PATH = "/run/firewall_uds_epoll_server.sock";
         const string RSA_KEY_PATH = "/etc/firewall/public.key";
+        long int firewall_service_pid;
         queue<string> log_queue;
-        long int firewall_serive_pid;
 
         fwso_api();
         ~fwso_api();

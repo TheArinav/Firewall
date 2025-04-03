@@ -204,33 +204,37 @@ namespace FirewallService.ipc
         {
             mes = null;
             fin = true;
+            long reqID = -1;
             Logger.Info($"Processing packet: {packet}");
             try
             {
                 var message = Message.Parse(packet);
-                
+
                 var currentTimestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
                 if (message.Timestamp < currentTimestamp - TIMESTAMP_TOLERANCE)
                 {
                     Logger.Warn("Received a packet with an expired timestamp.");
                     return;
                 }
-                
+
                 if (_usedNonces.ContainsKey(message.Nonce))
                 {
                     Logger.Warn("Received a duplicate packet (replay detected).");
                     return;
                 }
-                
+
                 _usedNonces.TryAdd(message.Nonce, message.Timestamp);
-                
+
                 switch (message.Type)
                 {
                     case MessageType.InitSessionRequest:
                         var usr = ((message.Component as InitSessionRequest)!).Requester;
+                        reqID = usr.ID;
                         var k = ((message.Component as InitSessionRequest)!).AESKey;
-                        var conn = _authManager.Validate(usr, "login", out var mess, args: [k]);
-                        var resp = new Response(conn, mess, null, k);
+                        var conn = _authManager.Validate(usr, "login",
+                            out var mess, out var connection, args: [k]);
+                        var responseBody = $"{mess}|{connection?.User.Token.ToString() ?? "null"}";
+                        var resp = new Response(conn, responseBody, null, k);
                         var oMes = new Message(
                             Environment.ProcessId,
                             message.SenderPID,
@@ -251,6 +255,12 @@ namespace FirewallService.ipc
             catch (Exception ex)
             {
                 Logger.Error($"Error processing packet: {ex.Message}");
+            }
+            finally
+            {
+                if (!fin || reqID == -1) goto end;
+                _authManager.MainObject.Disconnect(reqID);
+                end: ;
             }
         }
 

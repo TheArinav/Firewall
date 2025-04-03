@@ -29,15 +29,21 @@
 
 #define FIREWALL_SERVICE_NAME "FirewallService"
 #define AES_KEY_SIZE 32
-#define KEYRING_NAME "firewall_aes_key"
-#define KEY_PERM 0x3f3f0000
+#define AES_KEYRING_NAME_BASE "firewall_aes_key_%d"
+#define SESSION_TOKEN_SIZE 32
+#define ST_KEYRING_NAME_BASE "firewall_session_token_%d"
+
+char AES_KEYRING_NAME[64];
+char ST_KEYRING_NAME[64];
 
 namespace fwso::api {
     fwso_api::fwso_api() {
+        snprintf(AES_KEYRING_NAME, sizeof(AES_KEYRING_NAME), AES_KEYRING_NAME_BASE, getpid());
+        snprintf(ST_KEYRING_NAME, sizeof(ST_KEYRING_NAME), ST_KEYRING_NAME_BASE, getpid());
         log_queue = {};
-        key_id = {};
+        aes_key_id = {};
         sockfd = -1;
-        firewall_serive_pid = -1;
+        firewall_service_pid = -1;
         create_AES();
         init();
         sockfd = uds_connect();
@@ -52,12 +58,12 @@ namespace fwso::api {
             string cmd_line;
             if (cmd_file && getline(cmd_file, cmd_line)) {
                 if (cmd_line.find(FIREWALL_SERVICE_NAME) != string::npos) {
-                    firewall_serive_pid = stol(pid);
+                    firewall_service_pid = stol(pid);
                     break;
                 }
             }
         }
-        if (firewall_serive_pid == -1)
+        if (firewall_service_pid == -1)
             perror("The firewall service could not be found!");
     }
 
@@ -94,7 +100,7 @@ namespace fwso::api {
         }
 
         // Store the key in the kernel keyring
-        key_serial_t key_id = add_key("user", KEYRING_NAME, key, AES_KEY_SIZE, KEY_SPEC_SESSION_KEYRING);
+        key_serial_t key_id = add_key("user", AES_KEYRING_NAME, key, AES_KEY_SIZE, KEY_SPEC_SESSION_KEYRING);
         if (key_id == -1) {
             perror("Failed to store AES key in keyring");
         } else {
@@ -131,21 +137,36 @@ namespace fwso::api {
         }
     }
 
+    vector<unsigned char> base64_decode(const string &encoded) {
+        BIO *bio, *b64;
+        int decodeLen = encoded.size();
+        vector<unsigned char> buffer(decodeLen);
+
+        bio = BIO_new_mem_buf(encoded.data(), encoded.size());
+        b64 = BIO_new(BIO_f_base64());
+        bio = BIO_push(b64, bio);
+        BIO_set_flags(bio, BIO_FLAGS_BASE64_NO_NL); // No newlines
+
+        BIO_free_all(bio);
+
+        return buffer;
+    }
+
     /**
      * Example function to use the AES key from keyring during communication.
      */
     int fwso_api::fw_connect(long int id, const string &key, string &resp_out) {
         long int pid = getpid();
         structs::message init_message = structs::message(
-            structs::message_type::INIT,
-            pid,
-            firewall_serive_pid
+                structs::message_type::INIT,
+                pid,
+                firewall_service_pid
         );
 
-        vector<unsigned char> aes_key = get_secure_AES_key(key_id);
+        vector<unsigned char> aes_key = get_secure_AES_key(aes_key_id);
         if (aes_key.empty()) {
             perror("Failed to retrieve AES key.");
-            return -1;
+            return 1;
         }
 
         ostringstream hex_key_stream;
@@ -171,13 +192,13 @@ namespace fwso::api {
 
         if (response.empty()) {
             cerr << "Error: No response received from server." << endl;
-            return -1;
+            return 2;
         }
 
         size_t last_comma = response.rfind(',');
         if (last_comma == string::npos) {
             cerr << "Error: Malformed response format (missing comma)." << endl;
-            return -1;
+            return 3;
         }
 
         string encrypted_data = response.substr(last_comma + 1);
@@ -199,14 +220,14 @@ namespace fwso::api {
         last_comma = decrypted_response.rfind(',');
 	if (last_comma == string::npos) {
     		cerr << "Error: Invalid response format (missing last comma)." << endl;
-    		return -1;
+    		return 4;
 	}
 
 	// Find the second last comma (which separates the nonce)
 	size_t second_last_comma = decrypted_response.rfind(',', last_comma - 1);
 	if (second_last_comma == string::npos) {
     		cerr << "Error: Invalid response format (missing second last comma)." << endl;
-    		return -1;
+    		return 4;
 	}
 
 	// Extract the timestamp (last field)
@@ -223,19 +244,41 @@ namespace fwso::api {
         const long TIMESTAMP_TOLERANCE = 30; // 30 seconds window
         if (abs(current_time - received_timestamp) > TIMESTAMP_TOLERANCE) {
             cerr << "Error: Response timestamp is out of valid range!" << endl;
-            return -1;
+            return 5;
         }
 
         // Validate nonce (Prevent replay attacks)
         static unordered_set<string> used_nonces;
         if (used_nonces.find(received_nonce) != used_nonces.end()) {
             cerr << "Error: Duplicate nonce detected (Replay attack prevention)." << endl;
-            return -1;
+            return 6;
         }
         used_nonces.insert(received_nonce);
 
-        // Store only the actual content in resp_out
-        resp_out = actual_content;
+        // Decode actual content
+        auto first_comma = actual_content.find(',');
+        string result = actual_content.substr(0,first_comma);
+        actual_content = actual_content.substr(first_comma+2);
+        first_comma = actual_content.find(',');
+        actual_content = actual_content.substr(0,first_comma-1);
+        auto divider = actual_content.find('|');
+        string message = actual_content.substr(0,divider);
+        string encoded_session_token = actual_content.substr(divider+1);
+
+        resp_out = message;
+        if (encoded_session_token == "null")
+            return 101;
+
+        else if (result != "True")
+            return 100;
+
+        auto decoded_session_token = base64_decode(encoded_session_token);
+        store_secure_session_token(decoded_session_token);
+
+        while(!decoded_session_token.empty()){
+            decoded_session_token[decoded_session_token.size()-1] = 0;
+            decoded_session_token.pop_back();
+        }
 
         return 0;
     }
@@ -345,8 +388,8 @@ namespace fwso::api {
     }
 
     void fwso_api::create_AES() {
-        key_id = create_secure_AES_key();
-        if (key_id == -1)
+        aes_key_id = create_secure_AES_key();
+        if (aes_key_id == -1)
             perror("Failed to initialize secure key.");
     }
 
@@ -356,15 +399,15 @@ namespace fwso::api {
             close(sockfd);
         }
         // Remove the AES key from the keyring if it was created.
-        if (key_id != -1) {
-            remove_secure_AES_key(key_id);
+        if (aes_key_id != -1) {
+            remove_secure_AES_key(aes_key_id);
         }
     }
 
     string fwso_api::decrypt_AES(const string &ciphertext) {
         try {
             // Retrieve AES key from keyring
-            vector<unsigned char> aes_key = get_secure_AES_key(key_id);
+            vector<unsigned char> aes_key = get_secure_AES_key(aes_key_id);
             if (aes_key.empty()) {
                 throw runtime_error("AES key retrieval failed");
             }
@@ -420,5 +463,42 @@ namespace fwso::api {
             cerr << "Error: " << e.what() << endl;
             return "";
         }
+    }
+
+    key_serial_t fwso_api::store_secure_session_token(vector<unsigned char>& bytes) {
+        key_serial_t key_id = add_key("user", AES_KEYRING_NAME, bytes.data(), SESSION_TOKEN_SIZE,
+                                      KEY_SPEC_SESSION_KEYRING);
+        if (key_id == -1) {
+            perror("Failed to store AES key in keyring");
+        } else {
+            log_queue.emplace("AES key securely stored in kernel keyring.");
+        }
+
+        // Securely erase local key copy
+        while (!bytes.empty()) {
+            bytes[bytes.size()-1]=0;
+            bytes.pop_back();
+        }
+
+        return key_id;
+    }
+
+    void fwso_api::remove_secure_session_token(key_serial_t key_id) {
+        if (keyctl(KEYCTL_INVALIDATE, key_id, 0, 0, 0) == -1) {
+            perror("Failed to remove AES key from keyring");
+        } else {
+            log_queue.emplace("AES key removed from keyring.");
+        }
+    }
+
+    vector<unsigned char> fwso_api::get_secure_session_token(key_serial_t key_id) {
+        vector<unsigned char> token(SESSION_TOKEN_SIZE);
+
+        if (const ssize_t len = keyctl(KEYCTL_READ, key_id, token.data(), SESSION_TOKEN_SIZE, 0); len == -1) {
+            perror("Failed to retrieve AES key from keyring");
+            return {};
+        }
+
+        return token;
     }
 }

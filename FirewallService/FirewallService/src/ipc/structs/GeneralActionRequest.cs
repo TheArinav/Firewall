@@ -6,7 +6,7 @@ namespace FirewallService.ipc.structs;
 
 public struct GeneralActionRequest : IMessageComponent<GeneralActionRequest>
 {
-    public AuthorizedUser Requester { get; set; }
+    public AuthorizedUserSession Requester { get; set; }
     public string RequestBody { get; set; }
 
     public GeneralActionRequest()
@@ -26,12 +26,12 @@ public struct GeneralActionRequest : IMessageComponent<GeneralActionRequest>
         if (sStream[0] != '[' || sStream[^1] != ']' || !sStream.Contains(':'))
             goto Fail;
         sStream = sStream.Replace("[", "").Replace("]", "");
-        (string requester, string query) = sStream.Contains(':') 
+        var (requester, query) = sStream.Contains(':') 
             ? (sStream[..sStream.IndexOf(':')], sStream[(sStream.IndexOf(':') + 1)..]) 
             : throw new FormatException("String must contain a ':' separator.");
         try
         {
-            res.Requester = AuthorizedUser.Parse(requester);
+            res.Requester = AuthorizedUserSession.Parse(requester);
         }
         catch (FormatException e)
         {

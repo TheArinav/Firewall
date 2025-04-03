@@ -2,12 +2,8 @@
 
 public class AuthMainObject
 {
-    private List<UserConnection> _usersConnections = new();
+    private List<UserConnection> _usersConnections = [];
     public AuthorizedUser[] Users { get; set; } = [];
-
-    public AuthMainObject()
-    {
-    }
 
     public UserConnection? InitUserConnection(AuthorizedUser usr, byte[] key)
     {
@@ -16,16 +12,20 @@ public class AuthMainObject
         if (!auth)
             return null;
 
-        _usersConnections ??= new();
+        _usersConnections ??= [];
 
         if (_usersConnections.Any(conn => conn.User.ID == usr.ID))
             return null;
-        
-        var newConn = new UserConnection(usr, key);
+
+        var newConn = new UserConnection(new AuthorizedUserSession(usr.ID), key);
         _usersConnections.Add(newConn);
         return new UserConnection(_usersConnections[^1]);
     }
 
-    
+    public void Disconnect(long id)
+    {
+        var i = _usersConnections.TakeWhile(cur => cur.User.ID != id).Count();
+        _usersConnections.RemoveAt(i);
+    }
 }
     

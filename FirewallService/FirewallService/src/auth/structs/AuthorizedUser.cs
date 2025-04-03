@@ -5,20 +5,13 @@ using FirewallService.util;
 
 namespace FirewallService.auth.structs;
 
-public struct AuthorizedUser : IStreamableObject<AuthorizedUser>
+public struct AuthorizedUser(long id, string key) : IStreamableObject<AuthorizedUser>
 {
-    public long ID { get; set; }
-    public string Key { get; set; }
+    public long ID { get; set; } = id;
+    public string Key { get; set; } = key;
 
-    public AuthorizedUser()
+    public AuthorizedUser() : this(-1, "")
     {
-        this.ID = default;
-        this.Key = "";
-    }
-    public AuthorizedUser(long ID, string Key)
-    {
-        this.ID = ID;
-        this.Key = Key;
     }
 
     public string ToStringStream()

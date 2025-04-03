@@ -27,16 +27,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="841d48bf-99d3-4a46-85ba-f829ff9ce567" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/auth/ActionAuthentication/ActionAuthenticator.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/auth/ActionAuthentication/TrustPhraseManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/auth/ActionManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/auth/PermissionManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/auth/structs/PermissionCondition.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/auth/structs/AuthorizedUserSession.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/auth/structs/SecureKey.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/auth/FileManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/auth/FileManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/auth/structs/UserPrivileges.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/auth/structs/UserPrivileges.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallFilter/src/ipc/server-connect.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallFilter/src/ipc/server-connect.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/auth/AuthManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/auth/AuthManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/auth/structs/AuthMainObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/auth/structs/AuthMainObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/auth/structs/AuthorizedUser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/auth/structs/AuthorizedUser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/auth/structs/UserConnection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/auth/structs/UserConnection.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/ipc/Server.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/ipc/Server.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/ipc/structs/GeneralActionRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/ipc/structs/GeneralActionRequest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libFirewallSharedObject.so" beforeDir="false" afterPath="$PROJECT_DIR$/libFirewallSharedObject.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fwso-main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/fwso-main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fwso-main.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/fwso-main.hpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,11 +120,11 @@
       <window_info anchor="bottom" id="Version Control" order="0" />
       <window_info anchor="bottom" id="Problems" order="1" />
       <window_info anchor="bottom" id="Problems View" order="2" weight="0.3294903" />
-      <window_info anchor="bottom" id="Terminal" order="3" />
+      <window_info anchor="bottom" id="Terminal" order="3" weight="0.22754854" />
       <window_info anchor="bottom" id="Services" order="4" />
-      <window_info active="true" anchor="bottom" id="CMake" order="5" visible="true" weight="0.22754854" />
-      <window_info active="true" anchor="bottom" id="Messages" order="6" visible="true" weight="0.3294903" />
-      <window_info active="true" anchor="bottom" id="Run" order="7" visible="true" weight="0.3294903" />
+      <window_info anchor="bottom" id="CMake" order="5" weight="0.22754854" />
+      <window_info active="true" anchor="bottom" id="Messages" order="6" visible="true" />
+      <window_info active="true" anchor="bottom" id="Run" order="7" visible="true" weight="0.31614077" />
       <window_info anchor="right" id="PR AI Assistant" />
       <window_info anchor="right" id="make" side_tool="true" />
       <window_info anchor="right" id="Coverage" side_tool="true" />
@@ -189,7 +193,8 @@
       <workItem from="1743402789662" duration="1374000" />
       <workItem from="1743585009856" duration="239000" />
       <workItem from="1743585416463" duration="1269000" />
-      <workItem from="1743668729522" duration="408000" />
+      <workItem from="1743668729522" duration="7619000" />
+      <workItem from="1743692938321" duration="1649000" />
     </task>
     <servers />
   </component>

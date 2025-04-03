@@ -49,6 +49,7 @@ bool connectToManager() {
 
     cout << "Attempting to connect to manager..." << endl;
 
+
     int result = fwConnect(instance, firewallID, key, response, sizeof(response));
     if (result == 0) {
         cout << "Response received. Response: " << response << endl;
