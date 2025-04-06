@@ -58,18 +58,15 @@ namespace FirewallService
                         if (_awaiting.ContainsKey(id) && _awaiting[id].Count > 0)
                         {
                             var (type, msg) = _awaiting[id].Dequeue();
-                            if (msg != null)
+                            // Release lock before logging to prevent deadlocks
+                            Monitor.Exit(mutex);
+                            try
                             {
-                                // Release lock before logging to prevent deadlocks
-                                Monitor.Exit(mutex);
-                                try
-                                {
-                                    DoLog(msg, type, id);
-                                }
-                                finally
-                                {
-                                    Monitor.Enter(mutex);
-                                }
+                                DoLog(msg, type, id);
+                            }
+                            finally
+                            {
+                                Monitor.Enter(mutex);
                             }
                         }
                     }

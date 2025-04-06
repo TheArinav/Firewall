@@ -31,7 +31,6 @@ namespace FirewallService.ipc
         public Server()
         {
             FileManager.Init();
-            Console.WriteLine(auth.ActionAuthentication.ActionAuthenticator.ShowAuthorizationPrompt("Test", "test"));
             _epollFd = -1;
             _packetQueue = new ConcurrentQueue<string>();
             _dbManager = new DBManager();

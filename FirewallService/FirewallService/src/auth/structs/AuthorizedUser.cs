@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Runtime.InteropServices.ComTypes;
+using System.Text;
 using FirewallService.DB.Entities;
 using FirewallService.ipc.structs;
 using FirewallService.util;
@@ -12,6 +13,11 @@ public struct AuthorizedUser(long id, string key) : IStreamableObject<Authorized
 
     public AuthorizedUser() : this(-1, "")
     {
+    }
+
+    public AuthorizedUser(long id, string key, bool useHash) : this(id, "")
+    {
+        this.Key = (useHash)? PasswordHasher.HashPassword(key):key;
     }
 
     public string ToStringStream()

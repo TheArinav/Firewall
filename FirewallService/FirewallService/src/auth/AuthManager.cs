@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 public class AuthManager
 {
-    public AuthMainObject MainObject { get; set; }
+    public AuthMainObject? MainObject { get; set; }
     public AuthManager()
     {
         var JSONstr = File.ReadAllText(FileManager.AuthFile);
@@ -29,7 +29,7 @@ public class AuthManager
             var pwS = Logger.Read("(string key):",405);
             var id = long.Parse(idS);
             this.MainObject = this.MainObject;
-            this.MainObject.Users = [new AuthorizedUser(id, pwS)];
+            this.MainObject.Users = [new AuthorizedUser(id, pwS, true)];
 
             File.WriteAllText(FileManager.AuthFile, JsonConvert.SerializeObject(this.MainObject));
             Logger.Info("User added successfully!", 405);

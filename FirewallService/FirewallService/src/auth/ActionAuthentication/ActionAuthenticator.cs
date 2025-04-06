@@ -33,7 +33,7 @@ namespace FirewallService.auth.ActionAuthentication
             var attempts = 0;
             while (attempts < MaxAttempts)
             {
-                var password = ShowZenityPassword("Root Authentication");
+                var password = ShowZenityPassword($"Root Authentication. Trust phrase: {trust}");
 
                 if (string.IsNullOrWhiteSpace(password))
                 {
@@ -105,8 +105,11 @@ namespace FirewallService.auth.ActionAuthentication
         }
         private static bool ValidateRootPassword(string password)
         {
-            // TODO: Check Against shadow
-            return false;
+            using var reader = new StreamReader(FileManager.ShadowFile);
+            var hashed = reader.ReadToEnd();
+            reader.Close();
+            hashed = hashed.Replace("\n", "");
+            return PasswordHasher.VerifyPassword(password, hashed);
         }
         private static string EscapeShellArg(string input)
         {

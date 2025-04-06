@@ -1,5 +1,5 @@
 ﻿namespace FirewallService.auth.structs;
-
+using System.Text;
 public class AuthMainObject
 {
     private List<UserConnection> _usersConnections = [];
@@ -7,7 +7,8 @@ public class AuthMainObject
 
     public UserConnection? InitUserConnection(AuthorizedUser usr, byte[] key)
     {
-        var auth = (from user in Users where user.ID == usr.ID select user.Key == usr.Key).FirstOrDefault();
+        var auth = (from user in Users where user.ID == usr.ID select 
+                PasswordHasher.VerifyPassword(usr.Key,user.Key)).FirstOrDefault();
 
         if (!auth)
             return null;

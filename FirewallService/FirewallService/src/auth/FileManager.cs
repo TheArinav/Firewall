@@ -56,6 +56,23 @@ namespace FirewallService.auth
             if (File.Exists(RSAPrivateKey))
                 File.Delete(RSAPrivateKey);
             
+            // Trust-Phrase file
+            if (File.Exists(TrustPhrase))
+                File.Delete(TrustPhrase);
+            File.CreateText(TrustPhrase);
+
+            if (!File.Exists(ShadowFile) || File.ReadAllText(ShadowFile)=="")
+            {
+                Logger.CreateLock(770, 3);
+                Logger.Warn("Shadow file is empty or missing. Please enter a new password:",770);
+                var newPassword = Logger.Read("Password: ", 770);
+                newPassword = PasswordHasher.HashPassword(newPassword);
+                using var writer = new StreamWriter(ShadowFile);
+                writer.WriteLine(newPassword);
+                writer.Close();
+                newPassword = "";
+            }
+            
             // Generate RSA keypair
             GenerateSecureKey(KeySize);
             
@@ -64,6 +81,8 @@ namespace FirewallService.auth
             SetFilePermissions(AuthFile, "600");
             SetFilePermissions(RSAEncryptionKey, "644");
             SetFilePermissions(RSAPrivateKey, "600");
+            SetFilePermissions(ShadowFile, "600");
+            SetFilePermissions(TrustPhrase, "600");
 
             // Init Authentication Manager
             AuthManager = new AuthManager();

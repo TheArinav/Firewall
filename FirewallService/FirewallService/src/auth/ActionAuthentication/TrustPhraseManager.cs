@@ -35,6 +35,9 @@ namespace FirewallService.auth.ActionAuthentication
             _trustPhrase.MakeReadOnly();
 
             Logger.Info($"Trust Phrase for this session: {phrase}");
+            using var writer = new StreamWriter(FileManager.TrustPhrase);
+            writer.Write(phrase);
+            writer.Close();
         }
 
         public static SecureString GetTrustPhrase()
