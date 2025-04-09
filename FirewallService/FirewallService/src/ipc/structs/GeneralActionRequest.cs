@@ -1,6 +1,7 @@
 ﻿using FirewallService.auth.structs;
 using FirewallService.DB.Entities;
 using FirewallService.util;
+using FirewallService.ipc.structs.GeneralActionStructs;
 
 namespace FirewallService.ipc.structs;
 
@@ -46,5 +47,10 @@ public struct GeneralActionRequest : IMessageComponent<GeneralActionRequest>
     public GeneralActionRequest Get()
     {
         return this;
+    }
+
+    public GeneralAction? GetAction()
+    {
+        return GeneralAction.Deserialize(RequestBody);
     }
 }

@@ -72,24 +72,38 @@ include CMakeFiles/FirewallSharedObject.dir/flags.make
 CMakeFiles/FirewallSharedObject.dir/codegen:
 .PHONY : CMakeFiles/FirewallSharedObject.dir/codegen
 
-CMakeFiles/FirewallSharedObject.dir/src/fwso-main.cpp.o: CMakeFiles/FirewallSharedObject.dir/flags.make
-CMakeFiles/FirewallSharedObject.dir/src/fwso-main.cpp.o: src/fwso-main.cpp
-CMakeFiles/FirewallSharedObject.dir/src/fwso-main.cpp.o: CMakeFiles/FirewallSharedObject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ariel/Documents/github/Firewall/FirewallSharedObject/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/FirewallSharedObject.dir/src/fwso-main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FirewallSharedObject.dir/src/fwso-main.cpp.o -MF CMakeFiles/FirewallSharedObject.dir/src/fwso-main.cpp.o.d -o CMakeFiles/FirewallSharedObject.dir/src/fwso-main.cpp.o -c /home/ariel/Documents/github/Firewall/FirewallSharedObject/src/fwso-main.cpp
+CMakeFiles/FirewallSharedObject.dir/src/fwso-main-public.cpp.o: CMakeFiles/FirewallSharedObject.dir/flags.make
+CMakeFiles/FirewallSharedObject.dir/src/fwso-main-public.cpp.o: src/fwso-main-public.cpp
+CMakeFiles/FirewallSharedObject.dir/src/fwso-main-public.cpp.o: CMakeFiles/FirewallSharedObject.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ariel/Documents/github/Firewall/FirewallSharedObject/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/FirewallSharedObject.dir/src/fwso-main-public.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FirewallSharedObject.dir/src/fwso-main-public.cpp.o -MF CMakeFiles/FirewallSharedObject.dir/src/fwso-main-public.cpp.o.d -o CMakeFiles/FirewallSharedObject.dir/src/fwso-main-public.cpp.o -c /home/ariel/Documents/github/Firewall/FirewallSharedObject/src/fwso-main-public.cpp
 
-CMakeFiles/FirewallSharedObject.dir/src/fwso-main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/FirewallSharedObject.dir/src/fwso-main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ariel/Documents/github/Firewall/FirewallSharedObject/src/fwso-main.cpp > CMakeFiles/FirewallSharedObject.dir/src/fwso-main.cpp.i
+CMakeFiles/FirewallSharedObject.dir/src/fwso-main-public.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/FirewallSharedObject.dir/src/fwso-main-public.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ariel/Documents/github/Firewall/FirewallSharedObject/src/fwso-main-public.cpp > CMakeFiles/FirewallSharedObject.dir/src/fwso-main-public.cpp.i
 
-CMakeFiles/FirewallSharedObject.dir/src/fwso-main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/FirewallSharedObject.dir/src/fwso-main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ariel/Documents/github/Firewall/FirewallSharedObject/src/fwso-main.cpp -o CMakeFiles/FirewallSharedObject.dir/src/fwso-main.cpp.s
+CMakeFiles/FirewallSharedObject.dir/src/fwso-main-public.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/FirewallSharedObject.dir/src/fwso-main-public.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ariel/Documents/github/Firewall/FirewallSharedObject/src/fwso-main-public.cpp -o CMakeFiles/FirewallSharedObject.dir/src/fwso-main-public.cpp.s
+
+CMakeFiles/FirewallSharedObject.dir/src/fwso-main-private.cpp.o: CMakeFiles/FirewallSharedObject.dir/flags.make
+CMakeFiles/FirewallSharedObject.dir/src/fwso-main-private.cpp.o: src/fwso-main-private.cpp
+CMakeFiles/FirewallSharedObject.dir/src/fwso-main-private.cpp.o: CMakeFiles/FirewallSharedObject.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ariel/Documents/github/Firewall/FirewallSharedObject/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/FirewallSharedObject.dir/src/fwso-main-private.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FirewallSharedObject.dir/src/fwso-main-private.cpp.o -MF CMakeFiles/FirewallSharedObject.dir/src/fwso-main-private.cpp.o.d -o CMakeFiles/FirewallSharedObject.dir/src/fwso-main-private.cpp.o -c /home/ariel/Documents/github/Firewall/FirewallSharedObject/src/fwso-main-private.cpp
+
+CMakeFiles/FirewallSharedObject.dir/src/fwso-main-private.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/FirewallSharedObject.dir/src/fwso-main-private.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ariel/Documents/github/Firewall/FirewallSharedObject/src/fwso-main-private.cpp > CMakeFiles/FirewallSharedObject.dir/src/fwso-main-private.cpp.i
+
+CMakeFiles/FirewallSharedObject.dir/src/fwso-main-private.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/FirewallSharedObject.dir/src/fwso-main-private.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ariel/Documents/github/Firewall/FirewallSharedObject/src/fwso-main-private.cpp -o CMakeFiles/FirewallSharedObject.dir/src/fwso-main-private.cpp.s
 
 CMakeFiles/FirewallSharedObject.dir/src/utils.cpp.o: CMakeFiles/FirewallSharedObject.dir/flags.make
 CMakeFiles/FirewallSharedObject.dir/src/utils.cpp.o: src/utils.cpp
 CMakeFiles/FirewallSharedObject.dir/src/utils.cpp.o: CMakeFiles/FirewallSharedObject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ariel/Documents/github/Firewall/FirewallSharedObject/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/FirewallSharedObject.dir/src/utils.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ariel/Documents/github/Firewall/FirewallSharedObject/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/FirewallSharedObject.dir/src/utils.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FirewallSharedObject.dir/src/utils.cpp.o -MF CMakeFiles/FirewallSharedObject.dir/src/utils.cpp.o.d -o CMakeFiles/FirewallSharedObject.dir/src/utils.cpp.o -c /home/ariel/Documents/github/Firewall/FirewallSharedObject/src/utils.cpp
 
 CMakeFiles/FirewallSharedObject.dir/src/utils.cpp.i: cmake_force
@@ -103,7 +117,7 @@ CMakeFiles/FirewallSharedObject.dir/src/utils.cpp.s: cmake_force
 CMakeFiles/FirewallSharedObject.dir/src/structs/fw-message.cpp.o: CMakeFiles/FirewallSharedObject.dir/flags.make
 CMakeFiles/FirewallSharedObject.dir/src/structs/fw-message.cpp.o: src/structs/fw-message.cpp
 CMakeFiles/FirewallSharedObject.dir/src/structs/fw-message.cpp.o: CMakeFiles/FirewallSharedObject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ariel/Documents/github/Firewall/FirewallSharedObject/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/FirewallSharedObject.dir/src/structs/fw-message.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ariel/Documents/github/Firewall/FirewallSharedObject/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/FirewallSharedObject.dir/src/structs/fw-message.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FirewallSharedObject.dir/src/structs/fw-message.cpp.o -MF CMakeFiles/FirewallSharedObject.dir/src/structs/fw-message.cpp.o.d -o CMakeFiles/FirewallSharedObject.dir/src/structs/fw-message.cpp.o -c /home/ariel/Documents/github/Firewall/FirewallSharedObject/src/structs/fw-message.cpp
 
 CMakeFiles/FirewallSharedObject.dir/src/structs/fw-message.cpp.i: cmake_force
@@ -116,20 +130,22 @@ CMakeFiles/FirewallSharedObject.dir/src/structs/fw-message.cpp.s: cmake_force
 
 # Object files for target FirewallSharedObject
 FirewallSharedObject_OBJECTS = \
-"CMakeFiles/FirewallSharedObject.dir/src/fwso-main.cpp.o" \
+"CMakeFiles/FirewallSharedObject.dir/src/fwso-main-public.cpp.o" \
+"CMakeFiles/FirewallSharedObject.dir/src/fwso-main-private.cpp.o" \
 "CMakeFiles/FirewallSharedObject.dir/src/utils.cpp.o" \
 "CMakeFiles/FirewallSharedObject.dir/src/structs/fw-message.cpp.o"
 
 # External object files for target FirewallSharedObject
 FirewallSharedObject_EXTERNAL_OBJECTS =
 
-libFirewallSharedObject.so: CMakeFiles/FirewallSharedObject.dir/src/fwso-main.cpp.o
+libFirewallSharedObject.so: CMakeFiles/FirewallSharedObject.dir/src/fwso-main-public.cpp.o
+libFirewallSharedObject.so: CMakeFiles/FirewallSharedObject.dir/src/fwso-main-private.cpp.o
 libFirewallSharedObject.so: CMakeFiles/FirewallSharedObject.dir/src/utils.cpp.o
 libFirewallSharedObject.so: CMakeFiles/FirewallSharedObject.dir/src/structs/fw-message.cpp.o
 libFirewallSharedObject.so: CMakeFiles/FirewallSharedObject.dir/build.make
 libFirewallSharedObject.so: /usr/lib/aarch64-linux-gnu/libcrypto.so
 libFirewallSharedObject.so: CMakeFiles/FirewallSharedObject.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/ariel/Documents/github/Firewall/FirewallSharedObject/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX shared library libFirewallSharedObject.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/ariel/Documents/github/Firewall/FirewallSharedObject/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX shared library libFirewallSharedObject.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/FirewallSharedObject.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

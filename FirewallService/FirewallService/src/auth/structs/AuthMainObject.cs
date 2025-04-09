@@ -8,7 +8,7 @@ public class AuthMainObject
     public UserConnection? InitUserConnection(AuthorizedUser usr, byte[] key)
     {
         var auth = (from user in Users where user.ID == usr.ID select 
-                PasswordHasher.VerifyPassword(usr.Key,user.Key)).FirstOrDefault();
+                PasswordHasher.VerifyPassword(usr.Key.ToCharArray(),user.Key)).FirstOrDefault();
 
         if (!auth)
             return null;

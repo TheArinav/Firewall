@@ -1,6 +1,6 @@
 namespace FirewallService.ipc.structs;
 
-public class CreateUserRequest
+public struct CreateUserRequest
 {
     
 }

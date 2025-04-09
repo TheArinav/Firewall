@@ -1,3 +1,5 @@
+#pragma once
+
 #ifndef FWSO_MAIN_HPP
 #define FWSO_MAIN_HPP
 
@@ -12,6 +14,18 @@
 using namespace std;
 
 namespace fwso::api {
+
+#define FIREWALL_SERVICE_NAME "FirewallService"
+#define AES_KEY_SIZE 32
+#define AES_KEYRING_NAME_BASE "firewall_aes_key_%d"
+#define SESSION_TOKEN_SIZE 32
+#define ST_KEYRING_NAME_BASE "firewall_session_token_%d"
+
+    extern char AES_KEYRING_NAME[64];
+    extern char ST_KEYRING_NAME[64];
+
+    vector<unsigned char> base64_decode(const string &encoded);
+
     class fwso_api {
     private:
         key_serial_t aes_key_id;
@@ -50,26 +64,7 @@ namespace fwso::api {
     };
 }
 
-extern "C" {
 
-    fwso::api::fwso_api* create_fwso_instance() {
-        return new fwso::api::fwso_api();
-    }
-
-    void destroy_fwso_instance(fwso::api::fwso_api* instance) {
-        delete instance;
-    }
-
-    int fw_connect(fwso::api::fwso_api* instance, long int id, const char* key, char* out_resp, size_t out_size) {
-        std::string resp;
-        int result = instance->fw_connect(id, std::string(key), resp);
-        // Copy response to the output buffer
-        strncpy(out_resp, resp.c_str(), out_size);
-        // Ensure null termination
-        out_resp[out_size - 1] = '\0';
-        return result;
-    }
-}
 
 
 #endif // Fixed: Removed extra label

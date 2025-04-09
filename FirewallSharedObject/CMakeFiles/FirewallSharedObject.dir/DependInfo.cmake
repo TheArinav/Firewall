@@ -8,7 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/ariel/Documents/github/Firewall/FirewallSharedObject/src/fwso-main.cpp" "CMakeFiles/FirewallSharedObject.dir/src/fwso-main.cpp.o" "gcc" "CMakeFiles/FirewallSharedObject.dir/src/fwso-main.cpp.o.d"
+  "/home/ariel/Documents/github/Firewall/FirewallSharedObject/src/fwso-main-private.cpp" "CMakeFiles/FirewallSharedObject.dir/src/fwso-main-private.cpp.o" "gcc" "CMakeFiles/FirewallSharedObject.dir/src/fwso-main-private.cpp.o.d"
+  "/home/ariel/Documents/github/Firewall/FirewallSharedObject/src/fwso-main-public.cpp" "CMakeFiles/FirewallSharedObject.dir/src/fwso-main-public.cpp.o" "gcc" "CMakeFiles/FirewallSharedObject.dir/src/fwso-main-public.cpp.o.d"
   "/home/ariel/Documents/github/Firewall/FirewallSharedObject/src/structs/fw-message.cpp" "CMakeFiles/FirewallSharedObject.dir/src/structs/fw-message.cpp.o" "gcc" "CMakeFiles/FirewallSharedObject.dir/src/structs/fw-message.cpp.o.d"
   "/home/ariel/Documents/github/Firewall/FirewallSharedObject/src/utils.cpp" "CMakeFiles/FirewallSharedObject.dir/src/utils.cpp.o" "gcc" "CMakeFiles/FirewallSharedObject.dir/src/utils.cpp.o.d"
   )

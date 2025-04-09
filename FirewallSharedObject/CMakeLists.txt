@@ -4,7 +4,8 @@ project(FirewallSharedObject)
 set(CMAKE_CXX_STANDARD 20)
 
 add_library(FirewallSharedObject SHARED
-        src/fwso-main.cpp
+        src/fwso-main-public.cpp
+        src/fwso-main-private.cpp
         src/fwso-main.hpp
         src/utils.cpp
         src/structs/fw-message.cpp

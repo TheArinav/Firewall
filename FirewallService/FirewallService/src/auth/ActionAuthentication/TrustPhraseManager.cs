@@ -22,7 +22,7 @@ namespace FirewallService.auth.ActionAuthentication
         private const int MinWords = 5000;
 
         private static List<string> _wordList = null!;
-        private static SecureString _trustPhrase = null!;
+        private static SecureString? _trustPhrase = null!;
 
         public static void Initialize()
         {
@@ -40,7 +40,7 @@ namespace FirewallService.auth.ActionAuthentication
             writer.Close();
         }
 
-        public static SecureString GetTrustPhrase()
+        public static SecureString? GetTrustPhrase()
         {
             if (_trustPhrase == null)
                 throw new InvalidOperationException("Trust phrase not initialized.");

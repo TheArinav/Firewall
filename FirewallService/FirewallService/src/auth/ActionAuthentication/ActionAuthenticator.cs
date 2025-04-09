@@ -8,20 +8,28 @@ namespace FirewallService.auth.ActionAuthentication
     public static class ActionAuthenticator
     {
         private const int MaxAttempts = 3;
+        private const int MaxPasswordLength = 128;
+        
+        private static readonly List<string> BlockedRequesters = [];
 
         public static bool ShowAuthorizationPrompt(string request, string requester)
         {
+            if (BlockedRequesters.Contains(requester))
+                return false;
+            
             var trustPhrase = TrustPhraseManager.GetTrustPhrase();
-            var unsecurePhrase = SecureStringToString(trustPhrase);
+            var trustCharArray = SecureStringToCharArray(trustPhrase);
 
             var _requester = EscapeShellArg(requester);
             var _request = EscapeShellArg(request);
-            var trust = EscapeShellArg(unsecurePhrase);
+            var trust = EscapeShellArg(new string(trustCharArray));
 
             var fullText = $"Request from: {_requester}\n\n" +
                            $"Request: {_request}\n\n" +
                            $"Trust Phrase: {trust}\n\n" +
                            $"Do you approve this action?";
+
+            Array.Clear(trustCharArray, 0, trustCharArray.Length); // Clear trust phrase
 
             if (!ShowZenityQuestion("Firewall Authorization", fullText))
             {
@@ -33,16 +41,18 @@ namespace FirewallService.auth.ActionAuthentication
             var attempts = 0;
             while (attempts < MaxAttempts)
             {
-                var password = ShowZenityPassword($"Root Authentication. Trust phrase: {trust}");
-
-                if (string.IsNullOrWhiteSpace(password))
+                var passwordChars = ShowZenityPassword($"Root Authentication. Trust phrase: {trust}");
+                if (passwordChars == null)
                 {
                     Logger.Warn("User closed the password prompt.");
                     BlockRequester(request);
                     return false;
                 }
 
-                if (ValidateRootPassword(password))
+                var success = PasswordHasher.VerifyPassword(passwordChars, File.ReadAllText(FileManager.ShadowFile).Replace("\n", ""));
+                Array.Clear(passwordChars, 0, passwordChars.Length); // Clear password
+
+                if (success)
                 {
                     Logger.Info("Request approved and authenticated.");
                     return true;
@@ -71,25 +81,37 @@ namespace FirewallService.auth.ActionAuthentication
             return process?.ExitCode == 0;
         }
 
-        private static string? ShowZenityPassword(string title)
+        private static char[]? ShowZenityPassword(string title)
         {
             var psi = new ProcessStartInfo
             {
                 FileName = "zenity",
                 ArgumentList = { "--password", "--title", title },
                 RedirectStandardOutput = true,
-                UseShellExecute = false
+                RedirectStandardInput = false,
+                RedirectStandardError = false,
+                UseShellExecute = false,
+                StandardOutputEncoding = Encoding.UTF8
             };
 
             using var process = Process.Start(psi);
             if (process == null)
                 return null;
 
-            var output = process.StandardOutput.ReadToEnd().Trim();
-            process.WaitForExit();
+            var outputBuilder = new List<char>();
+            int c;
+            while ((c = process.StandardOutput.Read()) != -1)
+            {
+                var ch = (char)c;
+                if (ch is '\n' or '\r') // trim trailing newlines
+                    break;
+                outputBuilder.Add(ch);
+            }
 
-            return process.ExitCode == 0 ? output : null;
+            process.WaitForExit();
+            return process.ExitCode == 0 ? outputBuilder.ToArray() : null;
         }
+
 
         private static void ShowZenityError(string message)
         {
@@ -103,14 +125,7 @@ namespace FirewallService.auth.ActionAuthentication
             using var process = Process.Start(psi);
             process?.WaitForExit();
         }
-        private static bool ValidateRootPassword(string password)
-        {
-            using var reader = new StreamReader(FileManager.ShadowFile);
-            var hashed = reader.ReadToEnd();
-            reader.Close();
-            hashed = hashed.Replace("\n", "");
-            return PasswordHasher.VerifyPassword(password, hashed);
-        }
+
         private static string EscapeShellArg(string input)
         {
             return input
@@ -121,14 +136,18 @@ namespace FirewallService.auth.ActionAuthentication
                 .Replace("!", "\\!");
         }
 
-        private static string SecureStringToString(SecureString secure)
+        private static char[] SecureStringToCharArray(SecureString? secure)
         {
-            if (secure == null) return string.Empty;
+            if (secure == null) 
+                return [];
             var ptr = IntPtr.Zero;
             try
             {
                 ptr = Marshal.SecureStringToGlobalAllocUnicode(secure);
-                return Marshal.PtrToStringUni(ptr) ?? "";
+                var length = secure.Length;
+                var result = new char[length];
+                Marshal.Copy(ptr, result, 0, length);
+                return result;
             }
             finally
             {
@@ -138,8 +157,8 @@ namespace FirewallService.auth.ActionAuthentication
 
         private static void BlockRequester(string requester)
         {
-            // TODO: Block the requester from trying again (e.g. denylist file or memory map)
             Logger.Warn($"Blocking future requests from: {requester}");
+            BlockedRequesters.Add(requester);
         }
     }
 }

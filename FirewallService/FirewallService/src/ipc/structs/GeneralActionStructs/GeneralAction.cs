@@ -1,9 +1,9 @@
 using System.Text;
 using Newtonsoft.Json;
-using System.Text.Encodings;
-namespace FirewallService.ipc.structs.GeneralAction;
 
-public class GeneralAction(long userId,ActionPrototype prototype, ActionSubject subject, string arguments)
+namespace FirewallService.ipc.structs.GeneralActionStructs;
+
+public class GeneralAction(long userId,ActionPrototype prototype, ActionSubject subject, string arguments) 
 {
     public required ActionPrototype Prototype { get; set; } = prototype;
     public required ActionSubject Subject { get; set; } = subject;

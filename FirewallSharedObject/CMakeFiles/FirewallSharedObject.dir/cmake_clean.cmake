@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/FirewallSharedObject.dir/src/fwso-main.cpp.o"
-  "CMakeFiles/FirewallSharedObject.dir/src/fwso-main.cpp.o.d"
+  "CMakeFiles/FirewallSharedObject.dir/src/fwso-main-private.cpp.o"
+  "CMakeFiles/FirewallSharedObject.dir/src/fwso-main-private.cpp.o.d"
+  "CMakeFiles/FirewallSharedObject.dir/src/fwso-main-public.cpp.o"
+  "CMakeFiles/FirewallSharedObject.dir/src/fwso-main-public.cpp.o.d"
   "CMakeFiles/FirewallSharedObject.dir/src/structs/fw-message.cpp.o"
   "CMakeFiles/FirewallSharedObject.dir/src/structs/fw-message.cpp.o.d"
   "CMakeFiles/FirewallSharedObject.dir/src/utils.cpp.o"
