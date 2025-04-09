@@ -54,7 +54,7 @@ bool connectToManager() {
     if (result == 0) {
         cout << "Response received. Response: " << response << endl;
     } else {
-        cerr << "Login failed. Error code: " << result << endl;
+        cerr << "Login failed. Error code: " << result << "\n\tResponse: " << response << endl;
     }
 
     destroyInstance(instance);

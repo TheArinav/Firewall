@@ -27,31 +27,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="841d48bf-99d3-4a46-85ba-f829ff9ce567" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/ipc/structs/GeneralActionStructs/ActionSubject.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/util/ConsoleUtils.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/fwso-main-private.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/FirewallFilter" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/FirewallFilter" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/auth/AuthManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/auth/AuthManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/ipc/structs/CreateUserRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/ipc/structs/CreateUserRequest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/ipc/structs/GeneralAction/ActionPrototype.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/ipc/structs/GeneralActionStructs/ActionPrototype.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/ipc/structs/GeneralAction/ActionSubject.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/ipc/structs/GeneralAction/GeneralAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/ipc/structs/GeneralActionStructs/GeneralAction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/ipc/structs/GeneralActionRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/ipc/structs/GeneralActionRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallFilter/src/ipc/server-connect.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallFilter/src/ipc/server-connect.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/ipc/Server.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/ipc/Server.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/FirewallSharedObject.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/FirewallSharedObject.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/FirewallSharedObject.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/FirewallSharedObject.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/FirewallSharedObject.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/FirewallSharedObject.dir/cmake_clean.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/FirewallSharedObject.dir/compiler_depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/FirewallSharedObject.dir/compiler_depend.internal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/FirewallSharedObject.dir/compiler_depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/FirewallSharedObject.dir/compiler_depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/FirewallSharedObject.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/FirewallSharedObject.dir/link.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/FirewallSharedObject.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/FirewallSharedObject.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/progress.marks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libFirewallSharedObject.so" beforeDir="false" afterPath="$PROJECT_DIR$/libFirewallSharedObject.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fwso-main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/fwso-main-public.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fwso-main.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/fwso-main.hpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,7 +197,7 @@
       <workItem from="1743692938321" duration="1939000" />
       <workItem from="1743920418398" duration="1831000" />
       <workItem from="1743924522419" duration="6422000" />
-      <workItem from="1744197822733" duration="4479000" />
+      <workItem from="1744197822733" duration="5727000" />
     </task>
     <servers />
   </component>

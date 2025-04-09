@@ -19,13 +19,14 @@ namespace FirewallService.ipc
         private readonly ConcurrentQueue<string> _packetQueue;
         
 
-        public delegate void OnPacketReceived<T1,T2>(T1 a, out T1 b, out T2 c);
-        public event OnPacketReceived<string,bool> PacketReceived;
+        public delegate void OnPacketReceived<T1,T2,T3>(T1 a, out T1 b, out T2 c, out T3 d);
+        public event OnPacketReceived<string,bool,long> PacketReceived;
 
         private int _epollFd;
         private Epoll.EpollEvent[]? _events;
         private Socket? _listenerSocket;
         private readonly Dictionary<int, Socket> _clientSockets = new();
+        private readonly Dictionary<int, long> _fdToClientIdMap = new();
         private bool _disposed;
 
         public Server()
@@ -168,11 +169,21 @@ namespace FirewallService.ipc
                     _packetQueue.Enqueue(message);
                     string? resp  = null;
                     var fin = false;
-                    PacketReceived?.Invoke(message, out resp, out fin);
+                    var id = 0L;
+                    PacketReceived?.Invoke(message, out resp, out fin, out id);
                     clientSocket.Send(Encoding.UTF8.GetBytes(resp?? "Error processing packet"));
+                    _fdToClientIdMap.Add(fd,id);
                     if (!fin) return;
                     clientSocket.Shutdown(SocketShutdown.Both);
                     clientSocket.Close();
+                }
+                else
+                {
+                    if (_fdToClientIdMap.TryGetValue(fd, out var id))
+                    {
+                        _authManager.MainObject?.Disconnect(id);
+                        _fdToClientIdMap.Remove(fd);
+                    }
                 }
                 RemoveClient(fd);
             }
@@ -199,10 +210,11 @@ namespace FirewallService.ipc
         private readonly ConcurrentDictionary<string, long> _usedNonces = new(); // Nonce → Timestamp
         private const int TIMESTAMP_TOLERANCE = 30; // Allow timestamps up to 30 seconds old
 
-        private void ProcessPacket(string packet, out string mes, out bool fin)
+        private void ProcessPacket(string packet, out string mes, out bool fin, out long userId)
         {
             mes = null;
             fin = true;
+            userId = -1; 
             long reqID = -1;
             Logger.Info($"Processing packet: {packet}");
             try
@@ -259,7 +271,9 @@ namespace FirewallService.ipc
             {
                 if (!fin || reqID == -1) goto end;
                 _authManager.MainObject.Disconnect(reqID);
-                end: ;
+                end:
+                if (reqID != -1)
+                    userId = reqID;
             }
         }
 
