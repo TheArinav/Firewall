@@ -1,29 +1,33 @@
 namespace FirewallService.auth.structs;
 
-public enum PermissionType
+using FirewallService.ipc.structs.GeneralActionStructs;
+public struct PermissionType(ActionPrototype prototype, ActionSubject subject) : IEquatable<PermissionType>
 {
-    GetRule,
-    GetConnection,
-    GetConnectionClass,
-    GetPacketInfo,
-    GetTunnelKey,
-    GetRecord,
-    RequestAddRule,
-    RequestRuleVerdict,
-    RequestDeleteRule,
-    RequestProbe,
-    RequestRuleAddEnforcer,
-    RequestRuleRemoveEnforcer,
-    RequestAddProtocol,
-    RequestRemoveProtocol,
-    RequestSuppressRule,
-    RequestSuppressProtocol,
-    RequestCreateTunnel,
-    RequestDeleteTunnel,
-    RequestSetTunnelKey,
-    RequestCreateUser,
-    RequestDeleteUser,
-    RequestUserAddPermission,
-    RequestUserRemovePermission,
-    RequestCreatePacket
+    public readonly ActionPrototype Prototype = prototype;
+    public readonly ActionSubject Subject = subject;
+
+    public bool Equals(PermissionType other)
+    {
+        return Prototype == other.Prototype && Subject == other.Subject;
+    }
+
+    public override bool Equals(object? obj)
+    {
+        return obj is PermissionType other && Equals(other);
+    }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine((int)Prototype, (int)Subject);
+    }
+
+    public static bool operator ==(PermissionType left, PermissionType right)
+    {
+        return left.Equals(right);
+    }
+
+    public static bool operator !=(PermissionType left, PermissionType right)
+    {
+        return !(left == right);
+    }
 }

@@ -10,7 +10,7 @@ public class AuthManager
     {
         var JSONstr = File.ReadAllText(FileManager.AuthFile);
         this.MainObject = JsonConvert.DeserializeObject<AuthMainObject>(JSONstr);
-        if (this.MainObject?.Users.Length != 0) 
+        if (this.MainObject?.Users.Length != 3) 
             return;
         
     }

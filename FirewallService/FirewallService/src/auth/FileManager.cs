@@ -26,7 +26,7 @@ namespace FirewallService.auth
 
         public static SecureString RSAKey { get; private set; }
         public static AuthManager AuthManager { get; private set; }
-        public static ActionManager ActionManager { get; private set; }
+        public static ActionManager ActionManager { get; set; }
         public static PermissionManager PermissionManager { get; private set; }
 
         public static void Init()

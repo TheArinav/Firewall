@@ -44,10 +44,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/ariel/.cache/JetBrains/RemoteDev/dist/208beec660711_CLion-251.23774.112-aarch64/bin/cmake/linux/aarch64/bin/cmake
+CMAKE_COMMAND = /home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/bin/cmake
 
 # The command to remove a file.
-RM = /home/ariel/.cache/JetBrains/RemoteDev/dist/208beec660711_CLion-251.23774.112-aarch64/bin/cmake/linux/aarch64/bin/cmake -E rm -f
+RM = /home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =

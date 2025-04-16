@@ -5,6 +5,7 @@
   </component>
   <component name="BackendCodeEditorMiscSettings">
     <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
+    <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
   </component>
   <component name="CMakePresetLoader">{
   &quot;useNewFormat&quot;: true
@@ -27,13 +28,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="841d48bf-99d3-4a46-85ba-f829ff9ce567" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/FirewallFilter" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/FirewallFilter" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/src/ipc/server-connect.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallFilter/src/ipc/server-connect.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/ipc/Server.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/ipc/Server.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/editor.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/3.31.4/CMakeSystem.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/3.31.4/CMakeSystem.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/CMakeConfigureLog.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/CMakeConfigureLog.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/clion-Default-log.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +103,7 @@
       <window_info id="Commit_Guest" show_stripe_button="false" />
       <window_info id="Pull Requests" />
       <window_info id="Learn" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.32975262" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29785156" />
       <window_info id="Commit" order="1" weight="0.32975262" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" />
@@ -116,7 +119,7 @@
       <window_info anchor="bottom" id="Problems View" order="2" weight="0.3294903" />
       <window_info anchor="bottom" id="Terminal" order="3" weight="0.22754854" />
       <window_info anchor="bottom" id="Services" order="4" />
-      <window_info anchor="bottom" id="CMake" order="5" weight="0.22754854" />
+      <window_info active="true" anchor="bottom" id="CMake" order="5" visible="true" weight="0.3112864" />
       <window_info active="true" anchor="bottom" id="Messages" order="6" visible="true" />
       <window_info active="true" anchor="bottom" id="Run" order="7" visible="true" weight="0.3294903" />
       <window_info anchor="right" id="PR AI Assistant" />
@@ -133,11 +136,6 @@
     </layout>
   </component>
   <component name="RunManager" selected="CMake Application.FirewallSharedObject">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="FirewallSharedObject" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="FirewallSharedObject" TARGET_NAME="FirewallSharedObject" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="FirewallSharedObject" RUN_TARGET_NAME="FirewallSharedObject">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -152,7 +150,6 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="Python 3.11 (FirewallSharedObject)" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -197,7 +194,8 @@
       <workItem from="1743692938321" duration="1939000" />
       <workItem from="1743920418398" duration="1831000" />
       <workItem from="1743924522419" duration="6422000" />
-      <workItem from="1744197822733" duration="5727000" />
+      <workItem from="1744197822733" duration="6328000" />
+      <workItem from="1744529977126" duration="3295000" />
     </task>
     <servers />
   </component>

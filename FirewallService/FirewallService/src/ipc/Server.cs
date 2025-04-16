@@ -35,6 +35,7 @@ namespace FirewallService.ipc
             _epollFd = -1;
             _packetQueue = new ConcurrentQueue<string>();
             _dbManager = new DBManager();
+            FileManager.ActionManager = new ActionManager(_dbManager);
             _authManager = new AuthManager();
             PacketReceived += ProcessPacket;
         }

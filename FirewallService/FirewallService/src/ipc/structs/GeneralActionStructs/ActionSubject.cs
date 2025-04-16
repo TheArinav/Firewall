@@ -2,12 +2,19 @@ namespace FirewallService.ipc.structs.GeneralActionStructs;
 
 public enum ActionSubject
 {
-    Connection      = 0 ,
-    ConnectionClass = 1,
-    EncryptedTunnel = 2,
-    Protocol        = 3,
-    Rule            = 4,
-    Record          = 5,
-    User            = 6,
-    UserPermission  = 7
+    #region DB Entities
+    Connection         = 0,
+    ConnectionClass    = 1,
+    Protocol           = 2,
+    Rule               = 3,
+    Record             = 4,
+    Packet             = 5,
+    #endregion
+    #region Manager-Specific Entities
+    EncryptedTunnelKey = 6,
+    EncryptedTunnel    = 7,
+    User               = 8,
+    UserPermission     = 9,
+    #endregion
+    
 }
