@@ -7,6 +7,7 @@
 #include "../enforcers/payload-length-enforcer.hpp"
 #include "../enforcers/regex-enforcer.hpp"
 #include "../enforcers/tls-fingerprint-enforcer.hpp"
+#include "../utils/LCGRandom.hpp"
 #include <string>
 
 
@@ -21,6 +22,7 @@ public:
                        int destPort, const std::string& payload);
 
 private:
+    LCGRandom& random;
     AhoCorasick& fullMatrixAutomaton;
     CompressedAC& compressedAutomaton;
 };

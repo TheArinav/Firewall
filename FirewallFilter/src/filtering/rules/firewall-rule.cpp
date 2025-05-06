@@ -7,12 +7,8 @@ void FirewallRule::setActive(bool status) {
     activeStatus = status;
 }
 
-void FirewallRule::addIpPortEnforcer(const IpPortEnforcer& enforcer) {
-    ipPortEnforcer = enforcer;
-}
-
 void FirewallRule::addPayloadLengthEnforcer(const PayloadLengthEnforcer& enforcer) {
-    payloadLengthEnforcer = enforcer;
+    *payloadLengthEnforcer = enforcer;
 }
 
 void FirewallRule::addRegexEnforcer(const RegexEnforcer& enforcer) {
@@ -20,12 +16,16 @@ void FirewallRule::addRegexEnforcer(const RegexEnforcer& enforcer) {
 }
 
 void FirewallRule::addRateLimitEnforcer(const RateLimitEnforcer& enforcer) {
-    rateLimitEnforcer = enforcer;
+    *rateLimitEnforcer = enforcer;
+}
+
+void FirewallRule::addTCPStateEnforcer(TCPStateEnforcer& enforcer)
+{
+    *tcpStateEnforcer = enforcer;
 }
 
 void FirewallRule::addTLSEnforcer(const TLSFingerprintEnforcer& enforcer) {
-    tlsEnforcer = enforcer;
-    hasTLS = true;
+    *tlsEnforcer = enforcer;
 }
 
 std::string FirewallRule::getRuleID() const {
@@ -36,12 +36,8 @@ bool FirewallRule::isActive() const {
     return activeStatus;
 }
 
-const IpPortEnforcer& FirewallRule::getIpPortEnforcer() const {
-    return ipPortEnforcer;
-}
-
 const PayloadLengthEnforcer& FirewallRule::getPayloadLengthEnforcer() const {
-    return payloadLengthEnforcer;
+    return *payloadLengthEnforcer;
 }
 
 const std::vector<RegexEnforcer>& FirewallRule::getRegexEnforcers() const {
@@ -49,13 +45,14 @@ const std::vector<RegexEnforcer>& FirewallRule::getRegexEnforcers() const {
 }
 
 const RateLimitEnforcer& FirewallRule::getRateLimitEnforcer() const {
-    return rateLimitEnforcer;
+    return *rateLimitEnforcer ;
+}
+
+const TCPStateEnforcer& FirewallRule::getTCPStateEnforcer() const
+{
+    return *tcpStateEnforcer;
 }
 
 const TLSFingerprintEnforcer& FirewallRule::getTLSEnforcer() const {
-    return tlsEnforcer;
-}
-
-bool FirewallRule::hasTLSEnforcer() const {
-    return hasTLS;
+    return *tlsEnforcer;
 }

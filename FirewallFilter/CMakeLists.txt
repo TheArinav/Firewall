@@ -13,7 +13,18 @@ file(GLOB_RECURSE SOURCES "${SRC_DIR}/*.cpp")
 include_directories(${SRC_DIR})
 
 # Create the executable
-add_executable(FirewallFilter main.cpp ${SOURCES} # Link system libraries
+add_executable(FirewallFilter main.cpp ${SOURCES}
+        src/filtering/utils/LCGRandom.cpp
+        src/filtering/utils/LCGRandom.hpp
+        src/filtering/engine/nfq_handler.cpp
+        src/filtering/engine/nfq_handler.hpp
+        src/filtering/tcp/connection-state.hpp
+        src/filtering/tcp/connection-tracker.hpp
+        src/filtering/tcp/connection-tracker.cpp
+        src/filtering/enforcers/tcp-state-enforcer.cpp
+        src/filtering/enforcers/tcp-state-enforcer.hpp
+        src/filtering/enforcers/encrypted-tunnel-detection-enforcer.cpp
+        src/filtering/enforcers/encrypted-tunnel-detection-enforcer.hpp # Link system libraries
 )
 
 # Link system libraries

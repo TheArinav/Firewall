@@ -5,6 +5,7 @@ public class FirewallRuleEnforcer :  IDataBaseEntity<FirewallRuleEnforcer>
 {
     public string RuleID { get; set; }
     public string EnforcerID { get; set; }
+    public string EnforcementOrder { get; set; }
 
     // Navigation properties
     public FirewallRule FirewallRule { get; set; }

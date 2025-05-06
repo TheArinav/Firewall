@@ -2,7 +2,7 @@
 using System.Text;
 public class AuthMainObject
 {
-    private List<UserConnection> _usersConnections = [];
+    public List<UserConnection> UsersConnections = [];
     public AuthorizedUser[] Users { get; set; } = [];
 
     public UserConnection? InitUserConnection(AuthorizedUser usr, byte[] key)
@@ -13,20 +13,20 @@ public class AuthMainObject
         if (!auth)
             return null;
 
-        _usersConnections ??= [];
+        UsersConnections ??= [];
 
-        if (_usersConnections.Any(conn => conn.User.ID == usr.ID))
+        if (UsersConnections.Any(conn => conn.User.ID == usr.ID))
             return null;
 
         var newConn = new UserConnection(new AuthorizedUserSession(usr.ID), key);
-        _usersConnections.Add(newConn);
-        return new UserConnection(_usersConnections[^1]);
+        UsersConnections.Add(newConn);
+        return new UserConnection(UsersConnections[^1]);
     }
 
     public void Disconnect(long id)
     {
-        var i = _usersConnections.TakeWhile(cur => cur.User.ID != id).Count();
-        _usersConnections.RemoveAt(i);
+        var i = UsersConnections.TakeWhile(cur => cur.User.ID != id).Count();
+        UsersConnections.RemoveAt(i);
     }
 }
     

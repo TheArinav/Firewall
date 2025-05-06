@@ -1,3 +1,4 @@
+using System.Data.SqlTypes;
 using System.Security.Cryptography;
 using System.Text;
 using FirewallService.DB.Entities;
@@ -5,7 +6,7 @@ using FirewallService.ipc;
 
 namespace FirewallService.ipc.structs;
 
-public struct Response : IMessageComponent<Response>, IMessageComponent<object>
+public struct Response() : IMessageComponent<Response>, IMessageComponent<object>, INullable
 {
     private IMessageComponent<object>? _messageComponentImplementation;
     public bool OperationSuccessful { get; set; } = false;
@@ -15,7 +16,7 @@ public struct Response : IMessageComponent<Response>, IMessageComponent<object>
     public string Nonce { get; set; }   // Fresh nonce for each response
     public long Timestamp { get; set; } // Prevent replay attacks
 
-    public Response(bool operationSuccessful, string message, IDataBaseEntity<object>? dbObject, byte[] key)
+    public Response(bool operationSuccessful, string message, IDataBaseEntity<object>? dbObject, byte[]? key) : this()
     {
         OperationSuccessful = operationSuccessful;
         Message = message;
@@ -42,4 +43,6 @@ public struct Response : IMessageComponent<Response>, IMessageComponent<object>
     {
         return Get();
     }
+
+    public bool IsNull { get; }
 }

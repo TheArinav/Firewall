@@ -8,6 +8,13 @@ public class Enforcer : IDataBaseEntity<Enforcer>
 
     // Navigation properties
     public ICollection<PayloadLengthEnforcer> PayloadLengthEnforcers { get; set; }
+    public ICollection<EncryptedTunnelDetectionEnforcer> EncryptedTunnelDetectionEnforcers { get; set; }
+    public ICollection<EncryptedTunnelIntegrityEnforcer> EncryptedTunnelIntegrityEnforcers { get; set; }
+    public ICollection<ProtocolEnforcer> ProtocolEnforcers { get; set; }
+    public ICollection<RateLimitEnforcer> RateLimitEnforcers { get; set; }
+    public ICollection<RegexEnforcer> RegexEnforcers { get; set; }
+    public ICollection<TLSFingerprintEnforcer> TLSFingerprintEnforcers { get; set; }
+    public ICollection<TCPStateEnforcer> TCPStateEnforcers { get; set; }
     public ICollection<Protocol> Protocols { get; set; }
     
     public string ToStringStream()

@@ -14,7 +14,7 @@ namespace FirewallService.ipc
     {
         private readonly AuthManager _authManager;
         private readonly DBManager _dbManager;
-        private const int MAX_EVENTS = 10;
+        private const int MAX_EVENTS = 128;
         private const string SOCKET_PATH = "/run/firewall_uds_epoll_server.sock";
         private readonly ConcurrentQueue<string> _packetQueue;
         
