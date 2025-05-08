@@ -4,30 +4,55 @@ using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.Text;
 using FirewallService.auth;
+using FirewallService.auth.structs;
 using FirewallService.DB;
+using FirewallService.DB.Entities;
 using FirewallService.ipc.structs;
+using FirewallService.util;
+using Microsoft.VisualBasic;
+using static FirewallService.ipc.Epoll;
 using static FirewallService.NativeInterop.UnixNative;
 
 namespace FirewallService.ipc
 {
+    public enum SessionState
+    {
+        Uninitialized,
+        Idle,
+        Active
+    }
+    public class Session(SessionState state, EpollEvent? @event, Socket socket)
+    {
+        public SessionState State = state;
+        public EpollEvent? Event = @event;
+        public Socket Socket = socket;
+    }
+
     public class Server : IDisposable
     {
         private readonly AuthManager _authManager;
         private readonly DBManager _dbManager;
-        private const int MAX_EVENTS = 128;
+        private const int MAX_ACTIVE = 128;
+        private const int MAX_IDLE = 64;
+        private const int MAX_EVENTS = MAX_ACTIVE + MAX_IDLE;
+        private readonly EpollEvent[] _events = new EpollEvent[MAX_EVENTS];
         private const string SOCKET_PATH = "/run/firewall_uds_epoll_server.sock";
         private readonly ConcurrentQueue<string> _packetQueue;
         
-
         public delegate void OnPacketReceived<T1,T2,T3>(T1 a, out T1 b, out T2 c, out T3 d);
         public event OnPacketReceived<string,bool,long> PacketReceived;
 
         private int _epollFd;
-        private Epoll.EpollEvent[]? _events;
+        private Cache<Session?> _idleSessions;
+        private Dictionary<int, Session> _activeSessions = new();
+
         private Socket? _listenerSocket;
         private readonly Dictionary<int, Socket> _clientSockets = new();
         private readonly Dictionary<int, long> _fdToClientIdMap = new();
         private bool _disposed;
+        
+        private readonly ConcurrentDictionary<string, long> _usedNonces = new(); // Nonce → Timestamp
+        private const int TIMESTAMP_TOLERANCE = 30; // Allow timestamps up to 30 seconds old
 
         public Server()
         {
@@ -40,9 +65,10 @@ namespace FirewallService.ipc
             PacketReceived += ProcessPacket;
         }
 
+        private bool CEWarningProvided = false;
         public void Setup()
         {
-            _epollFd = Epoll.epoll_create1(0);
+            _epollFd = epoll_create1(0);
             if (_epollFd == -1)
             {
                 Logger.Error($"Failed to create epoll file descriptor: {Marshal.GetLastWin32Error()}");
@@ -77,19 +103,35 @@ namespace FirewallService.ipc
                 Logger.Error($"Failed to update socket file permissions: {ex.Message}");
             }
 
-            var listenEvent = new Epoll.EpollEvent
+            var listenEvent = new EpollEvent
             {
-                events = Epoll.EPOLLIN | Epoll.EPOLLET,
-                data = new Epoll.epoll_data { fd = _listenerSocket.Handle.ToInt32() }
+                events = EPOLLIN | EPOLLET,
+                data = new epoll_data { fd = _listenerSocket.Handle.ToInt32() }
             };
 
-            if (Epoll.epoll_ctl(_epollFd, Epoll.EPOLL_CTL_ADD, _listenerSocket.Handle.ToInt32(), ref listenEvent) == -1)
+            if (epoll_ctl(_epollFd, EPOLL_CTL_ADD, _listenerSocket.Handle.ToInt32(), ref listenEvent) == -1)
             {
                 Logger.Error($"Failed to add listener to epoll: {Marshal.GetLastWin32Error()}");
                 return;
             }
 
-            _events = new Epoll.EpollEvent[MAX_EVENTS];
+            _idleSessions = new Cache<Session?>(64, session =>
+            {
+                try
+                {
+                    session?.Socket.Shutdown(SocketShutdown.Both);
+                }
+                catch
+                {
+                    // ignored
+                }
+
+                session?.Socket.Close();
+                if (CEWarningProvided) return;
+                Logger.Warn("Idle session cache eviction, too many inactive sessions. Is the server being attacked?");
+                CEWarningProvided = true;
+            });
+
             Logger.Info("Server is listening for connections...");
         }
 
@@ -97,7 +139,7 @@ namespace FirewallService.ipc
         {
             while (!stoppingToken.IsCancellationRequested)
             {
-                var eventCount = Epoll.epoll_wait(_epollFd, _events!, MAX_EVENTS, 5000);
+                var eventCount = epoll_wait(_epollFd, _events!, MAX_EVENTS, 5000);
                 if (eventCount == -1)
                 {
                     if (Marshal.GetLastWin32Error() == 4) // EINTR
@@ -137,17 +179,22 @@ namespace FirewallService.ipc
                     var fd = clientSocket.Handle.ToInt32();
                     _clientSockets[fd] = clientSocket;
 
-                    var clientEvent = new Epoll.EpollEvent
+                    var clientEvent = new EpollEvent
                     {
-                        events = Epoll.EPOLLIN | Epoll.EPOLLET,
-                        data = new Epoll.epoll_data { fd = fd }
+                        events = EPOLLIN | EPOLLET,
+                        data = new epoll_data { fd = fd }
                     };
 
-                    if (Epoll.epoll_ctl(_epollFd, Epoll.EPOLL_CTL_ADD, fd, ref clientEvent) != -1) continue;
-                    
-                    Logger.Error($"Failed to add client to epoll: {Marshal.GetLastWin32Error()}");
-                    clientSocket.Close();
-                    _clientSockets.Remove(fd);
+                    if (epoll_ctl(_epollFd, EPOLL_CTL_ADD, fd, ref clientEvent) == -1)
+                    {
+                        Logger.Error($"Failed to add client to epoll: {Marshal.GetLastWin32Error()}");
+                        clientSocket.Close();
+                        _clientSockets.Remove(fd);
+                        return;
+                    }
+
+                    var session = new Session(SessionState.Idle, clientEvent, clientSocket);
+                    _idleSessions.Add(session);
                 }
                 catch (SocketException ex) when (ex.SocketErrorCode == SocketError.WouldBlock)
                 {
@@ -155,7 +202,7 @@ namespace FirewallService.ipc
                 }
             }
         }
-
+        
         private void HandleClientData(Socket clientSocket)
         {
             var buffer = new byte[4096];
@@ -166,15 +213,27 @@ namespace FirewallService.ipc
                 var bytesRead = clientSocket.Receive(buffer, SocketFlags.None);
                 if (bytesRead > 0)
                 {
+                    // Promote session from idle to active if not already active
+                    if (!_activeSessions.ContainsKey(fd))
+                    {
+                        if (_idleSessions.TryRemove(s => s.Socket.Handle.ToInt32() == fd, out var session))
+                        {
+                            session.State = SessionState.Active;
+                            _activeSessions[fd] = session;
+                        }
+                    }
+
                     var message = Encoding.UTF8.GetString(buffer, 0, bytesRead);
                     _packetQueue.Enqueue(message);
-                    string? resp  = null;
+                    string? resp = null;
                     var fin = false;
                     var id = 0L;
                     PacketReceived?.Invoke(message, out resp, out fin, out id);
-                    clientSocket.Send(Encoding.UTF8.GetBytes(resp?? "Error processing packet"));
-                    _fdToClientIdMap.Add(fd,id);
+                    clientSocket.Send(Encoding.UTF8.GetBytes(resp ?? "Error processing packet"));
+                    _fdToClientIdMap[fd] = id;
+
                     if (!fin) return;
+
                     clientSocket.Shutdown(SocketShutdown.Both);
                     clientSocket.Close();
                 }
@@ -186,30 +245,37 @@ namespace FirewallService.ipc
                         _fdToClientIdMap.Remove(fd);
                     }
                 }
+
                 RemoveClient(fd);
             }
             catch (SocketException ex) when (ex.SocketErrorCode == SocketError.WouldBlock)
             {
-                // No data available
+                // No data
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error handling client {fd}: {ex.Message}");
+                Logger.Error($"Error handling client {fd}: {ex.Message}");
                 RemoveClient(fd);
             }
         }
 
+
         private void RemoveClient(int fd)
         {
-            if (!_clientSockets.TryGetValue(fd, out var socket)) return;
-            var ev = new Epoll.EpollEvent();
-            Epoll.epoll_ctl(_epollFd, Epoll.EPOLL_CTL_DEL, fd, ref ev);
-            socket.Close();
+            if (_activeSessions.Remove(fd, out var activeSession))
+                activeSession.Socket.Close();
+            else if (_idleSessions.TryRemove(s => s.Socket.Handle.ToInt32() == fd, out var idleSession))
+            {
+                // Already closed via cache eviction
+            }
+
+            var ev = new EpollEvent();
+            epoll_ctl(_epollFd, EPOLL_CTL_DEL, fd, ref ev);
             _clientSockets.Remove(fd);
         }
 
-        private readonly ConcurrentDictionary<string, long> _usedNonces = new(); // Nonce → Timestamp
-        private const int TIMESTAMP_TOLERANCE = 30; // Allow timestamps up to 30 seconds old
+
+        
 
         private void ProcessPacket(string packet, out string mes, out bool fin, out long userId)
         {
@@ -240,6 +306,7 @@ namespace FirewallService.ipc
                 switch (message.Type)
                 {
                     case MessageType.InitSessionRequest:
+                    {
                         var usr = ((message.Component as InitSessionRequest)!).Requester;
                         reqID = usr.ID;
                         var k = ((message.Component as InitSessionRequest)!).AESKey;
@@ -255,10 +322,46 @@ namespace FirewallService.ipc
                         );
                         mes = oMes.ToStringStream();
                         fin = !conn;
-                        break;
+                      
+                    }  break;
                     case MessageType.Response:
                         break;
                     case MessageType.GeneralActionRequest:
+                    {
+                        var usr = ((message.Component as GeneralActionRequest)!).Requester;
+                        reqID = usr.ID;
+                        var rspBody = "";
+                        Response? rsp = null;
+                        var user = FileManager.AuthManager.MainObject?.GetUser(reqID) ?? new AuthorizedUser(-1,"");
+                        if (user.ID == -1)
+                        {
+                            rspBody = "Failed to authenticate user session.";
+                            goto end;
+                        }
+                        var flag = FileManager.AuthManager.Validate(user,
+                            ((message.Component as GeneralActionRequest)!).RequestBody,
+                            out var outMes, out _);
+                        if (!flag)
+                        {
+                            rspBody = "Action is not permitted.";
+                            goto end;
+                        }
+
+                        rsp = FileManager.ActionManager.Execute((message.Component as GeneralActionRequest)!);
+                        
+                        end:
+                        {
+                            usr.Token.Open();
+                            rsp ??= new Response(false,rspBody,null,usr.Token.GetBytes());
+                            var oMes = new Message(
+                                Environment.ProcessId,
+                                message.SenderPID,
+                                rsp.Value.Get(),
+                                MessageType.Response);
+                            mes = oMes.ToStringStream();
+                            fin = false;
+                        }
+                    }
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
@@ -289,7 +392,7 @@ namespace FirewallService.ipc
 
             if (_epollFd != -1)
             {
-                Epoll.close(_epollFd);
+                close(_epollFd);
                 _epollFd = -1;
             }
 

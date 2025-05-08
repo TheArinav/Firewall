@@ -28,5 +28,13 @@ public class AuthMainObject
         var i = UsersConnections.TakeWhile(cur => cur.User.ID != id).Count();
         UsersConnections.RemoveAt(i);
     }
+
+    public AuthorizedUser? GetUser(long ID)
+    {
+        foreach (var usr in this.Users)
+            if (usr.ID == ID)
+                return usr;
+        return null;
+    }
 }
     

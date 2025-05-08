@@ -35,7 +35,6 @@ namespace FirewallService.auth.structs
             set => bytes[index] = value;
         }
         
-
         public void Open()
         {
             if (tokenStorage == null)
@@ -157,6 +156,11 @@ namespace FirewallService.auth.structs
             Close();
             clone.Close();
             return clone;
+        }
+
+        public byte[]? GetBytes()
+        {
+            return this.bytes;
         }
     }
 }

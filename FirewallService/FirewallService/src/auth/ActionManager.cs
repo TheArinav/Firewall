@@ -39,15 +39,14 @@ public class ActionManager(DBManager manager)
                 break;
         }
 
-        if (FileManager.AuthManager.MainObject == null || partialResp is not { } resp) 
-            return new();
-        {
-            resp.Key = Encoding.UTF8.GetBytes(FileManager.AuthManager.MainObject.UsersConnections
-                .FirstOrDefault(user => user.User.ID == req.Requester.ID)
-                ?.Key.ToString() ?? string.Empty);
-            return resp;
-        }
-
+        if (partialResp is null) return new Response();
+        
+        var rsp = partialResp ?? default;
+        rsp.Key = Encoding.UTF8.GetBytes(FileManager.AuthManager.MainObject?.UsersConnections
+            .FirstOrDefault(user => user.User.ID == req.Requester.ID)
+            ?.Key.ToString() ?? string.Empty);
+        return rsp;
+        
     }
 
     private Response HandleEncryptedTunnel(GeneralAction action)

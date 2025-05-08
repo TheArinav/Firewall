@@ -7,7 +7,7 @@
 
 FirewallEngine firewallEngine;
 
-void initializeFirewall(const std::vector<FirewallRule>& rules) {
+void initializeFirewall(std::vector<FirewallRule>& rules) {
     firewallEngine.loadRules(rules);
 }
 

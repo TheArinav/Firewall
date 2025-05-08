@@ -33,5 +33,13 @@ public class ModifiableQueue<T>
 
         _items[0] = modify(_items[0]); 
     }
+
+    public T this[int i]
+    {
+        get => _items[i];
+        set => _items[i] = value;
+    }
+    
+    public void RemoveAt(int i) => _items.RemoveAt(i);
 }
 

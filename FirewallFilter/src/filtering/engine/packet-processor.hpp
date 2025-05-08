@@ -3,7 +3,6 @@
 
 #include "../automata/aho-corasick.hpp"
 #include "../automata/compressed-ac.hpp"
-#include "../enforcers/ip-port-enforcer.hpp"
 #include "../enforcers/payload-length-enforcer.hpp"
 #include "../enforcers/regex-enforcer.hpp"
 #include "../enforcers/tls-fingerprint-enforcer.hpp"
@@ -15,7 +14,7 @@ enum class PacketType { LIGHT, HEAVY };
 
 class PacketProcessor {
 public:
-    PacketProcessor(AhoCorasick& fullMatrixAutomaton, CompressedAC& compressedAutomaton);
+    PacketProcessor(LCGRandom& rng, AhoCorasick& fullMatrixAutomaton, CompressedAC& compressedAutomaton);
 
     PacketType classifyPacket(const std::string& payload) const;
     bool processPacket(const std::string& sourceIP, const std::string& destIP, int sourcePort,

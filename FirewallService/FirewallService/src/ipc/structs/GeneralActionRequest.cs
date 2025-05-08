@@ -5,7 +5,7 @@ using FirewallService.ipc.structs.GeneralActionStructs;
 
 namespace FirewallService.ipc.structs;
 
-public struct GeneralActionRequest : IMessageComponent<GeneralActionRequest>
+public class GeneralActionRequest : IMessageComponent<GeneralActionRequest>
 {
     public AuthorizedUserSession Requester { get; set; }
     public string RequestBody { get; set; }

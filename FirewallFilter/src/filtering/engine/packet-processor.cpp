@@ -15,8 +15,8 @@
 
 using namespace std;
 
-PacketProcessor::PacketProcessor(AhoCorasick& fullMatrixAutomaton, CompressedAC& compressedAutomaton)
-    : random(), fullMatrixAutomaton(fullMatrixAutomaton), compressedAutomaton(compressedAutomaton)
+PacketProcessor::PacketProcessor(LCGRandom& rng, AhoCorasick& fullMatrixAutomaton, CompressedAC& compressedAutomaton)
+    : random(rng), fullMatrixAutomaton(fullMatrixAutomaton), compressedAutomaton(compressedAutomaton)
 {
 }
 

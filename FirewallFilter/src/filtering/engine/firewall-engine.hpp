@@ -2,7 +2,6 @@
 #define FIREWALL_ENGINE_HPP
 
 #include "../rules/firewall-rule.hpp"
-#include "../enforcers/ip-port-enforcer.hpp"
 #include "../enforcers/payload-length-enforcer.hpp"
 #include "../enforcers/rate-limit-enforcer.hpp"
 #include "../enforcers/regex-enforcer.hpp"
@@ -17,7 +16,7 @@ public:
     FirewallEngine();
 
     // Load firewall rules into the system
-    void loadRules(const std::vector<FirewallRule>& rules);
+    void loadRules(std::vector<FirewallRule>& rules);
 
     // Process an incoming packet and return whether it should be allowed
     bool processPacket(const std::string& sourceIP, const std::string& destIP,

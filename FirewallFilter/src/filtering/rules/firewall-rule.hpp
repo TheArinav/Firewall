@@ -31,11 +31,17 @@ public:
     const TCPStateEnforcer& getTCPStateEnforcer() const;
     const TLSFingerprintEnforcer& getTLSEnforcer() const;
 
-    bool hasPayloadLengthEnforcer() const {return payloadLengthEnforcer.has_value()}
+    bool hasPayloadLengthEnforcer() const {return payloadLengthEnforcer.has_value();}
     bool hasRegexEnforcer() const {return !regexEnforcers.empty();}
     bool hasRateLimitEnforcer() const { return rateLimitEnforcer.has_value();}
     bool hasTCPStateEnforcer() const { return tcpStateEnforcer.has_value(); }
     bool hasTLSEnforcer() const { return tlsEnforcer.has_value(); }
+
+    FirewallRule(const FirewallRule&) = delete;
+    FirewallRule& operator=(const FirewallRule&) = delete;
+    FirewallRule(FirewallRule&&) noexcept = default;
+    FirewallRule& operator=(FirewallRule&&) noexcept = default;
+
 
 private:
     std::string ruleID;

@@ -7,8 +7,8 @@ using namespace std;
 
 FirewallEngine::FirewallEngine() {}
 
-void FirewallEngine::loadRules(const vector<FirewallRule>& rules) {
-    firewallRules = rules;
+void FirewallEngine::loadRules( vector<FirewallRule>& rules) {
+    firewallRules = move (rules);
 
     // Load regex-based rules into Aho-Corasick
     vector<string> regexPatterns;
@@ -31,9 +31,6 @@ bool FirewallEngine::processPacket(const string& sourceIP, const string& destIP,
                   " to " + destIP + ":" + to_string(destPort));
 
     for (const auto& rule : firewallRules) {
-        // Check IP/Port rules
-        if (!rule.getIpPortEnforcer().validate(sourceIP, destIP, sourcePort, destPort))
-            continue; // Move to next rule
 
         // Check payload length
         if (!rule.getPayloadLengthEnforcer().validate(payload.size()))

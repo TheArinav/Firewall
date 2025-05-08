@@ -227,6 +227,18 @@ FirewallFilter_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 FirewallFilter_SOURCE_DIR:STATIC=/home/ariel/Documents/github/Firewall/FirewallFilter
 
+//Arguments to supply to pkg-config
+PKG_CONFIG_ARGN:STRING=
+
+//pkg-config executable
+PKG_CONFIG_EXECUTABLE:FILEPATH=/usr/bin/pkg-config
+
+//Path to a library.
+pkgcfg_lib_NFQ_netfilter_queue:FILEPATH=/usr/lib/aarch64-linux-gnu/libnetfilter_queue.so
+
+//Path to a library.
+pkgcfg_lib_NFQ_nfnetlink:FILEPATH=/usr/lib/aarch64-linux-gnu/libnfnetlink.so
+
 
 ########################
 # INTERNAL cache entries
@@ -375,10 +387,58 @@ CMAKE_TAPI-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Details about finding PkgConfig
+FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[/usr/bin/pkg-config][v1.8.1()]
+NFQ_CFLAGS:INTERNAL=-I/usr/include
+NFQ_CFLAGS_I:INTERNAL=
+NFQ_CFLAGS_OTHER:INTERNAL=
+NFQ_FOUND:INTERNAL=1
+NFQ_INCLUDEDIR:INTERNAL=/usr/include
+NFQ_INCLUDE_DIRS:INTERNAL=/usr/include
+NFQ_LDFLAGS:INTERNAL=-L/usr/lib/aarch64-linux-gnu;-lnetfilter_queue;-lnfnetlink
+NFQ_LDFLAGS_OTHER:INTERNAL=
+NFQ_LIBDIR:INTERNAL=/usr/lib/aarch64-linux-gnu
+NFQ_LIBRARIES:INTERNAL=netfilter_queue;nfnetlink
+NFQ_LIBRARY_DIRS:INTERNAL=/usr/lib/aarch64-linux-gnu
+NFQ_LIBS:INTERNAL=
+NFQ_LIBS_L:INTERNAL=
+NFQ_LIBS_OTHER:INTERNAL=
+NFQ_LIBS_PATHS:INTERNAL=
+NFQ_MODULE_NAME:INTERNAL=libnetfilter_queue
+NFQ_PREFIX:INTERNAL=/usr
+NFQ_STATIC_CFLAGS:INTERNAL=-I/usr/include
+NFQ_STATIC_CFLAGS_I:INTERNAL=
+NFQ_STATIC_CFLAGS_OTHER:INTERNAL=
+NFQ_STATIC_INCLUDE_DIRS:INTERNAL=/usr/include
+NFQ_STATIC_LDFLAGS:INTERNAL=-L/usr/lib/aarch64-linux-gnu;-lnetfilter_queue;-lnfnetlink
+NFQ_STATIC_LDFLAGS_OTHER:INTERNAL=
+NFQ_STATIC_LIBDIR:INTERNAL=
+NFQ_STATIC_LIBRARIES:INTERNAL=netfilter_queue;nfnetlink
+NFQ_STATIC_LIBRARY_DIRS:INTERNAL=/usr/lib/aarch64-linux-gnu
+NFQ_STATIC_LIBS:INTERNAL=
+NFQ_STATIC_LIBS_L:INTERNAL=
+NFQ_STATIC_LIBS_OTHER:INTERNAL=
+NFQ_STATIC_LIBS_PATHS:INTERNAL=
+NFQ_VERSION:INTERNAL=1.0.5
+NFQ_libnetfilter_queue_INCLUDEDIR:INTERNAL=
+NFQ_libnetfilter_queue_LIBDIR:INTERNAL=
+NFQ_libnetfilter_queue_PREFIX:INTERNAL=
+NFQ_libnetfilter_queue_VERSION:INTERNAL=
+//ADVANCED property for variable: PKG_CONFIG_ARGN
+PKG_CONFIG_ARGN-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
+PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
 //linker supports push/pop state
 _CMAKE_CXX_LINKER_PUSHPOP_STATE_SUPPORTED:INTERNAL=TRUE
 //linker supports push/pop state
 _CMAKE_C_LINKER_PUSHPOP_STATE_SUPPORTED:INTERNAL=TRUE
 //linker supports push/pop state
 _CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED:INTERNAL=TRUE
+__pkg_config_arguments_NFQ:INTERNAL=REQUIRED;libnetfilter_queue
+__pkg_config_checked_NFQ:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_NFQ_netfilter_queue
+pkgcfg_lib_NFQ_netfilter_queue-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_NFQ_nfnetlink
+pkgcfg_lib_NFQ_nfnetlink-ADVANCED:INTERNAL=1
+prefix_result:INTERNAL=/usr/lib/aarch64-linux-gnu
 
