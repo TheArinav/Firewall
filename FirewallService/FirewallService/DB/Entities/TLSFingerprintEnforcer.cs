@@ -5,6 +5,7 @@ public class TLSFingerprintEnforcer : IDataBaseEntity<TLSFingerprintEnforcer>
 {
     public string EnforcerID { get; set; }
     public List<string> AllowedFingerprints { get; set; }
+    public bool IsActive { get; set; }
 
     // Navigation property
     public Enforcer Enforcer { get; set; }

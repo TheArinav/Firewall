@@ -5,6 +5,7 @@ public class EncryptedTunnelDetectionEnforcer : IDataBaseEntity<EncryptedTunnelD
 {
     public string EnforcerID { get; set; }
     public double MaxEntropy { get; set; }
+    public bool IsActive { get; set; }
 
     // Navigation property
     public Enforcer Enforcer { get; set; }

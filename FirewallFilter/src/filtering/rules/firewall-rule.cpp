@@ -56,3 +56,12 @@ const TCPStateEnforcer& FirewallRule::getTCPStateEnforcer() const
 const TLSFingerprintEnforcer& FirewallRule::getTLSEnforcer() const {
     return *tlsEnforcer;
 }
+
+void FirewallRule::setConnectionFilter(const EndpointFilter& filter) {
+    connectionFilter = filter;
+}
+
+const EndpointFilter& FirewallRule::getConnectionFilter() const {
+    return connectionFilter;
+}
+

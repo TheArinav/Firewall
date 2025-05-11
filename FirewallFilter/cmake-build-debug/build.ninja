@@ -49,13 +49,6 @@ cmake_ninja_workdir = /home/ariel/Documents/github/Firewall/FirewallFilter/cmake
 
 build cmake_object_order_depends_target_FirewallFilter: phony || .
 
-build CMakeFiles/FirewallFilter.dir/main.cpp.o: CXX_COMPILER__FirewallFilter_unscanned_Debug /home/ariel/Documents/github/Firewall/FirewallFilter/main.cpp || cmake_object_order_depends_target_FirewallFilter
-  DEP_FILE = CMakeFiles/FirewallFilter.dir/main.cpp.o.d
-  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  INCLUDES = -I/home/ariel/Documents/github/Firewall/FirewallFilter/src
-  OBJECT_DIR = CMakeFiles/FirewallFilter.dir
-  OBJECT_FILE_DIR = CMakeFiles/FirewallFilter.dir
-
 build CMakeFiles/FirewallFilter.dir/src/filtering/automata/aho-corasick.cpp.o: CXX_COMPILER__FirewallFilter_unscanned_Debug /home/ariel/Documents/github/Firewall/FirewallFilter/src/filtering/automata/aho-corasick.cpp || cmake_object_order_depends_target_FirewallFilter
   DEP_FILE = CMakeFiles/FirewallFilter.dir/src/filtering/automata/aho-corasick.cpp.o.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
@@ -203,6 +196,13 @@ build CMakeFiles/FirewallFilter.dir/src/ipc/server-connect.cpp.o: CXX_COMPILER__
   OBJECT_DIR = CMakeFiles/FirewallFilter.dir
   OBJECT_FILE_DIR = CMakeFiles/FirewallFilter.dir/src/ipc
 
+build CMakeFiles/FirewallFilter.dir/demo/demo-main.cpp.o: CXX_COMPILER__FirewallFilter_unscanned_Debug /home/ariel/Documents/github/Firewall/FirewallFilter/demo/demo-main.cpp || cmake_object_order_depends_target_FirewallFilter
+  DEP_FILE = CMakeFiles/FirewallFilter.dir/demo/demo-main.cpp.o.d
+  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
+  INCLUDES = -I/home/ariel/Documents/github/Firewall/FirewallFilter/src
+  OBJECT_DIR = CMakeFiles/FirewallFilter.dir
+  OBJECT_FILE_DIR = CMakeFiles/FirewallFilter.dir/demo
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target FirewallFilter
@@ -211,7 +211,7 @@ build CMakeFiles/FirewallFilter.dir/src/ipc/server-connect.cpp.o: CXX_COMPILER__
 #############################################
 # Link the executable FirewallFilter
 
-build FirewallFilter: CXX_EXECUTABLE_LINKER__FirewallFilter_Debug CMakeFiles/FirewallFilter.dir/main.cpp.o CMakeFiles/FirewallFilter.dir/src/filtering/automata/aho-corasick.cpp.o CMakeFiles/FirewallFilter.dir/src/filtering/automata/compressed-ac.cpp.o CMakeFiles/FirewallFilter.dir/src/filtering/enforcers/encrypted-tunnel-detection-enforcer.cpp.o CMakeFiles/FirewallFilter.dir/src/filtering/enforcers/payload-length-enforcer.cpp.o CMakeFiles/FirewallFilter.dir/src/filtering/enforcers/rate-limit-enforcer.cpp.o CMakeFiles/FirewallFilter.dir/src/filtering/enforcers/regex-enforcer.cpp.o CMakeFiles/FirewallFilter.dir/src/filtering/enforcers/tcp-state-enforcer.cpp.o CMakeFiles/FirewallFilter.dir/src/filtering/enforcers/tls-fingerprint-enforcer.cpp.o CMakeFiles/FirewallFilter.dir/src/filtering/engine/firewall-engine.cpp.o CMakeFiles/FirewallFilter.dir/src/filtering/engine/nfq_handler.cpp.o CMakeFiles/FirewallFilter.dir/src/filtering/engine/packet-processor.cpp.o CMakeFiles/FirewallFilter.dir/src/filtering/filtering.cpp.o CMakeFiles/FirewallFilter.dir/src/filtering/rules/firewall-rule.cpp.o CMakeFiles/FirewallFilter.dir/src/filtering/rules/rule-parser.cpp.o CMakeFiles/FirewallFilter.dir/src/filtering/tcp/connection-tracker.cpp.o CMakeFiles/FirewallFilter.dir/src/filtering/utils/LCGRandom.cpp.o CMakeFiles/FirewallFilter.dir/src/filtering/utils/cpu-monitor.cpp.o CMakeFiles/FirewallFilter.dir/src/filtering/utils/helpers.cpp.o CMakeFiles/FirewallFilter.dir/src/filtering/utils/logger.cpp.o CMakeFiles/FirewallFilter.dir/src/filtering/utils/perf-monitor.cpp.o CMakeFiles/FirewallFilter.dir/src/ipc/server-connect.cpp.o
+build FirewallFilter: CXX_EXECUTABLE_LINKER__FirewallFilter_Debug CMakeFiles/FirewallFilter.dir/src/filtering/automata/aho-corasick.cpp.o CMakeFiles/FirewallFilter.dir/src/filtering/automata/compressed-ac.cpp.o CMakeFiles/FirewallFilter.dir/src/filtering/enforcers/encrypted-tunnel-detection-enforcer.cpp.o CMakeFiles/FirewallFilter.dir/src/filtering/enforcers/payload-length-enforcer.cpp.o CMakeFiles/FirewallFilter.dir/src/filtering/enforcers/rate-limit-enforcer.cpp.o CMakeFiles/FirewallFilter.dir/src/filtering/enforcers/regex-enforcer.cpp.o CMakeFiles/FirewallFilter.dir/src/filtering/enforcers/tcp-state-enforcer.cpp.o CMakeFiles/FirewallFilter.dir/src/filtering/enforcers/tls-fingerprint-enforcer.cpp.o CMakeFiles/FirewallFilter.dir/src/filtering/engine/firewall-engine.cpp.o CMakeFiles/FirewallFilter.dir/src/filtering/engine/nfq_handler.cpp.o CMakeFiles/FirewallFilter.dir/src/filtering/engine/packet-processor.cpp.o CMakeFiles/FirewallFilter.dir/src/filtering/filtering.cpp.o CMakeFiles/FirewallFilter.dir/src/filtering/rules/firewall-rule.cpp.o CMakeFiles/FirewallFilter.dir/src/filtering/rules/rule-parser.cpp.o CMakeFiles/FirewallFilter.dir/src/filtering/tcp/connection-tracker.cpp.o CMakeFiles/FirewallFilter.dir/src/filtering/utils/LCGRandom.cpp.o CMakeFiles/FirewallFilter.dir/src/filtering/utils/cpu-monitor.cpp.o CMakeFiles/FirewallFilter.dir/src/filtering/utils/helpers.cpp.o CMakeFiles/FirewallFilter.dir/src/filtering/utils/logger.cpp.o CMakeFiles/FirewallFilter.dir/src/filtering/utils/perf-monitor.cpp.o CMakeFiles/FirewallFilter.dir/src/ipc/server-connect.cpp.o CMakeFiles/FirewallFilter.dir/demo/demo-main.cpp.o
   FLAGS = -g
   LINK_LIBRARIES = -lnetfilter_queue  -lnfnetlink
   OBJECT_DIR = CMakeFiles/FirewallFilter.dir

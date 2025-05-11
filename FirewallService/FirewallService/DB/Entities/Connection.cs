@@ -11,6 +11,8 @@ public class Connection : IDataBaseEntity<Connection>
     public string IPv6Address { get; set; }
     public string Port { get; set; }
     public string ConnectionClassID { get; set; }
+    
+    public bool IsActive { get; set; }
 
     // Navigation properties
     public ConnectionClass ConnectionClass { get; set; }

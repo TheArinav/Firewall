@@ -10,6 +10,7 @@ public class Packet : IDataBaseEntity<Packet>
     public byte[] Payload { get; set; }
     public string Source { get; set; }
     public string Destination { get; set; }
+    public bool IsActive { get; set; }
 
     // Navigation properties
     public Connection SourceConnection { get; set; }

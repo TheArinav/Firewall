@@ -11,6 +11,7 @@ void initializeFirewall(std::vector<FirewallRule>& rules) {
     firewallEngine.loadRules(rules);
 }
 
+
 bool filterPacket(const std::string& sourceIP, const std::string& destIP,
                   int sourcePort, int destPort, const std::string& payload) {
     return firewallEngine.processPacket(sourceIP, destIP, sourcePort, destPort, payload);

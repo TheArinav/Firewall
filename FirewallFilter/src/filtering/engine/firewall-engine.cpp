@@ -31,13 +31,24 @@ bool FirewallEngine::processPacket(const string& sourceIP, const string& destIP,
                   " to " + destIP + ":" + to_string(destPort));
 
     for (const auto& rule : firewallRules) {
+        const auto& filter = rule.getConnectionFilter();
+        if (!filter.matches(sourceIP, destIP, sourcePort, destPort)) {
+            continue;
+        }
 
         // Check payload length
         if (!rule.getPayloadLengthEnforcer().validate(payload.size()))
             continue;
 
         // Check regex-based filtering
-        if (!fullMatrixAutomaton.search(payload))
+        bool matched = false;
+        for (const auto& enforcer : rule.getRegexEnforcers()) {
+            if (enforcer.validate(payload)) {
+                matched = true;
+                break;
+            }
+        }
+        if (!matched)
             continue;
 
         // Check TLS fingerprinting if applicable

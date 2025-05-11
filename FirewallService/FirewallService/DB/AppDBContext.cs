@@ -12,7 +12,6 @@ public class AppDBContext : DbContext
     public DbSet<Packet> Packets { get; set; }
     public DbSet<PayloadLengthEnforcer> PayloadLengthEnforcers { get; set; }
     public DbSet<EncryptedTunnelDetectionEnforcer> EncryptedTunnelDetectionEnforcers { get; set; }
-    public DbSet<ProtocolEnforcer> ProtocolEnforcers { get; set; }
     public DbSet<RateLimitEnforcer> RateLimitingEnforcers { get; set; }
     public DbSet<RegexEnforcer> RegexEnforcers { get; set; }
     public DbSet<TLSFingerprintEnforcer> TlsFingerprintEnforcers { get; set; }
@@ -35,7 +34,6 @@ public class AppDBContext : DbContext
         modelBuilder.Entity<PayloadLengthEnforcer>().HasKey(p => p.EnforcerID);
         modelBuilder.Entity<EncryptedTunnelDetectionEnforcer>().HasKey(p => p.EnforcerID);
         modelBuilder.Entity<EncryptedTunnelIntegrityEnforcer>().HasKey(p => p.EnforcerID);
-        modelBuilder.Entity<ProtocolEnforcer>().HasKey(p => p.EnforcerID);
         modelBuilder.Entity<RegexEnforcer>().HasKey(p => p.EnforcerID);
         modelBuilder.Entity<RateLimitEnforcer>().HasKey(p => p.EnforcerID);
         modelBuilder.Entity<TLSFingerprintEnforcer>().HasKey(p => p.EnforcerID);
@@ -75,11 +73,6 @@ public class AppDBContext : DbContext
         modelBuilder.Entity<EncryptedTunnelIntegrityEnforcer>()
             .HasOne(p => p.Enforcer)
             .WithMany(e => e.EncryptedTunnelIntegrityEnforcers)
-            .HasForeignKey(p => p.EnforcerID);
-        
-        modelBuilder.Entity<ProtocolEnforcer>()
-            .HasOne(p => p.Enforcer)
-            .WithMany(e => e.ProtocolEnforcers)
             .HasForeignKey(p => p.EnforcerID);
         
         modelBuilder.Entity<RegexEnforcer>()

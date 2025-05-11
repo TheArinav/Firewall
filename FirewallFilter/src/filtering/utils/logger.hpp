@@ -6,7 +6,13 @@
 #include <string>
 #include <mutex>
 
-enum class LogLevel { INFO, DEBUG, WARNING, ERROR };
+enum class LogLevel {
+    ERROR = 3,
+    WARNING = 2,
+    INFO = 1,
+    DEBUG = 0
+};
+
 
 class Logger {
 public:

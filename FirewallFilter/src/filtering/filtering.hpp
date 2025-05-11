@@ -6,7 +6,7 @@
 #include <string>
 
 // Initialize firewall with rules
-void initializeFirewall(const std::vector<FirewallRule>& rules);
+void initializeFirewall(std::vector<FirewallRule>& rules);
 
 // Process an incoming packet
 bool filterPacket(const std::string& sourceIP, const std::string& destIP,

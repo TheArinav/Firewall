@@ -16,7 +16,7 @@ public class ActionManager(DBManager manager)
     {
         var action = req.GetAction();
         // Delegate DB related requests to DBManager.
-        if ((int)action?.Subject! > 6)
+        if ((int)action?.Subject! > 7)
         {
             var ret =  Manager.HandleRequest(action);
             if (FileManager.AuthManager.MainObject != null)
@@ -61,7 +61,7 @@ public class ActionManager(DBManager manager)
 
                 try
                 {
-                    var decoded = Encoding.UTF8.GetString(Convert.FromBase64String(action.Arguments));
+                    var decoded = Encoding.UTF8.GetString(Convert.FromBase64String(action.Arguments[0]));
                     if (decoded == "*")
                     {
                         var plainstr = JsonConvert.SerializeObject(Collections.Tunnels);

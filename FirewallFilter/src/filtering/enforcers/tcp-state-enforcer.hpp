@@ -9,10 +9,17 @@
 class TCPStateEnforcer {
 public:
     TCPStateEnforcer();
-    TCPStateEnforcer(TCPStateEnforcer&&) noexcept = delete;
+    TCPStateEnforcer(TCPStateEnforcer&& other) noexcept {
+        tracker = std::move(other.tracker);
+    }
+
     TCPStateEnforcer& operator=(TCPStateEnforcer& other) noexcept;
 
-    TCPStateEnforcer(const TCPStateEnforcer&) = delete;
+    TCPStateEnforcer& operator=(TCPStateEnforcer&& other) noexcept {
+        tracker = std::move(other.tracker);
+        return *this;
+    }
+
 
     bool validate(const std::string& srcIP, const std::string& dstIP,
                   int srcPort, int dstPort,

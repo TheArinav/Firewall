@@ -7,6 +7,7 @@ public class ConnectionClass : IDataBaseEntity<ConnectionClass>
     public string ClassID { get; set; }
     public string ClassName { get; set; }
     public string Description { get; set; }
+    public bool IsActive { get; set; }
 
     // Navigation property
     public ICollection<Connection> Connections { get; set; }

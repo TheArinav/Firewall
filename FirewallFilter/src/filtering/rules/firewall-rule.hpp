@@ -10,6 +10,22 @@
 #include <string>
 #include <optional>
 
+struct EndpointFilter {
+    std::string srcIP;
+    std::string dstIP;
+    int srcPort;
+    int dstPort;
+
+    bool matches(const std::string& packetSrcIP, const std::string& packetDstIP,
+                 int packetSrcPort, int packetDstPort) const {
+        return (srcIP == packetSrcIP || srcIP == "*") &&
+               (dstIP == packetDstIP || dstIP == "*") &&
+               (srcPort == packetSrcPort || srcPort == -1) &&
+               (dstPort == packetDstPort || dstPort == -1);
+    }
+};
+
+
 class FirewallRule {
 public:
     FirewallRule(const std::string& id, bool active = true);
@@ -43,7 +59,12 @@ public:
     FirewallRule& operator=(FirewallRule&&) noexcept = default;
 
 
+    void setConnectionFilter(const EndpointFilter& filter);
+    const EndpointFilter& getConnectionFilter() const;
+
 private:
+    EndpointFilter connectionFilter;
+
     std::string ruleID;
     bool activeStatus;
 

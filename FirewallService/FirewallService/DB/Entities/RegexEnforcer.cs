@@ -5,6 +5,7 @@ public class RegexEnforcer : IDataBaseEntity<RegexEnforcer>
 {
     public string EnforcerID { get; set; }
     public string Pattern { get; set; }
+    public bool IsActive { get; set; }
 
     // Navigation property
     public Enforcer Enforcer { get; set; }

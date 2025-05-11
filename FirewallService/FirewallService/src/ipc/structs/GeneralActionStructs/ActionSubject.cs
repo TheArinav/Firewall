@@ -8,13 +8,14 @@ public enum ActionSubject
     Protocol           = 2,
     Rule               = 3,
     Record             = 4,
-    Packet             = 5,
+    Enforcer           = 5,
+    Packet             = 6,
     #endregion
     #region Manager-Specific Entities
-    EncryptedTunnelKey = 6,
-    EncryptedTunnel    = 7,
-    User               = 8,
-    UserPermission     = 9,
+    EncryptedTunnelKey = 7,
+    EncryptedTunnel    = 8,
+    User               = 9,
+    UserPermission     = 10,
     #endregion
     
 }

@@ -8,6 +8,7 @@ public class Record : IDataBaseEntity<Record>
     public DateTime Timestamp { get; set; }
     public string PacketID { get; set; }
     public string RuleID { get; set; }
+    public bool IsActive { get; set; }
 
     // Navigation properties
     public Packet Packet { get; set; }
