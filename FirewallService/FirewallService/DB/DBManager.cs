@@ -111,6 +111,7 @@ public class DBManager
        
         if (curArg == 0)
             queryExpression = queryExpression.Replace("#1", generalActionRequest.Arguments[0]);
-        
+
+        return new Response();
     }
 }

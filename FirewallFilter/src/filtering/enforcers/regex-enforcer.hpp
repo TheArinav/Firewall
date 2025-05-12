@@ -4,18 +4,39 @@
 #include <string>
 #include <regex>
 
+enum class RegexMatchMode {
+    FULL_AC,
+    PARTIAL_AC,
+    FULL_REGEX
+};
+
 class RegexEnforcer {
 public:
     RegexEnforcer() = default;
-    RegexEnforcer(const std::string& pattern);
 
-    [[nodiscard]] bool validate(const std::string& payload) const;
+    // Full regex fallback constructor
+    RegexEnforcer(const std::string& pattern, bool allow);
 
-    [[nodiscard]] const std::string& getPattern() const;
+    // AC-only or partial AC
+    RegexEnforcer(const std::string& fullPattern, const std::string& acPrefix,
+                  const std::string& regexRemainder, RegexMatchMode mode, bool allow);
+
+    [[nodiscard]] bool validate(const std::string& fullPacket) const;
+
+    [[nodiscard]] const std::string& getFullPattern() const;
+    [[nodiscard]] const std::string& getACPrefix() const;
+    [[nodiscard]] RegexMatchMode getMode() const;
+    [[nodiscard]] bool isAllow() const;
 
 private:
+    RegexMatchMode matchMode;
+    bool allowAction;
+
+    std::string fullPattern;
+    std::string acPrefix;
+    std::string regexRemainder;
+
     std::regex regexPattern;
-    std::string regexPatternStr;
 };
 
 #endif // REGEX_ENFORCER_HPP

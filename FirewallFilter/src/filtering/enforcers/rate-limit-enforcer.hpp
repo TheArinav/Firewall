@@ -9,11 +9,11 @@ public:
     RateLimitEnforcer() = default;
     RateLimitEnforcer(int maxPacketsPerSecond);
 
-    bool validate(const std::string& srcIP);
+    bool validate(const std::string& srcIP) const;
 
 private:
     int maxPackets;
-    std::unordered_map<std::string, std::pair<int, std::chrono::steady_clock::time_point>> packetCounts;
+    mutable std::unordered_map<std::string, std::pair<int, std::chrono::steady_clock::time_point>> packetCounts;
 };
 
 #endif // RATE_LIMIT_ENFORCER_HPP

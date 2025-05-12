@@ -11,9 +11,10 @@
 #include <vector>
 #include <string>
 
+#include "packet-processor.hpp"
+
 class FirewallEngine {
 public:
-    FirewallEngine();
 
     // Load firewall rules into the system
     void loadRules(std::vector<FirewallRule>& rules);
@@ -26,6 +27,7 @@ private:
     std::vector<FirewallRule> firewallRules;
     AhoCorasick fullMatrixAutomaton;
     CompressedAC compressedAutomaton;
+    std::unique_ptr<PacketProcessor> processor;
 };
 
 #endif // FIREWALL_ENGINE_HPP

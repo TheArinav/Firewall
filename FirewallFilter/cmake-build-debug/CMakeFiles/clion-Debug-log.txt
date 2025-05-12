@@ -1,4 +1,4 @@
 /home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/ninja/linux/aarch64/ninja -G Ninja -S /home/ariel/Documents/github/Firewall/FirewallFilter -B /home/ariel/Documents/github/Firewall/FirewallFilter/cmake-build-debug
--- Configuring done (0.0s)
--- Generating done (0.0s)
+-- Configuring done (0.1s)
+-- Generating done (0.1s)
 -- Build files have been written to: /home/ariel/Documents/github/Firewall/FirewallFilter/cmake-build-debug

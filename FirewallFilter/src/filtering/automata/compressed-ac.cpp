@@ -1,68 +1,53 @@
 #include "compressed-ac.hpp"
 
-using namespace std;
+#include "filtering/rules/firewall-rule.hpp"
 
-CompressedAC::CompressedAC() {
-    states.emplace_back();  // Root state
+void CompressedAC::addPattern(const ACConnectionKey& conn,
+                              const std::string& pattern,
+                              const MatchTarget& target) {
+    auto& aut = automata_[conn];
+    int st = 0;
+    for (unsigned char ch : pattern) {
+        if (aut.nodes[st].next[ch] == -1) {
+            aut.nodes[st].next[ch] = aut.nodes.size();
+            aut.nodes.emplace_back();
+        }
+        st = aut.nodes[st].next[ch];
+    }
+    aut.nodes[st].outputs.push_back(target);
 }
 
-void CompressedAC::buildAutomaton(const vector<string>& patterns) {
-    // Step 1: Insert patterns into Trie structure
-    for (const string& pattern : patterns) {
-        int currentState = 0;
-        for (char ch : pattern) {
-            if (states[currentState].transitions[ch] == -1) {
-                states[currentState].transitions[ch] = states.size();
-                states.emplace_back();
-            }
-            currentState = states[currentState].transitions[ch];
-        }
-        states[currentState].isEndOfPattern = true;
-    }
-
-    // Step 2: Build Failure Links using BFS
-    queue<int> q;
-    for (int i = 0; i < COMPRESSED_ALPHABET_SIZE; i++) {
-        if (states[0].transitions[i] != -1) {
-            states[states[0].transitions[i]].failureLink = 0;
-            q.push(states[0].transitions[i]);
-        }
-    }
-
-    while (!q.empty()) {
-        int stateIdx = q.front();
-        q.pop();
-
-        for (int i = 0; i < COMPRESSED_ALPHABET_SIZE; i++) {
-            int transition = states[stateIdx].transitions[i];
-            if (transition == -1) continue;
-
-            int failure = states[stateIdx].failureLink;
-            while (failure && states[failure].transitions[i] == -1)
-                failure = states[failure].failureLink;
-
-            states[transition].failureLink = (states[failure].transitions[i] != -1)
-                ? states[failure].transitions[i]
-                : 0;
-
-            states[transition].isEndOfPattern |= states[states[transition].failureLink].isEndOfPattern;
-            q.push(transition);
-        }
+void CompressedAC::build() {
+    for (auto& kv : automata_) {
+        kv.second.buildFailure();
     }
 }
 
-bool CompressedAC::search(const string& text) const {
-    int currentState = 0;
+std::vector<MatchTarget>
+CompressedAC::search(const ACConnectionKey& conn, const std::string& text) const {
+    std::vector<MatchTarget> result;
 
-    for (char ch : text) {
-        while (currentState && states[currentState].transitions[ch] == -1)
-            currentState = states[currentState].failureLink;
-
-        currentState = (states[currentState].transitions[ch] != -1) ? states[currentState].transitions[ch] : 0;
-
-        if (states[currentState].isEndOfPattern)
-            return true; // Match found
+    // exact
+    auto it = automata_.find(conn);
+    if (it != automata_.end()) {
+        auto v = it->second.search(text);
+        result.insert(result.end(), v.begin(), v.end());
     }
 
-    return false;
+    // wildcard/fallback
+    for (auto const& [patternKey, aut] : automata_) {
+        if (patternKey == conn) continue;
+        EndpointFilter f{
+            patternKey.srcIP,
+            patternKey.dstIP,
+            patternKey.srcPort,
+            patternKey.dstPort
+        };
+        if (f.matches(conn.srcIP, conn.dstIP, conn.srcPort, conn.dstPort)) {
+            auto v = aut.search(text);
+            result.insert(result.end(), v.begin(), v.end());
+        }
+    }
+
+    return result;
 }

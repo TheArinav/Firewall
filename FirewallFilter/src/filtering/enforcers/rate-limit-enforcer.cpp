@@ -5,7 +5,7 @@ using namespace std;
 RateLimitEnforcer::RateLimitEnforcer(int maxPacketsPerSecond)
     : maxPackets(maxPacketsPerSecond) {}
 
-bool RateLimitEnforcer::validate(const string& srcIP) {
+bool RateLimitEnforcer::validate(const string& srcIP) const {
     auto now = chrono::steady_clock::now();
     auto& entry = packetCounts[srcIP];
 

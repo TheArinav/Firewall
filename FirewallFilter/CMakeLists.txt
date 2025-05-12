@@ -20,7 +20,10 @@ link_directories(${NFQ_LIBRARY_DIRS})
 # Create the executable
 #add_executable(FirewallFilter main.cpp ${SOURCES}
 add_executable(FirewallFilter ${SOURCES}
-        demo/demo-main.cpp # Link system libraries
+        demo/demo-main.cpp
+        src/filtering/automata/ac-util.hpp
+        src/filtering/automata/regex-ac-extractor.hpp
+        src/filtering/automata/regex-ac-extractor.cpp # Link system libraries
 )
 
 # Link system libraries

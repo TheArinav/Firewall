@@ -6,6 +6,8 @@
 #include "../enforcers/regex-enforcer.hpp"
 #include "../enforcers/tls-fingerprint-enforcer.hpp"
 #include "../enforcers/tcp-state-enforcer.hpp"
+#include "../enforcers/encrypted-tunnel-detection-enforcer.hpp"
+#include "../enforcers/encrypted-tunnel-detection-enforcer.hpp"
 #include <vector>
 #include <string>
 #include <optional>
@@ -37,6 +39,7 @@ public:
     void addRateLimitEnforcer(const RateLimitEnforcer& enforcer);
     void addTCPStateEnforcer(TCPStateEnforcer& enforcer);
     void addTLSEnforcer(const TLSFingerprintEnforcer& enforcer);
+    void addTunnelDetectionEnforcer(const TunnelDetectionEnforcer& enforcer);
 
     // Getters
     std::string getRuleID() const;
@@ -46,12 +49,14 @@ public:
     const RateLimitEnforcer& getRateLimitEnforcer() const;
     const TCPStateEnforcer& getTCPStateEnforcer() const;
     const TLSFingerprintEnforcer& getTLSEnforcer() const;
+    const TunnelDetectionEnforcer& getTunnelDetectionEnforcer() const;
 
     bool hasPayloadLengthEnforcer() const {return payloadLengthEnforcer.has_value();}
     bool hasRegexEnforcer() const {return !regexEnforcers.empty();}
     bool hasRateLimitEnforcer() const { return rateLimitEnforcer.has_value();}
     bool hasTCPStateEnforcer() const { return tcpStateEnforcer.has_value(); }
     bool hasTLSEnforcer() const { return tlsEnforcer.has_value(); }
+    bool hasTunnelDetectionEnforcer() const { return tunnelDetectionEnforcer.has_value(); }
 
     FirewallRule(const FirewallRule&) = delete;
     FirewallRule& operator=(const FirewallRule&) = delete;
@@ -74,6 +79,7 @@ private:
     std::optional<RateLimitEnforcer> rateLimitEnforcer;
     std::optional<TCPStateEnforcer> tcpStateEnforcer;
     std::optional<TLSFingerprintEnforcer> tlsEnforcer;
+    std::optional<TunnelDetectionEnforcer> tunnelDetectionEnforcer;
 };
 
 #endif // FIREWALL_RULE_HPP

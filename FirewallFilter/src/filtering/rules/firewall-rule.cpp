@@ -28,6 +28,11 @@ void FirewallRule::addTLSEnforcer(const TLSFingerprintEnforcer& enforcer) {
     *tlsEnforcer = enforcer;
 }
 
+void FirewallRule::addTunnelDetectionEnforcer(const TunnelDetectionEnforcer& enforcer)
+{
+    *tunnelDetectionEnforcer = enforcer;
+}
+
 std::string FirewallRule::getRuleID() const {
     return ruleID;
 }
@@ -55,6 +60,11 @@ const TCPStateEnforcer& FirewallRule::getTCPStateEnforcer() const
 
 const TLSFingerprintEnforcer& FirewallRule::getTLSEnforcer() const {
     return *tlsEnforcer;
+}
+
+const TunnelDetectionEnforcer& FirewallRule::getTunnelDetectionEnforcer() const
+{
+    return *tunnelDetectionEnforcer;
 }
 
 void FirewallRule::setConnectionFilter(const EndpointFilter& filter) {

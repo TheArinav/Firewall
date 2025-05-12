@@ -17,7 +17,7 @@ LCGRandom::~LCGRandom()
     this->state = 0;
 }
 
-int LCGRandom::NextInt(const int start, const int offset)
+int LCGRandom::NextInt(const int start, const int offset) const
 {
     this->state = LCG_A * this->state + LCG_C;
     return static_cast<int>(this->state % (offset - start) + start);
