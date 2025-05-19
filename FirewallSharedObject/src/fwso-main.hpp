@@ -9,6 +9,8 @@
 #include <keyutils.h>
 #include <cstring>
 
+#include "structs/general-request-wrapper.hpp"
+
 #define AES_KEY_SIZE 32
 
 using namespace std;
@@ -31,6 +33,7 @@ namespace fwso::api {
         key_serial_t aes_key_id;
         key_serial_t st_key_id;
         int sockfd;
+        long int uid;
 
         void init();
 
@@ -44,12 +47,14 @@ namespace fwso::api {
         key_serial_t store_secure_session_token(vector<unsigned char>& bytes);
         void remove_secure_session_token(key_serial_t key_id);
         static vector<unsigned char> get_secure_session_token(key_serial_t  key_id);
-        string encrypt_RSA(string raw);
+        [[nodiscard]] string encrypt_RSA(string raw);
 
-        string decrypt_AES(const string &ct);
-        string encrypt_AES(const string &raw);
+        [[nodiscard]] string decrypt_AES(const string &ct) const;
+        [[nodiscard]] string encrypt_AES(const string &raw) const;
 
         void send_message(const string &message, string &resp);
+
+        int handle_request(structs::GeneralRequestWrapper& request, std::string& response) ;
 
     public:
         const string SOCKET_PATH = "/run/firewall_uds_epoll_server.sock";
@@ -61,6 +66,8 @@ namespace fwso::api {
         ~fwso_api();
 
         int fw_connect(long int id, const string &key, string &resp_out);
+
+        int fw_test_req(string& response_out);
     };
 }
 

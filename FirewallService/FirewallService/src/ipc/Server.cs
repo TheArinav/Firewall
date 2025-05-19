@@ -2,12 +2,17 @@
 using System.Collections.Concurrent;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
+using System.Security;
+using System.Security.Cryptography;
 using System.Text;
-using FirewallService.auth;
-using FirewallService.auth.structs;
+using FirewallService.managers;
+using FirewallService.managers.structs;
 using FirewallService.DB;
 using FirewallService.DB.Entities;
+using FirewallService.DB.util;
 using FirewallService.ipc.structs;
+using FirewallService.ipc.structs.GeneralActionStructs;
+using FirewallService.NativeInterop;
 using FirewallService.util;
 using Microsoft.VisualBasic;
 using static FirewallService.ipc.Epoll;
@@ -30,8 +35,7 @@ namespace FirewallService.ipc
 
     public class Server : IDisposable
     {
-        private readonly AuthManager _authManager;
-        private readonly DBManager _dbManager;
+        
         private const int MAX_ACTIVE = 128;
         private const int MAX_IDLE = 64;
         private const int MAX_EVENTS = MAX_ACTIVE + MAX_IDLE;
@@ -39,8 +43,8 @@ namespace FirewallService.ipc
         private const string SOCKET_PATH = "/run/firewall_uds_epoll_server.sock";
         private readonly ConcurrentQueue<string> _packetQueue;
         
-        public delegate void OnPacketReceived<T1,T2,T3>(T1 a, out T1 b, out T2 c, out T3 d);
-        public event OnPacketReceived<string,bool,long> PacketReceived;
+        public delegate void OnPacketReceived<T1,T2,T3,T4>(T1 a, T4 f, out T1 b, out T2 c, out T3 d, out T2 e);
+        public event OnPacketReceived<string,bool,long,int> PacketReceived;
 
         private int _epollFd;
         private Cache<Session?> _idleSessions;
@@ -53,20 +57,20 @@ namespace FirewallService.ipc
         
         private readonly ConcurrentDictionary<string, long> _usedNonces = new(); // Nonce → Timestamp
         private const int TIMESTAMP_TOLERANCE = 30; // Allow timestamps up to 30 seconds old
-
+        
+        private bool _ceWarningProvided = false;
+        
         public Server()
         {
-            FileManager.Init();
+            GeneralManager.Init();
             _epollFd = -1;
             _packetQueue = new ConcurrentQueue<string>();
-            _dbManager = new DBManager();
-            FileManager.ActionManager = new ActionManager(_dbManager);
-            _authManager = new AuthManager();
+            GeneralManager.ActionManager = new ActionManager();
             PacketReceived += ProcessPacket;
+            Setup();
         }
 
-        private bool CEWarningProvided = false;
-        public void Setup()
+        private void Setup()
         {
             _epollFd = epoll_create1(0);
             if (_epollFd == -1)
@@ -78,9 +82,8 @@ namespace FirewallService.ipc
             Logger.Info($"epoll_create1 returned FD: {_epollFd}");
 
             if (File.Exists(SOCKET_PATH))
-            {
                 File.Delete(SOCKET_PATH);
-            }
+            
 
             _listenerSocket = new Socket(AddressFamily.Unix, SocketType.Stream, ProtocolType.Unspecified);
             _listenerSocket.Bind(new UnixDomainSocketEndPoint(SOCKET_PATH));
@@ -127,9 +130,9 @@ namespace FirewallService.ipc
                 }
 
                 session?.Socket.Close();
-                if (CEWarningProvided) return;
+                if (_ceWarningProvided) return;
                 Logger.Warn("Idle session cache eviction, too many inactive sessions. Is the server being attacked?");
-                CEWarningProvided = true;
+                _ceWarningProvided = true;
             });
 
             Logger.Info("Server is listening for connections...");
@@ -155,13 +158,9 @@ namespace FirewallService.ipc
                 {
                     var eventFd = _events[i].data.fd;
                     if (eventFd == _listenerSocket?.Handle.ToInt32())
-                    {
                         HandleNewConnection();
-                    }
                     else if (_clientSockets.TryGetValue(eventFd, out var clientSocket))
-                    {
                         HandleClientData(clientSocket);
-                    }
                 }
             }
         }
@@ -211,25 +210,34 @@ namespace FirewallService.ipc
             try
             {
                 var bytesRead = clientSocket.Receive(buffer, SocketFlags.None);
+                var peerPID = UnixCredentials.GetPeerPid(clientSocket);
                 if (bytesRead > 0)
                 {
-                    // Promote session from idle to active if not already active
-                    if (!_activeSessions.ContainsKey(fd))
-                    {
-                        if (_idleSessions.TryRemove(s => s.Socket.Handle.ToInt32() == fd, out var session))
-                        {
-                            session.State = SessionState.Active;
-                            _activeSessions[fd] = session;
-                        }
-                    }
+                    
 
                     var message = Encoding.UTF8.GetString(buffer, 0, bytesRead);
                     _packetQueue.Enqueue(message);
                     string? resp = null;
                     var fin = false;
                     var id = 0L;
-                    PacketReceived?.Invoke(message, out resp, out fin, out id);
-                    clientSocket.Send(Encoding.UTF8.GetBytes(resp ?? "Error processing packet"));
+                    var promote = false;
+                    PacketReceived?.Invoke(message,peerPID, out resp, out fin, out id, out promote);
+                    if (promote)
+                    {
+                        // Promote session from idle to active if not already active
+                        if (!_activeSessions.ContainsKey(fd))
+                        {
+                            if (_idleSessions.TryRemove(s => s.Socket.Handle.ToInt32() == fd, out var session))
+                            {
+                                session.State = SessionState.Active;
+                                _activeSessions[fd] = session;
+                            }
+                        }
+                    }
+                    var defaultResp = new Response(false,"Error processing packet", null,
+                        EncryptionManager.SecureStringToByteArray(EncryptionManager.SessionKeys[peerPID]));
+                    var def = (new Message(Environment.ProcessId, peerPID, defaultResp, MessageType.Response)).ToStringStream();
+                    clientSocket.Send(Encoding.UTF8.GetBytes(resp ?? def));
                     _fdToClientIdMap[fd] = id;
 
                     if (!fin) return;
@@ -241,7 +249,7 @@ namespace FirewallService.ipc
                 {
                     if (_fdToClientIdMap.TryGetValue(fd, out var id))
                     {
-                        _authManager.MainObject?.Disconnect(id);
+                        GeneralManager.AuthManager.MainObject?.Disconnect(id);
                         _fdToClientIdMap.Remove(fd);
                     }
                 }
@@ -264,7 +272,7 @@ namespace FirewallService.ipc
         {
             if (_activeSessions.Remove(fd, out var activeSession))
                 activeSession.Socket.Close();
-            else if (_idleSessions.TryRemove(s => s.Socket.Handle.ToInt32() == fd, out var idleSession))
+            else if (_idleSessions.TryRemove(s => s.Socket.Handle.ToInt32() == fd, out _))
             {
                 // Already closed via cache eviction
             }
@@ -274,15 +282,13 @@ namespace FirewallService.ipc
             _clientSockets.Remove(fd);
         }
 
-
-        
-
-        private void ProcessPacket(string packet, out string mes, out bool fin, out long userId)
+        private void ProcessPacket(string packet,int pid, out string mes, out bool fin, out long userId, out bool promote)
         {
             mes = null;
             fin = true;
             userId = -1; 
             long reqID = -1;
+            promote = false;
             Logger.Info($"Processing packet: {packet}");
             try
             {
@@ -303,6 +309,12 @@ namespace FirewallService.ipc
 
                 _usedNonces.TryAdd(message.Nonce, message.Timestamp);
 
+                if (message.SenderPID != pid)
+                {
+                    Logger.Warn("Received a packet with incorrect sender PID.");
+                    return;
+                }
+
                 switch (message.Type)
                 {
                     case MessageType.InitSessionRequest:
@@ -310,7 +322,7 @@ namespace FirewallService.ipc
                         var usr = ((message.Component as InitSessionRequest)!).Requester;
                         reqID = usr.ID;
                         var k = ((message.Component as InitSessionRequest)!).AESKey;
-                        var conn = _authManager.Validate(usr, "login",
+                        var conn = GeneralManager.AuthManager.Validate(usr, "login",
                             out var mess, out var connection, args: [k]);
                         var responseBody = $"{mess}|{connection?.User.Token.ToString() ?? "null"}";
                         var resp = new Response(conn, responseBody, null, k);
@@ -322,23 +334,25 @@ namespace FirewallService.ipc
                         );
                         mes = oMes.ToStringStream();
                         fin = !conn;
-                      
+                        promote = conn;
+                        if (promote)
+                            EncryptionManager.SessionKeys.Add(message.SenderPID, BytesToSecureString(k));
                     }  break;
                     case MessageType.Response:
                         break;
                     case MessageType.GeneralActionRequest:
                     {
-                        var usr = ((message.Component as GeneralActionRequest)!).Requester;
+                        var usr = (message.Component as GeneralActionRequest)!.Requester;
                         reqID = usr.ID;
                         var rspBody = "";
                         Response? rsp = null;
-                        var user = FileManager.AuthManager.MainObject?.GetUser(reqID) ?? new AuthorizedUser(-1,"");
+                        var user = GeneralManager.AuthManager.MainObject?.GetUser(reqID) ?? new AuthorizedUser(-1,"");
                         if (user.ID == -1)
                         {
                             rspBody = "Failed to authenticate user session.";
                             goto end;
                         }
-                        var flag = FileManager.AuthManager.Validate(user,
+                        var flag = GeneralManager.AuthManager.Validate(user,
                             ((message.Component as GeneralActionRequest)!).RequestBody,
                             out var outMes, out _);
                         if (!flag)
@@ -347,16 +361,18 @@ namespace FirewallService.ipc
                             goto end;
                         }
 
-                        rsp = FileManager.ActionManager.Execute((message.Component as GeneralActionRequest)!);
+                        rsp = GeneralManager.ActionManager.Execute((message.Component as GeneralActionRequest)!);
                         
                         end:
                         {
                             usr.Token.Open();
                             rsp ??= new Response(false,rspBody,null,usr.Token.GetBytes());
+                            var resp = (Response)rsp;
+                            resp.Key = EncryptionManager.SecureStringToByteArray(EncryptionManager.SessionKeys[message.SenderPID]);
                             var oMes = new Message(
                                 Environment.ProcessId,
                                 message.SenderPID,
-                                rsp.Value.Get(),
+                                resp.Get(),
                                 MessageType.Response);
                             mes = oMes.ToStringStream();
                             fin = false;
@@ -374,7 +390,7 @@ namespace FirewallService.ipc
             finally
             {
                 if (!fin || reqID == -1) goto end;
-                _authManager.MainObject.Disconnect(reqID);
+                GeneralManager.AuthManager.MainObject?.Disconnect(reqID);
                 end:
                 if (reqID != -1)
                     userId = reqID;
@@ -401,6 +417,17 @@ namespace FirewallService.ipc
             {
                 File.Delete(SOCKET_PATH);
             }
+        }
+        private static SecureString BytesToSecureString(byte[] bytes, Encoding encoding = null)
+        {
+            ArgumentNullException.ThrowIfNull(bytes);
+
+            var secure = new SecureString();
+            foreach (var b in bytes)
+                secure.AppendChar((char)b); // Store byte directly as char
+
+            secure.MakeReadOnly();
+            return secure;
         }
     }
 }

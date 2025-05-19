@@ -85,12 +85,12 @@ clean: CMakeFiles/FirewallSharedObject.dir/clean
 CMakeFiles/FirewallSharedObject.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/FirewallSharedObject.dir/build.make CMakeFiles/FirewallSharedObject.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/FirewallSharedObject.dir/build.make CMakeFiles/FirewallSharedObject.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/ariel/Documents/github/Firewall/FirewallSharedObject/CMakeFiles --progress-num=1,2,3,4,5 "Built target FirewallSharedObject"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/ariel/Documents/github/Firewall/FirewallSharedObject/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target FirewallSharedObject"
 .PHONY : CMakeFiles/FirewallSharedObject.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/FirewallSharedObject.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ariel/Documents/github/Firewall/FirewallSharedObject/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ariel/Documents/github/Firewall/FirewallSharedObject/CMakeFiles 8
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/FirewallSharedObject.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ariel/Documents/github/Firewall/FirewallSharedObject/CMakeFiles 0
 .PHONY : CMakeFiles/FirewallSharedObject.dir/rule
@@ -102,7 +102,7 @@ FirewallSharedObject: CMakeFiles/FirewallSharedObject.dir/rule
 # codegen rule for target.
 CMakeFiles/FirewallSharedObject.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/FirewallSharedObject.dir/build.make CMakeFiles/FirewallSharedObject.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/ariel/Documents/github/Firewall/FirewallSharedObject/CMakeFiles --progress-num=1,2,3,4,5 "Finished codegen for target FirewallSharedObject"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/ariel/Documents/github/Firewall/FirewallSharedObject/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Finished codegen for target FirewallSharedObject"
 .PHONY : CMakeFiles/FirewallSharedObject.dir/codegen
 
 # clean rule for target.

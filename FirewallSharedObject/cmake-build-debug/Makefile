@@ -48,10 +48,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/bin/cmake
+CMAKE_COMMAND = /home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/bin/cmake
 
 # The command to remove a file.
-RM = /home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/bin/cmake -E rm -f
+RM = /home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -68,7 +68,7 @@ CMAKE_BINARY_DIR = /home/ariel/Documents/github/Firewall/FirewallSharedObject/cm
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "No interactive CMake dialog available..."
-	/home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -78,7 +78,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake to regenerate build system..."
-	/home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -136,29 +136,77 @@ FirewallSharedObject/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/FirewallSharedObject.dir/build.make CMakeFiles/FirewallSharedObject.dir/build
 .PHONY : FirewallSharedObject/fast
 
-src/fwso-main.o: src/fwso-main.cpp.o
-.PHONY : src/fwso-main.o
+src/fwso-main-private.o: src/fwso-main-private.cpp.o
+.PHONY : src/fwso-main-private.o
 
 # target to build an object file
-src/fwso-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FirewallSharedObject.dir/build.make CMakeFiles/FirewallSharedObject.dir/src/fwso-main.cpp.o
-.PHONY : src/fwso-main.cpp.o
+src/fwso-main-private.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FirewallSharedObject.dir/build.make CMakeFiles/FirewallSharedObject.dir/src/fwso-main-private.cpp.o
+.PHONY : src/fwso-main-private.cpp.o
 
-src/fwso-main.i: src/fwso-main.cpp.i
-.PHONY : src/fwso-main.i
+src/fwso-main-private.i: src/fwso-main-private.cpp.i
+.PHONY : src/fwso-main-private.i
 
 # target to preprocess a source file
-src/fwso-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FirewallSharedObject.dir/build.make CMakeFiles/FirewallSharedObject.dir/src/fwso-main.cpp.i
-.PHONY : src/fwso-main.cpp.i
+src/fwso-main-private.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FirewallSharedObject.dir/build.make CMakeFiles/FirewallSharedObject.dir/src/fwso-main-private.cpp.i
+.PHONY : src/fwso-main-private.cpp.i
 
-src/fwso-main.s: src/fwso-main.cpp.s
-.PHONY : src/fwso-main.s
+src/fwso-main-private.s: src/fwso-main-private.cpp.s
+.PHONY : src/fwso-main-private.s
 
 # target to generate assembly for a file
-src/fwso-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/FirewallSharedObject.dir/build.make CMakeFiles/FirewallSharedObject.dir/src/fwso-main.cpp.s
-.PHONY : src/fwso-main.cpp.s
+src/fwso-main-private.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FirewallSharedObject.dir/build.make CMakeFiles/FirewallSharedObject.dir/src/fwso-main-private.cpp.s
+.PHONY : src/fwso-main-private.cpp.s
+
+src/fwso-main-public.o: src/fwso-main-public.cpp.o
+.PHONY : src/fwso-main-public.o
+
+# target to build an object file
+src/fwso-main-public.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FirewallSharedObject.dir/build.make CMakeFiles/FirewallSharedObject.dir/src/fwso-main-public.cpp.o
+.PHONY : src/fwso-main-public.cpp.o
+
+src/fwso-main-public.i: src/fwso-main-public.cpp.i
+.PHONY : src/fwso-main-public.i
+
+# target to preprocess a source file
+src/fwso-main-public.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FirewallSharedObject.dir/build.make CMakeFiles/FirewallSharedObject.dir/src/fwso-main-public.cpp.i
+.PHONY : src/fwso-main-public.cpp.i
+
+src/fwso-main-public.s: src/fwso-main-public.cpp.s
+.PHONY : src/fwso-main-public.s
+
+# target to generate assembly for a file
+src/fwso-main-public.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FirewallSharedObject.dir/build.make CMakeFiles/FirewallSharedObject.dir/src/fwso-main-public.cpp.s
+.PHONY : src/fwso-main-public.cpp.s
+
+src/structs/db-general-request.o: src/structs/db-general-request.cpp.o
+.PHONY : src/structs/db-general-request.o
+
+# target to build an object file
+src/structs/db-general-request.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FirewallSharedObject.dir/build.make CMakeFiles/FirewallSharedObject.dir/src/structs/db-general-request.cpp.o
+.PHONY : src/structs/db-general-request.cpp.o
+
+src/structs/db-general-request.i: src/structs/db-general-request.cpp.i
+.PHONY : src/structs/db-general-request.i
+
+# target to preprocess a source file
+src/structs/db-general-request.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FirewallSharedObject.dir/build.make CMakeFiles/FirewallSharedObject.dir/src/structs/db-general-request.cpp.i
+.PHONY : src/structs/db-general-request.cpp.i
+
+src/structs/db-general-request.s: src/structs/db-general-request.cpp.s
+.PHONY : src/structs/db-general-request.s
+
+# target to generate assembly for a file
+src/structs/db-general-request.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FirewallSharedObject.dir/build.make CMakeFiles/FirewallSharedObject.dir/src/structs/db-general-request.cpp.s
+.PHONY : src/structs/db-general-request.cpp.s
 
 src/structs/fw-message.o: src/structs/fw-message.cpp.o
 .PHONY : src/structs/fw-message.o
@@ -183,6 +231,30 @@ src/structs/fw-message.s: src/structs/fw-message.cpp.s
 src/structs/fw-message.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/FirewallSharedObject.dir/build.make CMakeFiles/FirewallSharedObject.dir/src/structs/fw-message.cpp.s
 .PHONY : src/structs/fw-message.cpp.s
+
+src/structs/general-request-wrapper.o: src/structs/general-request-wrapper.cpp.o
+.PHONY : src/structs/general-request-wrapper.o
+
+# target to build an object file
+src/structs/general-request-wrapper.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FirewallSharedObject.dir/build.make CMakeFiles/FirewallSharedObject.dir/src/structs/general-request-wrapper.cpp.o
+.PHONY : src/structs/general-request-wrapper.cpp.o
+
+src/structs/general-request-wrapper.i: src/structs/general-request-wrapper.cpp.i
+.PHONY : src/structs/general-request-wrapper.i
+
+# target to preprocess a source file
+src/structs/general-request-wrapper.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FirewallSharedObject.dir/build.make CMakeFiles/FirewallSharedObject.dir/src/structs/general-request-wrapper.cpp.i
+.PHONY : src/structs/general-request-wrapper.cpp.i
+
+src/structs/general-request-wrapper.s: src/structs/general-request-wrapper.cpp.s
+.PHONY : src/structs/general-request-wrapper.s
+
+# target to generate assembly for a file
+src/structs/general-request-wrapper.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FirewallSharedObject.dir/build.make CMakeFiles/FirewallSharedObject.dir/src/structs/general-request-wrapper.cpp.s
+.PHONY : src/structs/general-request-wrapper.cpp.s
 
 src/utils.o: src/utils.cpp.o
 .PHONY : src/utils.o
@@ -218,12 +290,21 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... FirewallSharedObject"
-	@echo "... src/fwso-main.o"
-	@echo "... src/fwso-main.i"
-	@echo "... src/fwso-main.s"
+	@echo "... src/fwso-main-private.o"
+	@echo "... src/fwso-main-private.i"
+	@echo "... src/fwso-main-private.s"
+	@echo "... src/fwso-main-public.o"
+	@echo "... src/fwso-main-public.i"
+	@echo "... src/fwso-main-public.s"
+	@echo "... src/structs/db-general-request.o"
+	@echo "... src/structs/db-general-request.i"
+	@echo "... src/structs/db-general-request.s"
 	@echo "... src/structs/fw-message.o"
 	@echo "... src/structs/fw-message.i"
 	@echo "... src/structs/fw-message.s"
+	@echo "... src/structs/general-request-wrapper.o"
+	@echo "... src/structs/general-request-wrapper.i"
+	@echo "... src/structs/general-request-wrapper.s"
 	@echo "... src/utils.o"
 	@echo "... src/utils.i"
 	@echo "... src/utils.s"

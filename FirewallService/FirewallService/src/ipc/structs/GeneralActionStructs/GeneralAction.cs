@@ -3,11 +3,11 @@ using Newtonsoft.Json;
 
 namespace FirewallService.ipc.structs.GeneralActionStructs;
 
-public class GeneralAction(long userId,ActionPrototype prototype, ActionSubject subject, string[] arguments) 
+public class GeneralAction(long userId,ActionPrototype prototype, ActionSubject subject, string arguments) 
 {
     public required ActionPrototype Prototype { get; set; } = prototype;
     public required ActionSubject Subject { get; set; } = subject;
-    public required string[] Arguments { get; set; } = arguments ?? throw new ArgumentNullException(nameof(arguments));
+    public required string Arguments { get; set; } = arguments ?? throw new ArgumentNullException(nameof(arguments));
     public required long UserID { get; set; } = userId;
 
     public static string Serialize(GeneralAction generalAction)
@@ -23,6 +23,11 @@ public class GeneralAction(long userId,ActionPrototype prototype, ActionSubject 
         var json = Encoding.UTF8.GetString(Convert.FromBase64String(base64));
         var obj = JsonConvert.DeserializeObject<GeneralAction>(json);
         return obj;
+    }
+    
+    public override string ToString()
+    {
+        return JsonConvert.SerializeObject(this);
     }
 
 }

@@ -16,7 +16,6 @@ public class Worker : BackgroundService
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         var server = new Server();
-        server.Setup();
 
         try
         {

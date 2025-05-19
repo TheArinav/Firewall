@@ -4,16 +4,16 @@ events:
   -
     kind: "message-v1"
     backtrace:
-      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeDetermineSystem.cmake:205 (message)"
+      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeDetermineSystem.cmake:205 (message)"
       - "CMakeLists.txt:2 (project)"
     message: |
-      The system is: Linux - 6.6.62+rpt-rpi-v8 - aarch64
+      The system is: Linux - 6.12.20-v8-16k+ - aarch64
   -
     kind: "message-v1"
     backtrace:
-      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
-      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
-      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
       - "CMakeLists.txt:2 (project)"
     message: |
       Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
@@ -33,9 +33,9 @@ events:
   -
     kind: "message-v1"
     backtrace:
-      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
-      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
-      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
       - "CMakeLists.txt:2 (project)"
     message: |
       Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
@@ -55,14 +55,14 @@ events:
   -
     kind: "try_compile-v1"
     backtrace:
-      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake:74 (try_compile)"
-      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake:74 (try_compile)"
+      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
       - "CMakeLists.txt:2 (project)"
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "/home/ariel/Documents/github/Firewall/FirewallSharedObject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-idXisN"
-      binary: "/home/ariel/Documents/github/Firewall/FirewallSharedObject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-idXisN"
+      source: "/home/ariel/Documents/github/Firewall/FirewallSharedObject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-14hzRp"
+      binary: "/home/ariel/Documents/github/Firewall/FirewallSharedObject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-14hzRp"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -71,13 +71,13 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: '/home/ariel/Documents/github/Firewall/FirewallSharedObject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-idXisN'
+        Change Dir: '/home/ariel/Documents/github/Firewall/FirewallSharedObject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-14hzRp'
         
-        Run Build Command(s): /home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_c8bef/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_c8bef.dir/build.make CMakeFiles/cmTC_c8bef.dir/build
-        gmake[1]: Entering directory '/home/ariel/Documents/github/Firewall/FirewallSharedObject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-idXisN'
-        Building C object CMakeFiles/cmTC_c8bef.dir/CMakeCCompilerABI.c.o
-        /usr/bin/cc   -fdiagnostics-color=always   -v -o CMakeFiles/cmTC_c8bef.dir/CMakeCCompilerABI.c.o -c /home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeCCompilerABI.c
+        Run Build Command(s): /home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_f5966/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_f5966.dir/build.make CMakeFiles/cmTC_f5966.dir/build
+        gmake[1]: Entering directory '/home/ariel/Documents/github/Firewall/FirewallSharedObject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-14hzRp'
+        Building C object CMakeFiles/cmTC_f5966.dir/CMakeCCompilerABI.c.o
+        /usr/bin/cc   -fdiagnostics-color=always   -v -o CMakeFiles/cmTC_f5966.dir/CMakeCCompilerABI.c.o -c /home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeCCompilerABI.c
         Using built-in specs.
         COLLECT_GCC=/usr/bin/cc
         Target: aarch64-linux-gnu
@@ -85,8 +85,8 @@ events:
         Thread model: posix
         Supported LTO compression algorithms: zlib zstd
         gcc version 12.2.0 (Debian 12.2.0-14) 
-        COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-v' '-o' 'CMakeFiles/cmTC_c8bef.dir/CMakeCCompilerABI.c.o' '-c' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_c8bef.dir/'
-         /usr/lib/gcc/aarch64-linux-gnu/12/cc1 -quiet -v -imultiarch aarch64-linux-gnu /home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_c8bef.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mlittle-endian -mabi=lp64 -version -fdiagnostics-color=always -fasynchronous-unwind-tables -o /tmp/cc1QLFzB.s
+        COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-v' '-o' 'CMakeFiles/cmTC_f5966.dir/CMakeCCompilerABI.c.o' '-c' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_f5966.dir/'
+         /usr/lib/gcc/aarch64-linux-gnu/12/cc1 -quiet -v -imultiarch aarch64-linux-gnu /home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_f5966.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mlittle-endian -mabi=lp64 -version -fdiagnostics-color=always -fasynchronous-unwind-tables -o /tmp/ccmiAAPl.s
         GNU C17 (Debian 12.2.0-14) version 12.2.0 (aarch64-linux-gnu)
         	compiled by GNU C version 12.2.0, GMP version 6.2.1, MPFR version 4.1.1-p1, MPC version 1.3.1, isl version isl-0.25-GMP
         
@@ -108,14 +108,14 @@ events:
         warning: MPFR header version 4.1.1-p1 differs from library version 4.2.0.
         GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
         Compiler executable checksum: f1bacec099212325d0da3c77e1f38897
-        COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-v' '-o' 'CMakeFiles/cmTC_c8bef.dir/CMakeCCompilerABI.c.o' '-c' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_c8bef.dir/'
-         as -v -EL -mabi=lp64 -o CMakeFiles/cmTC_c8bef.dir/CMakeCCompilerABI.c.o /tmp/cc1QLFzB.s
+        COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-v' '-o' 'CMakeFiles/cmTC_f5966.dir/CMakeCCompilerABI.c.o' '-c' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_f5966.dir/'
+         as -v -EL -mabi=lp64 -o CMakeFiles/cmTC_f5966.dir/CMakeCCompilerABI.c.o /tmp/ccmiAAPl.s
         GNU assembler version 2.40 (aarch64-linux-gnu) using BFD version (GNU Binutils for Debian) 2.40
         COMPILER_PATH=/usr/lib/gcc/aarch64-linux-gnu/12/:/usr/lib/gcc/aarch64-linux-gnu/12/:/usr/lib/gcc/aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/12/:/usr/lib/gcc/aarch64-linux-gnu/
         LIBRARY_PATH=/usr/lib/gcc/aarch64-linux-gnu/12/:/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/12/../../../../lib/:/lib/aarch64-linux-gnu/:/lib/../lib/:/usr/lib/aarch64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/aarch64-linux-gnu/12/../../../:/lib/:/usr/lib/
-        COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-v' '-o' 'CMakeFiles/cmTC_c8bef.dir/CMakeCCompilerABI.c.o' '-c' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_c8bef.dir/CMakeCCompilerABI.c.'
-        Linking C executable cmTC_c8bef
-        /home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c8bef.dir/link.txt --verbose=1
+        COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-v' '-o' 'CMakeFiles/cmTC_f5966.dir/CMakeCCompilerABI.c.o' '-c' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_f5966.dir/CMakeCCompilerABI.c.'
+        Linking C executable cmTC_f5966
+        /home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f5966.dir/link.txt --verbose=1
         Using built-in specs.
         COLLECT_GCC=/usr/bin/cc
         COLLECT_LTO_WRAPPER=/usr/lib/gcc/aarch64-linux-gnu/12/lto-wrapper
@@ -126,21 +126,21 @@ events:
         gcc version 12.2.0 (Debian 12.2.0-14) 
         COMPILER_PATH=/usr/lib/gcc/aarch64-linux-gnu/12/:/usr/lib/gcc/aarch64-linux-gnu/12/:/usr/lib/gcc/aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/12/:/usr/lib/gcc/aarch64-linux-gnu/
         LIBRARY_PATH=/usr/lib/gcc/aarch64-linux-gnu/12/:/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/12/../../../../lib/:/lib/aarch64-linux-gnu/:/lib/../lib/:/usr/lib/aarch64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/aarch64-linux-gnu/12/../../../:/lib/:/usr/lib/
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_c8bef' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'cmTC_c8bef.'
-         /usr/lib/gcc/aarch64-linux-gnu/12/collect2 -plugin /usr/lib/gcc/aarch64-linux-gnu/12/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/12/lto-wrapper -plugin-opt=-fresolution=/tmp/ccLjzxaO.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr --hash-style=gnu --as-needed -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -pie -o cmTC_c8bef /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/Scrt1.o /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/12/crtbeginS.o -L/usr/lib/gcc/aarch64-linux-gnu/12 -L/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/12/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/12/../../.. -v CMakeFiles/cmTC_c8bef.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/aarch64-linux-gnu/12/crtendS.o /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crtn.o
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_f5966' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'cmTC_f5966.'
+         /usr/lib/gcc/aarch64-linux-gnu/12/collect2 -plugin /usr/lib/gcc/aarch64-linux-gnu/12/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/12/lto-wrapper -plugin-opt=-fresolution=/tmp/cceq763U.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr --hash-style=gnu --as-needed -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -pie -o cmTC_f5966 /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/Scrt1.o /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/12/crtbeginS.o -L/usr/lib/gcc/aarch64-linux-gnu/12 -L/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/12/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/12/../../.. -v CMakeFiles/cmTC_f5966.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/aarch64-linux-gnu/12/crtendS.o /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crtn.o
         collect2 version 12.2.0
-        /usr/bin/ld -plugin /usr/lib/gcc/aarch64-linux-gnu/12/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/12/lto-wrapper -plugin-opt=-fresolution=/tmp/ccLjzxaO.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr --hash-style=gnu --as-needed -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -pie -o cmTC_c8bef /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/Scrt1.o /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/12/crtbeginS.o -L/usr/lib/gcc/aarch64-linux-gnu/12 -L/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/12/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/12/../../.. -v CMakeFiles/cmTC_c8bef.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/aarch64-linux-gnu/12/crtendS.o /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crtn.o
+        /usr/bin/ld -plugin /usr/lib/gcc/aarch64-linux-gnu/12/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/12/lto-wrapper -plugin-opt=-fresolution=/tmp/cceq763U.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr --hash-style=gnu --as-needed -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -pie -o cmTC_f5966 /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/Scrt1.o /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/12/crtbeginS.o -L/usr/lib/gcc/aarch64-linux-gnu/12 -L/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/12/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/12/../../.. -v CMakeFiles/cmTC_f5966.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/aarch64-linux-gnu/12/crtendS.o /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crtn.o
         GNU ld (GNU Binutils for Debian) 2.40
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_c8bef' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'cmTC_c8bef.'
-        /usr/bin/cc  -v -Wl,-v CMakeFiles/cmTC_c8bef.dir/CMakeCCompilerABI.c.o -o cmTC_c8bef
-        gmake[1]: Leaving directory '/home/ariel/Documents/github/Firewall/FirewallSharedObject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-idXisN'
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_f5966' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'cmTC_f5966.'
+        /usr/bin/cc  -v -Wl,-v CMakeFiles/cmTC_f5966.dir/CMakeCCompilerABI.c.o -o cmTC_f5966
+        gmake[1]: Leaving directory '/home/ariel/Documents/github/Firewall/FirewallSharedObject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-14hzRp'
         
       exitCode: 0
   -
     kind: "message-v1"
     backtrace:
-      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake:182 (message)"
-      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake:182 (message)"
+      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
       - "CMakeLists.txt:2 (project)"
     message: |
       Parsed C implicit include dir info: rv=done
@@ -161,20 +161,20 @@ events:
   -
     kind: "message-v1"
     backtrace:
-      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake:218 (message)"
-      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake:218 (message)"
+      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
       - "CMakeLists.txt:2 (project)"
     message: |
       Parsed C implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?))("|,| |$)]
-        ignore line: [Change Dir: '/home/ariel/Documents/github/Firewall/FirewallSharedObject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-idXisN']
+        ignore line: [Change Dir: '/home/ariel/Documents/github/Firewall/FirewallSharedObject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-14hzRp']
         ignore line: []
-        ignore line: [Run Build Command(s): /home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_c8bef/fast]
-        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_c8bef.dir/build.make CMakeFiles/cmTC_c8bef.dir/build]
-        ignore line: [gmake[1]: Entering directory '/home/ariel/Documents/github/Firewall/FirewallSharedObject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-idXisN']
-        ignore line: [Building C object CMakeFiles/cmTC_c8bef.dir/CMakeCCompilerABI.c.o]
-        ignore line: [/usr/bin/cc   -fdiagnostics-color=always   -v -o CMakeFiles/cmTC_c8bef.dir/CMakeCCompilerABI.c.o -c /home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeCCompilerABI.c]
+        ignore line: [Run Build Command(s): /home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_f5966/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_f5966.dir/build.make CMakeFiles/cmTC_f5966.dir/build]
+        ignore line: [gmake[1]: Entering directory '/home/ariel/Documents/github/Firewall/FirewallSharedObject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-14hzRp']
+        ignore line: [Building C object CMakeFiles/cmTC_f5966.dir/CMakeCCompilerABI.c.o]
+        ignore line: [/usr/bin/cc   -fdiagnostics-color=always   -v -o CMakeFiles/cmTC_f5966.dir/CMakeCCompilerABI.c.o -c /home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeCCompilerABI.c]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/usr/bin/cc]
         ignore line: [Target: aarch64-linux-gnu]
@@ -182,8 +182,8 @@ events:
         ignore line: [Thread model: posix]
         ignore line: [Supported LTO compression algorithms: zlib zstd]
         ignore line: [gcc version 12.2.0 (Debian 12.2.0-14) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-v' '-o' 'CMakeFiles/cmTC_c8bef.dir/CMakeCCompilerABI.c.o' '-c' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_c8bef.dir/']
-        ignore line: [ /usr/lib/gcc/aarch64-linux-gnu/12/cc1 -quiet -v -imultiarch aarch64-linux-gnu /home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_c8bef.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mlittle-endian -mabi=lp64 -version -fdiagnostics-color=always -fasynchronous-unwind-tables -o /tmp/cc1QLFzB.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-v' '-o' 'CMakeFiles/cmTC_f5966.dir/CMakeCCompilerABI.c.o' '-c' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_f5966.dir/']
+        ignore line: [ /usr/lib/gcc/aarch64-linux-gnu/12/cc1 -quiet -v -imultiarch aarch64-linux-gnu /home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_f5966.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mlittle-endian -mabi=lp64 -version -fdiagnostics-color=always -fasynchronous-unwind-tables -o /tmp/ccmiAAPl.s]
         ignore line: [GNU C17 (Debian 12.2.0-14) version 12.2.0 (aarch64-linux-gnu)]
         ignore line: [	compiled by GNU C version 12.2.0  GMP version 6.2.1  MPFR version 4.1.1-p1  MPC version 1.3.1  isl version isl-0.25-GMP]
         ignore line: []
@@ -205,14 +205,14 @@ events:
         ignore line: [warning: MPFR header version 4.1.1-p1 differs from library version 4.2.0.]
         ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
         ignore line: [Compiler executable checksum: f1bacec099212325d0da3c77e1f38897]
-        ignore line: [COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-v' '-o' 'CMakeFiles/cmTC_c8bef.dir/CMakeCCompilerABI.c.o' '-c' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_c8bef.dir/']
-        ignore line: [ as -v -EL -mabi=lp64 -o CMakeFiles/cmTC_c8bef.dir/CMakeCCompilerABI.c.o /tmp/cc1QLFzB.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-v' '-o' 'CMakeFiles/cmTC_f5966.dir/CMakeCCompilerABI.c.o' '-c' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_f5966.dir/']
+        ignore line: [ as -v -EL -mabi=lp64 -o CMakeFiles/cmTC_f5966.dir/CMakeCCompilerABI.c.o /tmp/ccmiAAPl.s]
         ignore line: [GNU assembler version 2.40 (aarch64-linux-gnu) using BFD version (GNU Binutils for Debian) 2.40]
         ignore line: [COMPILER_PATH=/usr/lib/gcc/aarch64-linux-gnu/12/:/usr/lib/gcc/aarch64-linux-gnu/12/:/usr/lib/gcc/aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/12/:/usr/lib/gcc/aarch64-linux-gnu/]
         ignore line: [LIBRARY_PATH=/usr/lib/gcc/aarch64-linux-gnu/12/:/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/12/../../../../lib/:/lib/aarch64-linux-gnu/:/lib/../lib/:/usr/lib/aarch64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/aarch64-linux-gnu/12/../../../:/lib/:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-v' '-o' 'CMakeFiles/cmTC_c8bef.dir/CMakeCCompilerABI.c.o' '-c' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_c8bef.dir/CMakeCCompilerABI.c.']
-        ignore line: [Linking C executable cmTC_c8bef]
-        ignore line: [/home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c8bef.dir/link.txt --verbose=1]
+        ignore line: [COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-v' '-o' 'CMakeFiles/cmTC_f5966.dir/CMakeCCompilerABI.c.o' '-c' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_f5966.dir/CMakeCCompilerABI.c.']
+        ignore line: [Linking C executable cmTC_f5966]
+        ignore line: [/home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f5966.dir/link.txt --verbose=1]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/usr/bin/cc]
         ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/aarch64-linux-gnu/12/lto-wrapper]
@@ -223,13 +223,13 @@ events:
         ignore line: [gcc version 12.2.0 (Debian 12.2.0-14) ]
         ignore line: [COMPILER_PATH=/usr/lib/gcc/aarch64-linux-gnu/12/:/usr/lib/gcc/aarch64-linux-gnu/12/:/usr/lib/gcc/aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/12/:/usr/lib/gcc/aarch64-linux-gnu/]
         ignore line: [LIBRARY_PATH=/usr/lib/gcc/aarch64-linux-gnu/12/:/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/12/../../../../lib/:/lib/aarch64-linux-gnu/:/lib/../lib/:/usr/lib/aarch64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/aarch64-linux-gnu/12/../../../:/lib/:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_c8bef' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'cmTC_c8bef.']
-        link line: [ /usr/lib/gcc/aarch64-linux-gnu/12/collect2 -plugin /usr/lib/gcc/aarch64-linux-gnu/12/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/12/lto-wrapper -plugin-opt=-fresolution=/tmp/ccLjzxaO.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr --hash-style=gnu --as-needed -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -pie -o cmTC_c8bef /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/Scrt1.o /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/12/crtbeginS.o -L/usr/lib/gcc/aarch64-linux-gnu/12 -L/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/12/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/12/../../.. -v CMakeFiles/cmTC_c8bef.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/aarch64-linux-gnu/12/crtendS.o /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crtn.o]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_f5966' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'cmTC_f5966.']
+        link line: [ /usr/lib/gcc/aarch64-linux-gnu/12/collect2 -plugin /usr/lib/gcc/aarch64-linux-gnu/12/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/12/lto-wrapper -plugin-opt=-fresolution=/tmp/cceq763U.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr --hash-style=gnu --as-needed -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -pie -o cmTC_f5966 /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/Scrt1.o /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/12/crtbeginS.o -L/usr/lib/gcc/aarch64-linux-gnu/12 -L/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/12/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/12/../../.. -v CMakeFiles/cmTC_f5966.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/aarch64-linux-gnu/12/crtendS.o /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crtn.o]
           arg [/usr/lib/gcc/aarch64-linux-gnu/12/collect2] ==> ignore
           arg [-plugin] ==> ignore
           arg [/usr/lib/gcc/aarch64-linux-gnu/12/liblto_plugin.so] ==> ignore
           arg [-plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/12/lto-wrapper] ==> ignore
-          arg [-plugin-opt=-fresolution=/tmp/ccLjzxaO.res] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/cceq763U.res] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
           arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -247,7 +247,7 @@ events:
           arg [--fix-cortex-a53-843419] ==> ignore
           arg [-pie] ==> ignore
           arg [-o] ==> ignore
-          arg [cmTC_c8bef] ==> ignore
+          arg [cmTC_f5966] ==> ignore
           arg [/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/Scrt1.o] ==> obj [/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/Scrt1.o]
           arg [/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crti.o] ==> obj [/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crti.o]
           arg [/usr/lib/gcc/aarch64-linux-gnu/12/crtbeginS.o] ==> obj [/usr/lib/gcc/aarch64-linux-gnu/12/crtbeginS.o]
@@ -260,7 +260,7 @@ events:
           arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
           arg [-L/usr/lib/gcc/aarch64-linux-gnu/12/../../..] ==> dir [/usr/lib/gcc/aarch64-linux-gnu/12/../../..]
           arg [-v] ==> ignore
-          arg [CMakeFiles/cmTC_c8bef.dir/CMakeCCompilerABI.c.o] ==> ignore
+          arg [CMakeFiles/cmTC_f5966.dir/CMakeCCompilerABI.c.o] ==> ignore
           arg [-lgcc] ==> lib [gcc]
           arg [--push-state] ==> ignore
           arg [--as-needed] ==> ignore
@@ -275,7 +275,7 @@ events:
           arg [/usr/lib/gcc/aarch64-linux-gnu/12/crtendS.o] ==> obj [/usr/lib/gcc/aarch64-linux-gnu/12/crtendS.o]
           arg [/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crtn.o] ==> obj [/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crtn.o]
         ignore line: [collect2 version 12.2.0]
-        ignore line: [/usr/bin/ld -plugin /usr/lib/gcc/aarch64-linux-gnu/12/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/12/lto-wrapper -plugin-opt=-fresolution=/tmp/ccLjzxaO.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr --hash-style=gnu --as-needed -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -pie -o cmTC_c8bef /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/Scrt1.o /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/12/crtbeginS.o -L/usr/lib/gcc/aarch64-linux-gnu/12 -L/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/12/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/12/../../.. -v CMakeFiles/cmTC_c8bef.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/aarch64-linux-gnu/12/crtendS.o /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crtn.o]
+        ignore line: [/usr/bin/ld -plugin /usr/lib/gcc/aarch64-linux-gnu/12/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/12/lto-wrapper -plugin-opt=-fresolution=/tmp/cceq763U.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr --hash-style=gnu --as-needed -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -pie -o cmTC_f5966 /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/Scrt1.o /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/12/crtbeginS.o -L/usr/lib/gcc/aarch64-linux-gnu/12 -L/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/12/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/12/../../.. -v CMakeFiles/cmTC_f5966.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/aarch64-linux-gnu/12/crtendS.o /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crtn.o]
         linker tool for 'C': /usr/bin/ld
         collapse obj [/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/Scrt1.o] ==> [/usr/lib/aarch64-linux-gnu/Scrt1.o]
         collapse obj [/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crti.o] ==> [/usr/lib/aarch64-linux-gnu/crti.o]
@@ -297,9 +297,9 @@ events:
   -
     kind: "message-v1"
     backtrace:
-      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
-      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake:255 (cmake_determine_linker_id)"
-      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
+      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake:255 (cmake_determine_linker_id)"
+      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
       - "CMakeLists.txt:2 (project)"
     message: |
       Running the C compiler's linker: "/usr/bin/ld" "-v"
@@ -307,14 +307,14 @@ events:
   -
     kind: "try_compile-v1"
     backtrace:
-      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake:74 (try_compile)"
-      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake:74 (try_compile)"
+      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
       - "CMakeLists.txt:2 (project)"
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "/home/ariel/Documents/github/Firewall/FirewallSharedObject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-2GIGgV"
-      binary: "/home/ariel/Documents/github/Firewall/FirewallSharedObject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-2GIGgV"
+      source: "/home/ariel/Documents/github/Firewall/FirewallSharedObject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-1N5NIM"
+      binary: "/home/ariel/Documents/github/Firewall/FirewallSharedObject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-1N5NIM"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -324,13 +324,13 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: '/home/ariel/Documents/github/Firewall/FirewallSharedObject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-2GIGgV'
+        Change Dir: '/home/ariel/Documents/github/Firewall/FirewallSharedObject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-1N5NIM'
         
-        Run Build Command(s): /home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_92364/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_92364.dir/build.make CMakeFiles/cmTC_92364.dir/build
-        gmake[1]: Entering directory '/home/ariel/Documents/github/Firewall/FirewallSharedObject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-2GIGgV'
-        Building CXX object CMakeFiles/cmTC_92364.dir/CMakeCXXCompilerABI.cpp.o
-        /usr/bin/c++   -fdiagnostics-color=always   -v -o CMakeFiles/cmTC_92364.dir/CMakeCXXCompilerABI.cpp.o -c /home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeCXXCompilerABI.cpp
+        Run Build Command(s): /home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_b773e/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_b773e.dir/build.make CMakeFiles/cmTC_b773e.dir/build
+        gmake[1]: Entering directory '/home/ariel/Documents/github/Firewall/FirewallSharedObject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-1N5NIM'
+        Building CXX object CMakeFiles/cmTC_b773e.dir/CMakeCXXCompilerABI.cpp.o
+        /usr/bin/c++   -fdiagnostics-color=always   -v -o CMakeFiles/cmTC_b773e.dir/CMakeCXXCompilerABI.cpp.o -c /home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeCXXCompilerABI.cpp
         Using built-in specs.
         COLLECT_GCC=/usr/bin/c++
         Target: aarch64-linux-gnu
@@ -338,8 +338,8 @@ events:
         Thread model: posix
         Supported LTO compression algorithms: zlib zstd
         gcc version 12.2.0 (Debian 12.2.0-14) 
-        COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-v' '-o' 'CMakeFiles/cmTC_92364.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_92364.dir/'
-         /usr/lib/gcc/aarch64-linux-gnu/12/cc1plus -quiet -v -imultiarch aarch64-linux-gnu -D_GNU_SOURCE /home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_92364.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mlittle-endian -mabi=lp64 -version -fdiagnostics-color=always -fasynchronous-unwind-tables -o /tmp/ccdBNH4c.s
+        COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-v' '-o' 'CMakeFiles/cmTC_b773e.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_b773e.dir/'
+         /usr/lib/gcc/aarch64-linux-gnu/12/cc1plus -quiet -v -imultiarch aarch64-linux-gnu -D_GNU_SOURCE /home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_b773e.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mlittle-endian -mabi=lp64 -version -fdiagnostics-color=always -fasynchronous-unwind-tables -o /tmp/ccn7WdO9.s
         GNU C++17 (Debian 12.2.0-14) version 12.2.0 (aarch64-linux-gnu)
         	compiled by GNU C version 12.2.0, GMP version 6.2.1, MPFR version 4.1.1-p1, MPC version 1.3.1, isl version isl-0.25-GMP
         
@@ -365,14 +365,14 @@ events:
         warning: MPFR header version 4.1.1-p1 differs from library version 4.2.0.
         GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
         Compiler executable checksum: 76d6f14273b9515783c50374b109b352
-        COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-v' '-o' 'CMakeFiles/cmTC_92364.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_92364.dir/'
-         as -v -EL -mabi=lp64 -o CMakeFiles/cmTC_92364.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccdBNH4c.s
+        COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-v' '-o' 'CMakeFiles/cmTC_b773e.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_b773e.dir/'
+         as -v -EL -mabi=lp64 -o CMakeFiles/cmTC_b773e.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccn7WdO9.s
         GNU assembler version 2.40 (aarch64-linux-gnu) using BFD version (GNU Binutils for Debian) 2.40
         COMPILER_PATH=/usr/lib/gcc/aarch64-linux-gnu/12/:/usr/lib/gcc/aarch64-linux-gnu/12/:/usr/lib/gcc/aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/12/:/usr/lib/gcc/aarch64-linux-gnu/
         LIBRARY_PATH=/usr/lib/gcc/aarch64-linux-gnu/12/:/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/12/../../../../lib/:/lib/aarch64-linux-gnu/:/lib/../lib/:/usr/lib/aarch64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/aarch64-linux-gnu/12/../../../:/lib/:/usr/lib/
-        COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-v' '-o' 'CMakeFiles/cmTC_92364.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_92364.dir/CMakeCXXCompilerABI.cpp.'
-        Linking CXX executable cmTC_92364
-        /home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_92364.dir/link.txt --verbose=1
+        COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-v' '-o' 'CMakeFiles/cmTC_b773e.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_b773e.dir/CMakeCXXCompilerABI.cpp.'
+        Linking CXX executable cmTC_b773e
+        /home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b773e.dir/link.txt --verbose=1
         Using built-in specs.
         COLLECT_GCC=/usr/bin/c++
         COLLECT_LTO_WRAPPER=/usr/lib/gcc/aarch64-linux-gnu/12/lto-wrapper
@@ -383,21 +383,21 @@ events:
         gcc version 12.2.0 (Debian 12.2.0-14) 
         COMPILER_PATH=/usr/lib/gcc/aarch64-linux-gnu/12/:/usr/lib/gcc/aarch64-linux-gnu/12/:/usr/lib/gcc/aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/12/:/usr/lib/gcc/aarch64-linux-gnu/
         LIBRARY_PATH=/usr/lib/gcc/aarch64-linux-gnu/12/:/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/12/../../../../lib/:/lib/aarch64-linux-gnu/:/lib/../lib/:/usr/lib/aarch64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/aarch64-linux-gnu/12/../../../:/lib/:/usr/lib/
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_92364' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'cmTC_92364.'
-         /usr/lib/gcc/aarch64-linux-gnu/12/collect2 -plugin /usr/lib/gcc/aarch64-linux-gnu/12/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/12/lto-wrapper -plugin-opt=-fresolution=/tmp/cc6pmWQD.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr --hash-style=gnu --as-needed -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -pie -o cmTC_92364 /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/Scrt1.o /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/12/crtbeginS.o -L/usr/lib/gcc/aarch64-linux-gnu/12 -L/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/12/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/12/../../.. -v CMakeFiles/cmTC_92364.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/aarch64-linux-gnu/12/crtendS.o /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crtn.o
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_b773e' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'cmTC_b773e.'
+         /usr/lib/gcc/aarch64-linux-gnu/12/collect2 -plugin /usr/lib/gcc/aarch64-linux-gnu/12/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/12/lto-wrapper -plugin-opt=-fresolution=/tmp/ccLiiWSs.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr --hash-style=gnu --as-needed -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -pie -o cmTC_b773e /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/Scrt1.o /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/12/crtbeginS.o -L/usr/lib/gcc/aarch64-linux-gnu/12 -L/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/12/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/12/../../.. -v CMakeFiles/cmTC_b773e.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/aarch64-linux-gnu/12/crtendS.o /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crtn.o
         collect2 version 12.2.0
-        /usr/bin/ld -plugin /usr/lib/gcc/aarch64-linux-gnu/12/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/12/lto-wrapper -plugin-opt=-fresolution=/tmp/cc6pmWQD.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr --hash-style=gnu --as-needed -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -pie -o cmTC_92364 /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/Scrt1.o /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/12/crtbeginS.o -L/usr/lib/gcc/aarch64-linux-gnu/12 -L/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/12/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/12/../../.. -v CMakeFiles/cmTC_92364.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/aarch64-linux-gnu/12/crtendS.o /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crtn.o
+        /usr/bin/ld -plugin /usr/lib/gcc/aarch64-linux-gnu/12/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/12/lto-wrapper -plugin-opt=-fresolution=/tmp/ccLiiWSs.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr --hash-style=gnu --as-needed -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -pie -o cmTC_b773e /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/Scrt1.o /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/12/crtbeginS.o -L/usr/lib/gcc/aarch64-linux-gnu/12 -L/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/12/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/12/../../.. -v CMakeFiles/cmTC_b773e.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/aarch64-linux-gnu/12/crtendS.o /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crtn.o
         GNU ld (GNU Binutils for Debian) 2.40
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_92364' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'cmTC_92364.'
-        /usr/bin/c++  -v -Wl,-v CMakeFiles/cmTC_92364.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_92364
-        gmake[1]: Leaving directory '/home/ariel/Documents/github/Firewall/FirewallSharedObject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-2GIGgV'
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_b773e' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'cmTC_b773e.'
+        /usr/bin/c++  -v -Wl,-v CMakeFiles/cmTC_b773e.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_b773e
+        gmake[1]: Leaving directory '/home/ariel/Documents/github/Firewall/FirewallSharedObject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-1N5NIM'
         
       exitCode: 0
   -
     kind: "message-v1"
     backtrace:
-      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake:182 (message)"
-      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake:182 (message)"
+      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
       - "CMakeLists.txt:2 (project)"
     message: |
       Parsed CXX implicit include dir info: rv=done
@@ -424,20 +424,20 @@ events:
   -
     kind: "message-v1"
     backtrace:
-      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake:218 (message)"
-      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake:218 (message)"
+      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
       - "CMakeLists.txt:2 (project)"
     message: |
       Parsed CXX implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?))("|,| |$)]
-        ignore line: [Change Dir: '/home/ariel/Documents/github/Firewall/FirewallSharedObject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-2GIGgV']
+        ignore line: [Change Dir: '/home/ariel/Documents/github/Firewall/FirewallSharedObject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-1N5NIM']
         ignore line: []
-        ignore line: [Run Build Command(s): /home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_92364/fast]
-        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_92364.dir/build.make CMakeFiles/cmTC_92364.dir/build]
-        ignore line: [gmake[1]: Entering directory '/home/ariel/Documents/github/Firewall/FirewallSharedObject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-2GIGgV']
-        ignore line: [Building CXX object CMakeFiles/cmTC_92364.dir/CMakeCXXCompilerABI.cpp.o]
-        ignore line: [/usr/bin/c++   -fdiagnostics-color=always   -v -o CMakeFiles/cmTC_92364.dir/CMakeCXXCompilerABI.cpp.o -c /home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Run Build Command(s): /home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_b773e/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_b773e.dir/build.make CMakeFiles/cmTC_b773e.dir/build]
+        ignore line: [gmake[1]: Entering directory '/home/ariel/Documents/github/Firewall/FirewallSharedObject/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-1N5NIM']
+        ignore line: [Building CXX object CMakeFiles/cmTC_b773e.dir/CMakeCXXCompilerABI.cpp.o]
+        ignore line: [/usr/bin/c++   -fdiagnostics-color=always   -v -o CMakeFiles/cmTC_b773e.dir/CMakeCXXCompilerABI.cpp.o -c /home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeCXXCompilerABI.cpp]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/usr/bin/c++]
         ignore line: [Target: aarch64-linux-gnu]
@@ -445,8 +445,8 @@ events:
         ignore line: [Thread model: posix]
         ignore line: [Supported LTO compression algorithms: zlib zstd]
         ignore line: [gcc version 12.2.0 (Debian 12.2.0-14) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-v' '-o' 'CMakeFiles/cmTC_92364.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_92364.dir/']
-        ignore line: [ /usr/lib/gcc/aarch64-linux-gnu/12/cc1plus -quiet -v -imultiarch aarch64-linux-gnu -D_GNU_SOURCE /home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_92364.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mlittle-endian -mabi=lp64 -version -fdiagnostics-color=always -fasynchronous-unwind-tables -o /tmp/ccdBNH4c.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-v' '-o' 'CMakeFiles/cmTC_b773e.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_b773e.dir/']
+        ignore line: [ /usr/lib/gcc/aarch64-linux-gnu/12/cc1plus -quiet -v -imultiarch aarch64-linux-gnu -D_GNU_SOURCE /home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_b773e.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mlittle-endian -mabi=lp64 -version -fdiagnostics-color=always -fasynchronous-unwind-tables -o /tmp/ccn7WdO9.s]
         ignore line: [GNU C++17 (Debian 12.2.0-14) version 12.2.0 (aarch64-linux-gnu)]
         ignore line: [	compiled by GNU C version 12.2.0  GMP version 6.2.1  MPFR version 4.1.1-p1  MPC version 1.3.1  isl version isl-0.25-GMP]
         ignore line: []
@@ -472,14 +472,14 @@ events:
         ignore line: [warning: MPFR header version 4.1.1-p1 differs from library version 4.2.0.]
         ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
         ignore line: [Compiler executable checksum: 76d6f14273b9515783c50374b109b352]
-        ignore line: [COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-v' '-o' 'CMakeFiles/cmTC_92364.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_92364.dir/']
-        ignore line: [ as -v -EL -mabi=lp64 -o CMakeFiles/cmTC_92364.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccdBNH4c.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-v' '-o' 'CMakeFiles/cmTC_b773e.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_b773e.dir/']
+        ignore line: [ as -v -EL -mabi=lp64 -o CMakeFiles/cmTC_b773e.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccn7WdO9.s]
         ignore line: [GNU assembler version 2.40 (aarch64-linux-gnu) using BFD version (GNU Binutils for Debian) 2.40]
         ignore line: [COMPILER_PATH=/usr/lib/gcc/aarch64-linux-gnu/12/:/usr/lib/gcc/aarch64-linux-gnu/12/:/usr/lib/gcc/aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/12/:/usr/lib/gcc/aarch64-linux-gnu/]
         ignore line: [LIBRARY_PATH=/usr/lib/gcc/aarch64-linux-gnu/12/:/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/12/../../../../lib/:/lib/aarch64-linux-gnu/:/lib/../lib/:/usr/lib/aarch64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/aarch64-linux-gnu/12/../../../:/lib/:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-v' '-o' 'CMakeFiles/cmTC_92364.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_92364.dir/CMakeCXXCompilerABI.cpp.']
-        ignore line: [Linking CXX executable cmTC_92364]
-        ignore line: [/home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_92364.dir/link.txt --verbose=1]
+        ignore line: [COLLECT_GCC_OPTIONS='-fdiagnostics-color=always' '-v' '-o' 'CMakeFiles/cmTC_b773e.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'CMakeFiles/cmTC_b773e.dir/CMakeCXXCompilerABI.cpp.']
+        ignore line: [Linking CXX executable cmTC_b773e]
+        ignore line: [/home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b773e.dir/link.txt --verbose=1]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/usr/bin/c++]
         ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/aarch64-linux-gnu/12/lto-wrapper]
@@ -490,13 +490,13 @@ events:
         ignore line: [gcc version 12.2.0 (Debian 12.2.0-14) ]
         ignore line: [COMPILER_PATH=/usr/lib/gcc/aarch64-linux-gnu/12/:/usr/lib/gcc/aarch64-linux-gnu/12/:/usr/lib/gcc/aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/12/:/usr/lib/gcc/aarch64-linux-gnu/]
         ignore line: [LIBRARY_PATH=/usr/lib/gcc/aarch64-linux-gnu/12/:/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/:/usr/lib/gcc/aarch64-linux-gnu/12/../../../../lib/:/lib/aarch64-linux-gnu/:/lib/../lib/:/usr/lib/aarch64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/aarch64-linux-gnu/12/../../../:/lib/:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_92364' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'cmTC_92364.']
-        link line: [ /usr/lib/gcc/aarch64-linux-gnu/12/collect2 -plugin /usr/lib/gcc/aarch64-linux-gnu/12/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/12/lto-wrapper -plugin-opt=-fresolution=/tmp/cc6pmWQD.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr --hash-style=gnu --as-needed -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -pie -o cmTC_92364 /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/Scrt1.o /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/12/crtbeginS.o -L/usr/lib/gcc/aarch64-linux-gnu/12 -L/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/12/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/12/../../.. -v CMakeFiles/cmTC_92364.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/aarch64-linux-gnu/12/crtendS.o /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crtn.o]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_b773e' '-shared-libgcc' '-mlittle-endian' '-mabi=lp64' '-dumpdir' 'cmTC_b773e.']
+        link line: [ /usr/lib/gcc/aarch64-linux-gnu/12/collect2 -plugin /usr/lib/gcc/aarch64-linux-gnu/12/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/12/lto-wrapper -plugin-opt=-fresolution=/tmp/ccLiiWSs.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr --hash-style=gnu --as-needed -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -pie -o cmTC_b773e /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/Scrt1.o /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/12/crtbeginS.o -L/usr/lib/gcc/aarch64-linux-gnu/12 -L/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/12/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/12/../../.. -v CMakeFiles/cmTC_b773e.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/aarch64-linux-gnu/12/crtendS.o /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crtn.o]
           arg [/usr/lib/gcc/aarch64-linux-gnu/12/collect2] ==> ignore
           arg [-plugin] ==> ignore
           arg [/usr/lib/gcc/aarch64-linux-gnu/12/liblto_plugin.so] ==> ignore
           arg [-plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/12/lto-wrapper] ==> ignore
-          arg [-plugin-opt=-fresolution=/tmp/cc6pmWQD.res] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/ccLiiWSs.res] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
           arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -514,7 +514,7 @@ events:
           arg [--fix-cortex-a53-843419] ==> ignore
           arg [-pie] ==> ignore
           arg [-o] ==> ignore
-          arg [cmTC_92364] ==> ignore
+          arg [cmTC_b773e] ==> ignore
           arg [/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/Scrt1.o] ==> obj [/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/Scrt1.o]
           arg [/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crti.o] ==> obj [/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crti.o]
           arg [/usr/lib/gcc/aarch64-linux-gnu/12/crtbeginS.o] ==> obj [/usr/lib/gcc/aarch64-linux-gnu/12/crtbeginS.o]
@@ -527,7 +527,7 @@ events:
           arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
           arg [-L/usr/lib/gcc/aarch64-linux-gnu/12/../../..] ==> dir [/usr/lib/gcc/aarch64-linux-gnu/12/../../..]
           arg [-v] ==> ignore
-          arg [CMakeFiles/cmTC_92364.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+          arg [CMakeFiles/cmTC_b773e.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
           arg [-lstdc++] ==> lib [stdc++]
           arg [-lm] ==> lib [m]
           arg [-lgcc_s] ==> lib [gcc_s]
@@ -538,7 +538,7 @@ events:
           arg [/usr/lib/gcc/aarch64-linux-gnu/12/crtendS.o] ==> obj [/usr/lib/gcc/aarch64-linux-gnu/12/crtendS.o]
           arg [/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crtn.o] ==> obj [/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crtn.o]
         ignore line: [collect2 version 12.2.0]
-        ignore line: [/usr/bin/ld -plugin /usr/lib/gcc/aarch64-linux-gnu/12/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/12/lto-wrapper -plugin-opt=-fresolution=/tmp/cc6pmWQD.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr --hash-style=gnu --as-needed -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -pie -o cmTC_92364 /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/Scrt1.o /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/12/crtbeginS.o -L/usr/lib/gcc/aarch64-linux-gnu/12 -L/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/12/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/12/../../.. -v CMakeFiles/cmTC_92364.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/aarch64-linux-gnu/12/crtendS.o /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crtn.o]
+        ignore line: [/usr/bin/ld -plugin /usr/lib/gcc/aarch64-linux-gnu/12/liblto_plugin.so -plugin-opt=/usr/lib/gcc/aarch64-linux-gnu/12/lto-wrapper -plugin-opt=-fresolution=/tmp/ccLiiWSs.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr --hash-style=gnu --as-needed -dynamic-linker /lib/ld-linux-aarch64.so.1 -X -EL -maarch64linux --fix-cortex-a53-843419 -pie -o cmTC_b773e /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/Scrt1.o /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crti.o /usr/lib/gcc/aarch64-linux-gnu/12/crtbeginS.o -L/usr/lib/gcc/aarch64-linux-gnu/12 -L/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu -L/usr/lib/gcc/aarch64-linux-gnu/12/../../../../lib -L/lib/aarch64-linux-gnu -L/lib/../lib -L/usr/lib/aarch64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/aarch64-linux-gnu/12/../../.. -v CMakeFiles/cmTC_b773e.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/aarch64-linux-gnu/12/crtendS.o /usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crtn.o]
         linker tool for 'CXX': /usr/bin/ld
         collapse obj [/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/Scrt1.o] ==> [/usr/lib/aarch64-linux-gnu/Scrt1.o]
         collapse obj [/usr/lib/gcc/aarch64-linux-gnu/12/../../../aarch64-linux-gnu/crti.o] ==> [/usr/lib/aarch64-linux-gnu/crti.o]
@@ -560,9 +560,9 @@ events:
   -
     kind: "message-v1"
     backtrace:
-      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
-      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake:255 (cmake_determine_linker_id)"
-      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/84c85faa1d845_CLion-251.18673.49-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
+      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake:255 (cmake_determine_linker_id)"
+      - "/home/ariel/.cache/JetBrains/RemoteDev/dist/a6c214fdf5d60_CLion-251.23774.281-aarch64/bin/cmake/linux/aarch64/share/cmake-3.31/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
       - "CMakeLists.txt:2 (project)"
     message: |
       Running the CXX compiler's linker: "/usr/bin/ld" "-v"

@@ -15,7 +15,7 @@ public enum ActionSubject
     EncryptedTunnelKey = 7,
     EncryptedTunnel    = 8,
     User               = 9,
-    UserPermission     = 10,
+    UserPermission     = 10
     #endregion
     
 }

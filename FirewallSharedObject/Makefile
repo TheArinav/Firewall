@@ -184,6 +184,30 @@ src/fwso-main-public.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/FirewallSharedObject.dir/build.make CMakeFiles/FirewallSharedObject.dir/src/fwso-main-public.cpp.s
 .PHONY : src/fwso-main-public.cpp.s
 
+src/structs/db-general-request.o: src/structs/db-general-request.cpp.o
+.PHONY : src/structs/db-general-request.o
+
+# target to build an object file
+src/structs/db-general-request.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FirewallSharedObject.dir/build.make CMakeFiles/FirewallSharedObject.dir/src/structs/db-general-request.cpp.o
+.PHONY : src/structs/db-general-request.cpp.o
+
+src/structs/db-general-request.i: src/structs/db-general-request.cpp.i
+.PHONY : src/structs/db-general-request.i
+
+# target to preprocess a source file
+src/structs/db-general-request.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FirewallSharedObject.dir/build.make CMakeFiles/FirewallSharedObject.dir/src/structs/db-general-request.cpp.i
+.PHONY : src/structs/db-general-request.cpp.i
+
+src/structs/db-general-request.s: src/structs/db-general-request.cpp.s
+.PHONY : src/structs/db-general-request.s
+
+# target to generate assembly for a file
+src/structs/db-general-request.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FirewallSharedObject.dir/build.make CMakeFiles/FirewallSharedObject.dir/src/structs/db-general-request.cpp.s
+.PHONY : src/structs/db-general-request.cpp.s
+
 src/structs/fw-message.o: src/structs/fw-message.cpp.o
 .PHONY : src/structs/fw-message.o
 
@@ -207,6 +231,54 @@ src/structs/fw-message.s: src/structs/fw-message.cpp.s
 src/structs/fw-message.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/FirewallSharedObject.dir/build.make CMakeFiles/FirewallSharedObject.dir/src/structs/fw-message.cpp.s
 .PHONY : src/structs/fw-message.cpp.s
+
+src/structs/general-request-wrapper.o: src/structs/general-request-wrapper.cpp.o
+.PHONY : src/structs/general-request-wrapper.o
+
+# target to build an object file
+src/structs/general-request-wrapper.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FirewallSharedObject.dir/build.make CMakeFiles/FirewallSharedObject.dir/src/structs/general-request-wrapper.cpp.o
+.PHONY : src/structs/general-request-wrapper.cpp.o
+
+src/structs/general-request-wrapper.i: src/structs/general-request-wrapper.cpp.i
+.PHONY : src/structs/general-request-wrapper.i
+
+# target to preprocess a source file
+src/structs/general-request-wrapper.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FirewallSharedObject.dir/build.make CMakeFiles/FirewallSharedObject.dir/src/structs/general-request-wrapper.cpp.i
+.PHONY : src/structs/general-request-wrapper.cpp.i
+
+src/structs/general-request-wrapper.s: src/structs/general-request-wrapper.cpp.s
+.PHONY : src/structs/general-request-wrapper.s
+
+# target to generate assembly for a file
+src/structs/general-request-wrapper.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FirewallSharedObject.dir/build.make CMakeFiles/FirewallSharedObject.dir/src/structs/general-request-wrapper.cpp.s
+.PHONY : src/structs/general-request-wrapper.cpp.s
+
+src/utility-types.o: src/utility-types.cpp.o
+.PHONY : src/utility-types.o
+
+# target to build an object file
+src/utility-types.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FirewallSharedObject.dir/build.make CMakeFiles/FirewallSharedObject.dir/src/utility-types.cpp.o
+.PHONY : src/utility-types.cpp.o
+
+src/utility-types.i: src/utility-types.cpp.i
+.PHONY : src/utility-types.i
+
+# target to preprocess a source file
+src/utility-types.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FirewallSharedObject.dir/build.make CMakeFiles/FirewallSharedObject.dir/src/utility-types.cpp.i
+.PHONY : src/utility-types.cpp.i
+
+src/utility-types.s: src/utility-types.cpp.s
+.PHONY : src/utility-types.s
+
+# target to generate assembly for a file
+src/utility-types.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/FirewallSharedObject.dir/build.make CMakeFiles/FirewallSharedObject.dir/src/utility-types.cpp.s
+.PHONY : src/utility-types.cpp.s
 
 src/utils.o: src/utils.cpp.o
 .PHONY : src/utils.o
@@ -248,9 +320,18 @@ help:
 	@echo "... src/fwso-main-public.o"
 	@echo "... src/fwso-main-public.i"
 	@echo "... src/fwso-main-public.s"
+	@echo "... src/structs/db-general-request.o"
+	@echo "... src/structs/db-general-request.i"
+	@echo "... src/structs/db-general-request.s"
 	@echo "... src/structs/fw-message.o"
 	@echo "... src/structs/fw-message.i"
 	@echo "... src/structs/fw-message.s"
+	@echo "... src/structs/general-request-wrapper.o"
+	@echo "... src/structs/general-request-wrapper.i"
+	@echo "... src/structs/general-request-wrapper.s"
+	@echo "... src/utility-types.o"
+	@echo "... src/utility-types.i"
+	@echo "... src/utility-types.s"
 	@echo "... src/utils.o"
 	@echo "... src/utils.i"
 	@echo "... src/utils.s"

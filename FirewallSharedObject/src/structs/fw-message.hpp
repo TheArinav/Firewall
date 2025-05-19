@@ -7,10 +7,12 @@ using namespace std;
 
 namespace fwso::structs {
     enum message_type {
-        UNSET    = 0,
-        INIT     = 1,
-        REQUEST  = 2,
-        RESPONSE = 3
+        UNSET        = 0,
+        INIT         = 1,
+        CREATE_USER  = 2,
+        RESPONSE     = 3,
+        REQUEST      = 4,
+
     };
 
     class message {
@@ -22,7 +24,7 @@ namespace fwso::structs {
 
         message(message_type t, long int spid, long int rpid);
 
-        string to_string() const;
+        [[nodiscard]] string to_string() const;
     };
 }
 

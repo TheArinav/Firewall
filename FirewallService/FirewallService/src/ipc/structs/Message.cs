@@ -36,26 +36,13 @@ public struct Message : IStreamableObject<Message>
 
     private string SerializeType()
     {
-        return this.Type switch
-        {
-            MessageType.Unset    => "0",
-            MessageType.InitSessionRequest     => "1",
-            MessageType.GeneralActionRequest  => "2",
-            MessageType.Response => "3",
-            _                    => "F"
-        };
+       return ((int)this.Type).ToString();
     }
     
     private static MessageType DeserializeType(char t)
     {
-        return t switch
-        {
-            '0' => MessageType.Unset,
-            '1' => MessageType.InitSessionRequest,
-            '2' => MessageType.GeneralActionRequest,
-            '3' => MessageType.Response,
-            _   => throw new ArgumentException("Invalid Input")
-        };
+        var res = int.Parse(t + "");
+        return (MessageType)res;
     }
 
     public static Message Parse(string sStream)

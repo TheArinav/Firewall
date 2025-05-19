@@ -1,5 +1,6 @@
+using System.Runtime.InteropServices;
 using System.Text;
-using FirewallService.auth;
+using FirewallService.managers;
 using FirewallService.ipc.structs;
 
 namespace FirewallService.ipc;
@@ -8,7 +9,7 @@ using System.Security.Cryptography;
 
 public class EncryptionManager
 {
-    private static Dictionary<long, SecureString> SessionKeys { get; set; } = new Dictionary<long, SecureString>();
+    public static Dictionary<long, SecureString> SessionKeys { get; set; } = new Dictionary<long, SecureString>();
 
     public static string EncryptMessageComponent(string plainText, byte[] key)
     {
@@ -40,7 +41,7 @@ public class EncryptionManager
             case MessageType.InitSessionRequest:
                 using (var rsa = RSA.Create())
                 {
-                    var privateKeyBytes = FileManager.GetKeyBytes(FileManager.RSAKey);
+                    var privateKeyBytes = GeneralManager.GetKeyBytes(GeneralManager.RSAKey);
                     int bRead = 0;
                     rsa.ImportPkcs8PrivateKey(privateKeyBytes, out bRead);
 
@@ -56,7 +57,7 @@ public class EncryptionManager
                     throw new InvalidOperationException($"No AES key found for sender PID {senderPID}");
 
                 var aesKeyBytes = SecureStringToByteArray(secureAesKey);
-
+                
                 using (var aes = Aes.Create())
                 {
                     aes.Key = aesKeyBytes;
@@ -100,21 +101,27 @@ public class EncryptionManager
         return Convert.ToBase64String(nonceBytes);
     }
 
-    private static byte[] SecureStringToByteArray(SecureString secureString)
+    public static byte[] SecureStringToByteArray(SecureString secureString)
     {
         ArgumentNullException.ThrowIfNull(secureString);
 
-        var bstr = IntPtr.Zero;
+        var unmanaged = IntPtr.Zero;
         try
         {
-            bstr = System.Runtime.InteropServices.Marshal.SecureStringToBSTR(secureString);
-            var plainText = System.Runtime.InteropServices.Marshal.PtrToStringBSTR(bstr);
-            return Convert.FromBase64String(plainText);
+            unmanaged = Marshal.SecureStringToGlobalAllocUnicode(secureString);
+            var bytes = new byte[secureString.Length];
+            for (var i = 0; i < secureString.Length; i++)
+            {
+                // Each char was originally a byte (cast to char), so we cast back
+                bytes[i] = (byte)Marshal.ReadInt16(unmanaged, i * 2);
+            }
+
+            return bytes;
         }
         finally
         {
-            if (bstr != IntPtr.Zero)
-                System.Runtime.InteropServices.Marshal.ZeroFreeBSTR(bstr);
+            if (unmanaged != IntPtr.Zero)
+                Marshal.ZeroFreeGlobalAllocUnicode(unmanaged);
         }
     }
 }

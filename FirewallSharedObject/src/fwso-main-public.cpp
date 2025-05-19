@@ -15,6 +15,9 @@
 #include <unordered_set>
 
 #include "structs/fw-message.hpp"
+#include "structs/db-general-request.hpp"
+#include "structs/general-request-wrapper.hpp"
+#include "structs/enums.hpp"
 #include "utils.hpp"
 
 char fwso::api::AES_KEYRING_NAME[64];
@@ -25,7 +28,8 @@ namespace fwso::api {
         snprintf(AES_KEYRING_NAME, sizeof(AES_KEYRING_NAME), AES_KEYRING_NAME_BASE, getpid());
         snprintf(ST_KEYRING_NAME, sizeof(ST_KEYRING_NAME), ST_KEYRING_NAME_BASE, getpid());
         log_queue = {};
-        aes_key_id = {};
+        aes_key_id = -1;
+        st_key_id = -1;
         sockfd = -1;
         firewall_service_pid = -1;
         create_AES();
@@ -153,15 +157,49 @@ namespace fwso::api {
         else if (result != "True")
             return 100;
 
-        auto decoded_session_token = base64_decode(encoded_session_token);
-        store_secure_session_token(decoded_session_token);
+        auto decoded_session_token = utils::base64_decode(encoded_session_token);
+        vector<unsigned char> bytes(decoded_session_token.begin(), decoded_session_token.end());
+        st_key_id = store_secure_session_token(bytes);
 
         while(!decoded_session_token.empty()){
             decoded_session_token[decoded_session_token.size()-1] = 0;
             decoded_session_token.pop_back();
         }
 
+        this->uid = id;
+
+
         return 0;
+    }
+
+    int fwso_api::fw_test_req(string& response_out)
+    {
+        auto req_body = structs::DbGeneralRequest({}, make_optional<vector<string>>({"*"}),
+            {},{}, {}, {});
+        auto req_body_str = req_body.Serialize(structs::Subject::ConnectionClass, structs::Prototype::Get);
+        auto vec = this->get_secure_session_token(this->st_key_id);
+
+        // auto req_body = structs::DbGeneralRequest({}, {},
+        //    make_optional<vector<string>>({"ClassID","ClassName","Description"}),
+        //    make_optional<vector<string>>({"0","Loopbacks",""}), {}, {});
+        // auto req_body_str = req_body.Serialize(structs::Subject::ConnectionClass, structs::Prototype::Create);
+        // auto vec = this->get_secure_session_token(this->st_key_id);
+
+        string s(vec.begin(), vec.end());
+        s = utils::base64_encode(reinterpret_cast<const unsigned char*>(s.c_str()), s.length());
+
+        auto request = structs::GeneralRequestWrapper(this->uid, s,req_body_str);
+        auto ret = handle_request(request, response_out);
+        vec.clear();
+        s.clear();
+        cout << "Raw resp = " << response_out << endl;
+        auto comma_pos = response_out.find_last_of(',');
+        response_out = response_out.substr(comma_pos+1);
+        cout << "Base64 rep = " << response_out << endl;
+        cout << "Signal = " << ret << endl;
+        response_out = utils::base64_decode(response_out);
+
+        return ret;
     }
 
     fwso_api::~fwso_api() {
@@ -174,7 +212,7 @@ namespace fwso::api {
             remove_secure_AES_key(aes_key_id);
         }
         // Remove the session token from the keyring if it was created.
-        if (st_key_id != -1) {
+        if (st_key_id  >  0) {
             remove_secure_session_token(st_key_id);
         }
     }
@@ -199,4 +237,16 @@ extern "C" {
         out_resp[out_size - 1] = '\0';
         return result;
     }
+
+    int fw_test_req(fwso::api::fwso_api* instance,
+                char* out_resp,
+                size_t out_size)
+    {
+        std::string resp;
+        int ret = instance->fw_test_req(resp);
+        strncpy(out_resp, resp.c_str(), out_size);
+        out_resp[out_size-1] = '\0';
+        return ret;
+    }
+
 }

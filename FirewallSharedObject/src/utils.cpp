@@ -38,7 +38,9 @@ namespace fwso::utils {
          b64 = BIO_new(BIO_f_base64());
          bio = BIO_new(BIO_s_mem());
          bio = BIO_push(b64, bio);
-         BIO_set_flags(bio, BIO_FLAGS_BASE64_NO_NL); // No newlines in output
+         // disable the automatic line-wrap every 64 chars
+         BIO_set_flags(bio, BIO_FLAGS_BASE64_NO_NL);
+
 
          BIO_write(bio, data, length);
          BIO_flush(bio);

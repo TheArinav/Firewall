@@ -1,4 +1,4 @@
-﻿using FirewallService.auth.structs;
+﻿using FirewallService.managers.structs;
 using FirewallService.DB.Entities;
 using FirewallService.util;
 using FirewallService.ipc.structs.GeneralActionStructs;
@@ -30,6 +30,7 @@ public class GeneralActionRequest : IMessageComponent<GeneralActionRequest>
         var (requester, query) = sStream.Contains(':') 
             ? (sStream[..sStream.IndexOf(':')], sStream[(sStream.IndexOf(':') + 1)..]) 
             : throw new FormatException("String must contain a ':' separator.");
+        res.RequestBody = query;
         try
         {
             res.Requester = AuthorizedUserSession.Parse(requester);
@@ -38,6 +39,8 @@ public class GeneralActionRequest : IMessageComponent<GeneralActionRequest>
         {
             throw new FormatException($"Can't parse Request <= {e.Message}");
         }
+
+        return res;
         Fail:
         {
             throw new FormatException($"Can't parse '{sStream}' to Request");

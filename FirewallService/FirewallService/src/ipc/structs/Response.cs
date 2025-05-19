@@ -3,6 +3,7 @@ using System.Security.Cryptography;
 using System.Text;
 using FirewallService.DB.Entities;
 using FirewallService.ipc;
+using FirewallService.util;
 
 namespace FirewallService.ipc.structs;
 
@@ -11,16 +12,16 @@ public struct Response() : IMessageComponent<Response>, IMessageComponent<object
     private IMessageComponent<object>? _messageComponentImplementation;
     public bool OperationSuccessful { get; set; } = false;
     public string Message { get; set; } = "Null";
-    public IDataBaseEntity<object>? DBObject { get; set; } = null;
+    public IStreamableObject<object>[]? ResultObjects { get; set; } = null;
     public byte[]? Key { get; set; } = null;
     public string Nonce { get; set; }   // Fresh nonce for each response
     public long Timestamp { get; set; } // Prevent replay attacks
 
-    public Response(bool operationSuccessful, string message, IDataBaseEntity<object>? dbObject, byte[]? key) : this()
+    public Response(bool operationSuccessful, string message, IStreamableObject<object>[]? resultObjects, byte[]? key) : this()
     {
         OperationSuccessful = operationSuccessful;
         Message = message;
-        DBObject = dbObject;
+        ResultObjects = resultObjects;
         Key = key;
         Nonce = EncryptionManager.GenerateNonce();  // Use EncryptionManager for nonce
         Timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
@@ -28,7 +29,10 @@ public struct Response() : IMessageComponent<Response>, IMessageComponent<object
 
     public string ToStringStream()
     {
-        var raw = $"{{{OperationSuccessful},'{Message}',{DBObject?.ToStringStream() ?? "null"},{Nonce},{Timestamp}}}";
+        Timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+        var dbObjects = ResultObjects == null ? "null" : ResultObjects.Select(obj => 
+            obj.ToStringStream()).Aggregate((a, b) => $"{a},{b}");
+        var raw = $"{{{OperationSuccessful},'{Message}',{dbObjects},{Nonce},{Timestamp}}}";
 
         // Delegate encryption to EncryptionManager
         return Key == null || Key.Length == 0 ? raw : EncryptionManager.EncryptMessageComponent(raw, Key);

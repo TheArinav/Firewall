@@ -29,78 +29,134 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="841d48bf-99d3-4a46-85ba-f829ff9ce567" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../FirewallFilter/src/filtering/enforcers/encrypted-tunnel-detection-enforcer.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FirewallFilter/src/filtering/enforcers/encrypted-tunnel-detection-enforcer.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FirewallFilter/src/filtering/enforcers/tcp-state-enforcer.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FirewallFilter/src/filtering/enforcers/tcp-state-enforcer.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FirewallFilter/src/filtering/engine/nfq_handler.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FirewallFilter/src/filtering/engine/nfq_handler.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FirewallFilter/src/filtering/tcp/connection-state.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FirewallFilter/src/filtering/tcp/connection-tracker.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FirewallFilter/src/filtering/tcp/connection-tracker.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FirewallFilter/src/filtering/utils/LCGRandom.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FirewallFilter/src/filtering/utils/LCGRandom.hpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FirewallFilter/src/filtering/utils/cpu-monitor.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/DB/Entities/EncryptedTunnelIntegrityEnforcer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/DB/Entities/TCPStateEnforcer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/internal_/ephemeralDB/AESEncryptionMode.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/internal_/ephemeralDB/CipherSuite.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/internal_/ephemeralDB/Collections.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/internal_/ephemeralDB/EncryptedTunnel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/internal_/ephemeralDB/EncryptionProtocol.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/internal_/ephemeralDB/KeyExchangeStandard.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/internal_/ephemeralDB/KeyFormat.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/internal_/ephemeralDB/PaddingScheme.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/internal_/ephemeralDB/TunnelType.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/.idea/editor.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallFilter/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-ba8879cb7c57faafa838.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/.cmake/api/v1/reply/target-FirewallFilter-Debug-98129fd69afdb6e76785.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/CMakeFiles/3.31.4/CMakeSystem.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/CMakeFiles/3.31.4/CMakeSystem.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/CMakeFiles/CMakeConfigureLog.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/CMakeFiles/CMakeConfigureLog.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/CMakeFiles/FirewallFilter.dir/main.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/CMakeFiles/FirewallFilter.dir/src/filtering/automata/aho-corasick.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/CMakeFiles/FirewallFilter.dir/src/filtering/automata/compressed-ac.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/CMakeFiles/FirewallFilter.dir/src/filtering/enforcers/ip-port-enforcer.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/CMakeFiles/FirewallFilter.dir/src/filtering/enforcers/payload-length-enforcer.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/CMakeFiles/FirewallFilter.dir/src/filtering/enforcers/rate-limit-enforcer.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/CMakeFiles/FirewallFilter.dir/src/filtering/enforcers/regex-enforcer.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/CMakeFiles/FirewallFilter.dir/src/filtering/enforcers/tls-fingerprint-enforcer.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/CMakeFiles/FirewallFilter.dir/src/filtering/engine/cpu-monitor.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/CMakeFiles/FirewallFilter.dir/src/filtering/engine/firewall-engine.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/CMakeFiles/FirewallFilter.dir/src/filtering/engine/packet-processor.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/CMakeFiles/FirewallFilter.dir/src/filtering/filtering.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/CMakeFiles/FirewallFilter.dir/src/filtering/rules/firewall-rule.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/CMakeFiles/FirewallFilter.dir/src/filtering/rules/rule-parser.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/CMakeFiles/FirewallFilter.dir/src/filtering/utils/helpers.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/CMakeFiles/FirewallFilter.dir/src/filtering/utils/logger.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/CMakeFiles/FirewallFilter.dir/src/filtering/utils/perf-monitor.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/CMakeFiles/FirewallFilter.dir/src/ipc/server-connect.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/CMakeFiles/rules.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/CMakeFiles/rules.ninja" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/DB/util/DBObjectWrapper.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/DB/util/QueryArguments.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/NativeInterop/UnixCredentials.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/managers/DBManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/structs/db-general-request.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/structs/db-general-request.hpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/structs/enums.hpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/structs/general-request-wrapper.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/structs/general-request-wrapper.hpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utility-types.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utility-types.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Documents/הצעת_פרויקט.docx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallFilter/cmake-build-debug/build.ninja" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/src/filtering/enforcers/ip-port-enforcer.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/src/filtering/enforcers/ip-port-enforcer.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/src/filtering/engine/cpu-monitor.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/src/filtering/engine/packet-processor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallFilter/src/filtering/engine/packet-processor.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/src/filtering/engine/packet-processor.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallFilter/src/filtering/engine/packet-processor.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/src/filtering/rules/firewall-rule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallFilter/src/filtering/rules/firewall-rule.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallFilter/src/filtering/rules/firewall-rule.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallFilter/src/filtering/rules/firewall-rule.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/DB/AppDBContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/DB/AppDBContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/DB/Entities/Enforcer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/DB/Entities/Enforcer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/DB/Entities/FirewallRuleEnforcer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/DB/Entities/FirewallRuleEnforcer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/DB/Entities/IpPortEnforcer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/auth/ActionManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/auth/ActionManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/auth/structs/AuthMainObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/auth/structs/AuthMainObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/DB/AppDBContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/DB/AppDBContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/DB/DBManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/DB/Entities/Connection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/DB/Entities/Connection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/DB/Entities/ConnectionClass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/DB/Entities/ConnectionClass.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/DB/Entities/EncryptedTunnelDetectionEnforcer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/DB/Entities/EncryptedTunnelDetectionEnforcer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/DB/Entities/EncryptedTunnelIntegrityEnforcer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/DB/Entities/EncryptedTunnelIntegrityEnforcer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/DB/Entities/Enforcer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/DB/Entities/Enforcer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/DB/Entities/FirewallRule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/DB/Entities/FirewallRule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/DB/Entities/FirewallRuleEnforcer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/DB/Entities/FirewallRuleEnforcer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/DB/Entities/IDataBaseEntity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/DB/util/IDataBaseEntity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/DB/Entities/Packet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/DB/Entities/Packet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/DB/Entities/PayloadLengthEnforcer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/DB/Entities/PayloadLengthEnforcer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/DB/Entities/Protocol.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/DB/Entities/Protocol.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/DB/Entities/RateLimitingEnforcer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/DB/Entities/RateLimitingEnforcer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/DB/Entities/Record.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/DB/Entities/Record.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/DB/Entities/RegexEnforcer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/DB/Entities/RegexEnforcer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/DB/Entities/TCPStateEnforcer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/DB/Entities/TCPStateEnforcer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/DB/Entities/TLSFingerprintEnforcer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/DB/Entities/TLSFingerprintEnforcer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/NativeInterop/UnixNative.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/NativeInterop/UnixNative.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/Worker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/Worker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/auth/ActionAuthentication/ActionAuthenticator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/managers/ActionAuthentication/ActionAuthenticator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/auth/ActionAuthentication/TrustPhraseManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/managers/ActionAuthentication/TrustPhraseManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/auth/ActionManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/managers/ActionManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/auth/AuthManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/managers/AuthManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/auth/FileManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/managers/GeneralManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/auth/PasswordHasher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/managers/PasswordHasher.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/auth/PermissionManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/managers/PermissionManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/auth/structs/AuthMainObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/managers/structs/AuthMainObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/auth/structs/AuthorizedUser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/managers/structs/AuthorizedUser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/auth/structs/AuthorizedUserSession.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/managers/structs/AuthorizedUserSession.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/auth/structs/PermissionCondition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/managers/structs/PermissionCondition.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/auth/structs/PermissionType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/managers/structs/PermissionType.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/auth/structs/PrivilegeMainObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/managers/structs/PrivilegeMainObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/auth/structs/SecureKey.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/managers/structs/SecureKey.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/auth/structs/UserConnection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/managers/structs/UserConnection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/auth/structs/UserPrivileges.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/managers/structs/UserPrivileges.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/ipc/EncryptionManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/ipc/EncryptionManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/ipc/Server.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/ipc/Server.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/ipc/structs/GeneralActionRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/ipc/structs/GeneralActionRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/ipc/structs/GeneralActionStructs/ActionSubject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/ipc/structs/GeneralActionStructs/ActionSubject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/ipc/structs/GeneralActionStructs/GeneralAction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/ipc/structs/GeneralActionStructs/GeneralAction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/ipc/structs/InitSessionRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/ipc/structs/InitSessionRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/ipc/structs/Message.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/ipc/structs/Message.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/ipc/structs/MessageType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/ipc/structs/MessageType.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../FirewallService/FirewallService/src/ipc/structs/Response.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../FirewallService/FirewallService/src/ipc/structs/Response.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/editor.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cmake/api/v1/reply/cache-v2-705b547c01eefb526fb6.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cmake/api/v1/reply/cmakeFiles-v1-a0a7a2df02cf51736681.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cmake/api/v1/reply/codemodel-v2-4f4fb3a2d713ef5c17b0.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cmake/api/v1/reply/index-2025-04-13T07-39-57-0491.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.cmake/api/v1/reply/target-FirewallSharedObject-Debug-b868c84409ca28207e24.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/CMakeConfigureLog.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/CMakeConfigureLog.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/FirewallSharedObject.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/FirewallSharedObject.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/FirewallSharedObject.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/FirewallSharedObject.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/FirewallSharedObject.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/FirewallSharedObject.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/FirewallSharedObject.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/FirewallSharedObject.dir/link.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/FirewallSharedObject.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/FirewallSharedObject.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/progress.marks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/query/cache-v2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/query/cache-v2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/query/cmakeFiles-v1" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/query/cmakeFiles-v1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/query/codemodel-v2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/query/codemodel-v2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/query/toolchains-v1" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/query/toolchains-v1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cache-v2-d25475b3ad59f2703267.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-01bbef1a59498a183f2d.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-0ba73b48c0e61b07df76.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/directory-.-Debug-f5ebdc15457944623624.json" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/directory-.-Debug-f5ebdc15457944623624.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2025-02-10T13-53-30-0830.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-FirewallSharedObject-Debug-2efa0a74e3b48162ffcf.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/toolchains-v1-40a4f97f742c05bafc2b.json" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/toolchains-v1-40a4f97f742c05bafc2b.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.31.4/CMakeCCompiler.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.31.4/CMakeCCompiler.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.31.4/CMakeCXXCompiler.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.31.4/CMakeCXXCompiler.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.31.4/CMakeSystem.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.31.4/CMakeSystem.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.31.4/CompilerIdC/CMakeCCompilerId.c" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.31.4/CompilerIdC/CMakeCCompilerId.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.31.4/CompilerIdCXX/CMakeCXXCompilerId.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.31.4/CompilerIdCXX/CMakeCXXCompilerId.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeConfigureLog.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeConfigureLog.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FirewallSharedObject.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FirewallSharedObject.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FirewallSharedObject.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FirewallSharedObject.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FirewallSharedObject.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FirewallSharedObject.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FirewallSharedObject.dir/compiler_depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FirewallSharedObject.dir/compiler_depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FirewallSharedObject.dir/compiler_depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FirewallSharedObject.dir/compiler_depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FirewallSharedObject.dir/compiler_depend.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FirewallSharedObject.dir/compiler_depend.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FirewallSharedObject.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FirewallSharedObject.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FirewallSharedObject.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FirewallSharedObject.dir/link.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FirewallSharedObject.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FirewallSharedObject.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FirewallSharedObject.dir/src/fwso-main.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FirewallSharedObject.dir/src/fwso-main.cpp.o.d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FirewallSharedObject.dir/src/structs/fw-message.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/FirewallSharedObject.dir/src/structs/fw-message.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/cmake.check_cache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/cmake.check_cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/cmake_install.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/libFirewallSharedObject.so" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/libFirewallSharedObject.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libFirewallSharedObject.so" beforeDir="false" afterPath="$PROJECT_DIR$/libFirewallSharedObject.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fwso-main-private.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/fwso-main-private.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fwso-main-public.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/fwso-main-public.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fwso-main.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/fwso-main.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/structs/fw-message.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/structs/fw-message.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/structs/fw-message.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/structs/fw-message.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,35 +187,38 @@
   &quot;associatedIndex&quot;: 4
 }</component>
   <component name="ProjectId" id="2sWuhDHVRlOjle0aTVMhBfzAQbo" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;CMake Application.FirewallSharedObject.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Python.test.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.west.config.association.type.startup.service&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/ariel/Documents/github/Firewall/FirewallSharedObject&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;/home/ariel/Documents/github/Firewall/FirewallSharedObject/main.cpp&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "CMake Application.FirewallSharedObject.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.test.executor": "Run",
+    "RunOnceActivity.RadMigrateCodeStyle": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "RunOnceActivity.west.config.association.type.startup.service": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "/home/ariel/Documents/github/Firewall/FirewallSharedObject",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "/home/ariel/Documents/github/Firewall/FirewallSharedObject/main.cpp",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RdControllerToolWindowsLayoutState" isNewUi="true">
     <layout>
       <window_info id="Bookmarks" side_tool="true" />
@@ -167,7 +226,7 @@
       <window_info id="Commit_Guest" show_stripe_button="false" />
       <window_info id="Pull Requests" />
       <window_info id="Learn" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1549479" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17786458" />
       <window_info id="Commit" order="1" weight="0.32975262" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Database Changes" />
@@ -180,12 +239,13 @@
       <window_info anchor="bottom" id="clangd" />
       <window_info anchor="bottom" id="Version Control" order="0" />
       <window_info anchor="bottom" id="Problems" order="1" />
-      <window_info anchor="bottom" id="Problems View" order="2" weight="0.3294903" />
-      <window_info anchor="bottom" id="Terminal" order="3" weight="0.22754854" />
-      <window_info anchor="bottom" id="Services" order="4" />
-      <window_info active="true" anchor="bottom" id="CMake" order="5" visible="true" weight="0.28317308" />
-      <window_info active="true" anchor="bottom" id="Messages" order="6" visible="true" />
-      <window_info active="true" anchor="bottom" id="Run" order="7" visible="true" weight="0.3294903" />
+      <window_info anchor="bottom" id="Problems View" order="2" weight="0.33028847" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="3" visible="true" weight="0.33028847" />
+      <window_info anchor="bottom" id="Services" order="4" weight="0.33028847" />
+      <window_info anchor="bottom" id="CMake" order="5" weight="0.33028847" />
+      <window_info anchor="bottom" id="Messages" order="6" weight="0.33028847" />
+      <window_info anchor="bottom" id="Run" order="7" weight="0.33028847" />
+      <window_info anchor="bottom" id="Debug" order="8" weight="0.33028847" />
       <window_info anchor="right" id="PR AI Assistant" />
       <window_info anchor="right" id="make" side_tool="true" />
       <window_info anchor="right" id="documentation.v2" show_stripe_button="false" side_tool="true" />
@@ -199,11 +259,44 @@
       <window_info anchor="right" id="Meson" order="5" />
     </layout>
   </component>
-  <component name="RunManager" selected="CMake Application.FirewallSharedObject">
+  <component name="RunManager" selected="Python.test">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="FirewallSharedObject" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="FirewallSharedObject" TARGET_NAME="FirewallSharedObject" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="FirewallSharedObject" RUN_TARGET_NAME="FirewallSharedObject">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="FirewallSharedObject" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="FirewallSharedObject" TARGET_NAME="FirewallSharedObject" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="FirewallSharedObject" RUN_TARGET_NAME="FirewallSharedObject">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="FirewallSharedObject" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.11 (FirewallSharedObject)" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
     </configuration>
     <configuration name="test" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="FirewallSharedObject" />
@@ -262,6 +355,10 @@
       <workItem from="1744529977126" duration="5102000" />
       <workItem from="1745479577891" duration="1128000" />
       <workItem from="1745742271041" duration="605000" />
+      <workItem from="1747117180559" duration="4194000" />
+      <workItem from="1747230430511" duration="12299000" />
+      <workItem from="1747422308568" duration="1906000" />
+      <workItem from="1747504698154" duration="30691000" />
     </task>
     <servers />
   </component>

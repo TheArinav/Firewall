@@ -1,4 +1,4 @@
-using FirewallService.auth.structs;
+using FirewallService.managers.structs;
 using System.Text;
 
 namespace FirewallService.ipc.structs;
